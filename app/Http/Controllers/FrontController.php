@@ -30,6 +30,11 @@ class FrontController extends Controller
         return view('dept');
     }
 
+    public function deducciones()
+    {
+        return view('deducciones');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

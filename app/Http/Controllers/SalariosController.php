@@ -5,12 +5,11 @@ namespace WP\Http\Controllers;
 use Illuminate\Http\Request;
 
 use WP\Http\Requests;
-use WP\Departamento;
-use WP\Puesto;
 use Session;
 use Redirect;
+use WP\Empleado;
 
-class EmpleadosController extends Controller
+class SalariosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +18,8 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        $emp = \WP\Empleado::paginate(3);
-        return view('empleados.lista',compact('emp'));
+        $sal = \WP\Salario::paginate(3);
+        return view('salarios.lista',compact('sal'));
     }
 
     /**
@@ -30,9 +29,8 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        $depart = Departamento::pluck('nombre','id');
-        $puesto = Puesto::pluck('nombre','id');
-        return view('empleados.crear',compact('depart','puesto'));
+        $emp = Empleado::pluck('nomb','id');
+        return view('salarios.crear',compact('emp'));
     }
 
     /**
@@ -43,13 +41,20 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-         \WP\Empleado::create($request->all());
+         \WP\Salario::create([
+            'emp_id' => $request['emp_id'],
+            'salarioM' => $request['salarioM'],
+            'salarioQ' => $request['salarioQ'],
+            'salarioS' => $request['salarioS'],
+            'salarioD' => $request['salarioD'],
+            'salarioH' => $request['salarioH'],
+            'salarioHE' => $request['salarioHE'],
+            'caja' => $request['caja'],
+            'incapacidad' => $request['incapacidad'],
+        ]);
 
-        Session::flash('message','Empleado Ingresado Correctamente');
-        return Redirect::to('/empleados');
-        
-
-        return "Usuario registrado";
+       Session::flash('message','Salario Ingresado Correctamente');
+        return Redirect::to('/salarios');
     }
 
     /**
@@ -71,8 +76,8 @@ class EmpleadosController extends Controller
      */
     public function edit($id)
     {
-         $emp = \WP\Empleado::find($id);
-        return view ('empleados.editar',['emp'=>$emp]);
+        $sal = \WP\Salario::find($id);
+        return view ('salarios.editar',['sal'=>$sal]);
     }
 
     /**
@@ -84,12 +89,12 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $emp = \WP\Empleado::find($id);
-        $emp -> fill($request->all());
-        $emp -> save();
+        $sal = \WP\Salario::find($id);
+        $sal -> fill($request->all());
+        $sal -> save();
 
-        Session::flash('message','Empleado Editado Correctamente');
-        return Redirect::to('/empleados');
+        Session::flash('message','Salario Editado Correctamente');
+        return Redirect::to('/salarios');
     }
 
     /**
@@ -100,8 +105,8 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        \WP\Empleado::destroy($id);
-        Session::flash('message','Empleado Eliminado Correctamente');
-        return Redirect::to('/empleados');
+        \WP\Salario::destroy($id);
+        Session::flash('message','Salario Eliminado Correctamente');
+        return Redirect::to('/salarios');
     }
 }

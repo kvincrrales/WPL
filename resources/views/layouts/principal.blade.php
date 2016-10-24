@@ -7,6 +7,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <title>WIMOT</title>
+      <link rel="icon" href="{!! asset('images/tools.png') !!}"/>
       <!-- Bootstrap Core CSS -->
       {!!Html::style('css/bootstrap.min.css')!!}
       <!-- Custom CSS -->

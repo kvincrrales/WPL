@@ -10,7 +10,7 @@
             {!!Form::open(['route'=>'puestos.store','method'=>'POST'])!!}
    <div class="form-group">
       {!!Form::label('Departamento:')!!}
-      {!!Form::text('dep',null,['class'=>'form-control','placeholder'=>'Ingresa el Nombre del usuario'])!!}
+      {!!Form::select('dep',$dept,null,['class'=>'form-control'])!!}
    </div>
    <div class="form-group">
       {!!Form::label('Nombre:')!!}

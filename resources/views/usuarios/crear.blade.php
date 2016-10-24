@@ -1,4 +1,4 @@
-@extends('layouts.principal')
+@extends('layouts.admin')
 	@section('content')
 	<div class="col-lg-12">
                 <h2 class="page-header">Crear Usuario</h2>

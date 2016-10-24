@@ -15,7 +15,7 @@
    </div>
    <div class="form-group col-sm-6">
       {!!Form::label('Jefe del Departamento:')!!}
-      {!!Form::text('jefe',null,['class'=>'form-control','placeholder'=>'Ingresa el nombre del jefe'])!!}
+      {!!Form::select('jefe',$emp,null,['class'=>'form-control'])!!}
    </div>
          </div>
          <div class="row">

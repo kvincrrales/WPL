@@ -13,6 +13,7 @@
 Route::get('/','FrontController@index');
 Route::get('modulos','FrontController@modulos');
 Route::get('dept','FrontController@departamentos');
+Route::get('deducciones','FrontController@deducciones');
 Route::resource('log','LogController');
 Route::get('logout','LogController@logout');
 
@@ -20,3 +21,4 @@ Route::resource('usuario','userController');
 Route::resource('empleados','EmpleadosController');
 Route::resource('departamentos','DepartamentosController');
 Route::resource('puestos','PuestosController');
+Route::resource('salarios','SalariosController');

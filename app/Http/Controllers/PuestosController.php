@@ -5,6 +5,7 @@ namespace WP\Http\Controllers;
 use Illuminate\Http\Request;
 
 use WP\Http\Requests;
+use WP\Departamento;
 
 use Session;
 use Redirect;
@@ -29,7 +30,8 @@ class PuestosController extends Controller
      */
     public function create()
     {
-        return view('puestos.crear');
+        $dept = Departamento::pluck('nombre','id');
+        return view('puestos.crear',compact('dept'));
     }
 
     /**

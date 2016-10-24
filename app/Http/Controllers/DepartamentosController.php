@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use Redirect;
 use WP\Http\Requests;
+use WP\Empleado;
 
 class DepartamentosController extends Controller
 {
@@ -27,7 +28,8 @@ class DepartamentosController extends Controller
      */
     public function create()
     {
-        return view('departamentos.crear');
+         $emp = Empleado::pluck('nomb','id');
+        return view('departamentos.crear',compact('emp'));
     }
 
     /**

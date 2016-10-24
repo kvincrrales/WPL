@@ -46,7 +46,7 @@
                 <h3>Deducciones</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="Deduccion.php" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/deducciones')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">

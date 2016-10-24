@@ -76,11 +76,11 @@
                <div class="row">
                 <div class="form-group col-sm-6">
                      {!!Form::label('Departamento: ')!!}
-                     {!!Form::select('dept_id', ['0' => 'Bodega', '1' => 'Mensajeria'],null, ['class' => 'form-control'])!!}
+                       {!!Form::select('dept_id',$depart,null,['class'=>'form-control'])!!}
                   </div>
                   <div class="form-group col-sm-6">
                      {!!Form::label('Puesto: ')!!}
-                     {!!Form::select('puesto_id', ['0' => 'Peon de Bodega', '1' => 'Mensajero'],null, ['class' => 'form-control'])!!}
+                       {!!Form::select('puesto_id',$puesto,null,['class'=>'form-control'])!!}
                   </div>
                </div>
                <div class="row">
