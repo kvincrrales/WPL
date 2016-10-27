@@ -15,11 +15,11 @@
                     </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
-                <img class="img-circle img-responsive img-center" width="90" src="images/update.png" alt="">
-                <h3>Editar Empleado</h3>
-                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+                <img class="img-circle img-responsive img-center" width="90" src="images/employees.png" alt="">
+                <h3>Lista de Empleados</h3>
+                <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
                 <p>
-                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/empleados')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
@@ -34,15 +34,15 @@
             <hr class="divisor">
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
-                <img class="img-circle img-responsive img-center" width="90" src="images/contacts.png" alt="">
-                <h3>Lista de Empleados</h3>
-                <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
+                <img class="img-circle img-responsive img-center" width="90" src="images/piggy-bank-1.png" alt="">
+                <h3>Ahorros</h3>
+                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="{!!URL::to('/empleados')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/ahorro')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
-                <img class="img-circle img-responsive img-center" width="90" src="images/abacus.png" alt="">
+                <img class="img-circle img-responsive img-center" width="90" src="images/wallet.png" alt="">
                 <h3>Deducciones</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
@@ -50,13 +50,14 @@
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
-                <img class="img-circle img-responsive img-center" width="90" src="images/calendar.png" alt="">
-                <h3>Planillas</h3>
+                <img class="img-circle img-responsive img-center" width="90" src="images/sunbed.png" alt="">
+                <h3>Vacaciones</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="Planillas.php" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/vacacion')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
+            
             
         </div>
         <hr class="divisor">
@@ -66,35 +67,15 @@
                 <h3>Incapacidades</h3>
                 <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
                 <p>
-                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/incapacidad')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
-                <img class="img-circle img-responsive img-center" width="90" src="images/stapler.png" alt="">
-                <h3>Departamentos y Puestos</h3>
+                <img class="img-circle img-responsive img-center" width="90" src="images/notes.png" alt="">
+                <h3>Planillas</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="{!!URL::to('/dept')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
-                </p>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4 text-center">
-                <img class="img-circle img-responsive img-center" width="90" src="images/sunbed.png" alt="">
-                <h3>Vacaciones</h3>
-                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-                <p>
-                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
-                </p>
-            </div>
-            
-        </div>
-         <hr class="divisor">
-         <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-4 text-center">
-                <img class="img-circle img-responsive img-center" width="90" src="images/piggy-bank-1.png" alt="">
-                <h3>Ahorros</h3>
-                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-                <p>
-                    <a href="Ahorros.php" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="Planillas.php" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
@@ -102,9 +83,22 @@
                 <h3>Aguinaldos</h3>
                 <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
                 <p>
-                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/aguinaldo')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
+            
+        </div>
+         <hr class="divisor">
+         <div class="row">
+           <div class="col-sm-6 col-md-6 col-lg-4 text-center">
+                <img class="img-circle img-responsive img-center" width="90" src="images/desk.png" alt="">
+                <h3>Departamentos y Puestos</h3>
+                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+                <p>
+                    <a href="{!!URL::to('/dept')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                </p>
+            </div>
+            
            
             
         </div>

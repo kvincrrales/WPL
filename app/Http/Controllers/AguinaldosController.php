@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 use WP\Http\Requests;
 
-
-
-class FrontController extends Controller
+class AguinaldosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,42 +15,7 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('index');
-    }
-
-    public function modulos()
-    {
-        return view('modulos');
-    }
-
-    public function departamentos()
-    {
-        return view('dept');
-    }
-
-    public function deducciones()
-    {
-        return view('deducciones');
-    }
-
-    public function incapacidades()
-    {
-        return view('incapacidad');
-    }
-
-    public function vacaciones()
-    {
-        return view('vacaciones');
-    }
-
-    public function ahorros()
-    {
-        return view('ahorros');
-    }
-
-    public function aguinaldos()
-    {
-        return view('aguinaldos');
+        return "lista aguinaldo";
     }
 
     /**
@@ -62,7 +25,7 @@ class FrontController extends Controller
      */
     public function create()
     {
-        //
+        return "crear aguianldo";
     }
 
     /**

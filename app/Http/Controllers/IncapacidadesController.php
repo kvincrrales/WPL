@@ -5,10 +5,11 @@ namespace WP\Http\Controllers;
 use Illuminate\Http\Request;
 
 use WP\Http\Requests;
+use Session;
+use Redirect;
+use WP\Empleado;
 
-
-
-class FrontController extends Controller
+class IncapacidadesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,42 +18,8 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('index');
-    }
-
-    public function modulos()
-    {
-        return view('modulos');
-    }
-
-    public function departamentos()
-    {
-        return view('dept');
-    }
-
-    public function deducciones()
-    {
-        return view('deducciones');
-    }
-
-    public function incapacidades()
-    {
-        return view('incapacidad');
-    }
-
-    public function vacaciones()
-    {
-        return view('vacaciones');
-    }
-
-    public function ahorros()
-    {
-        return view('ahorros');
-    }
-
-    public function aguinaldos()
-    {
-        return view('aguinaldos');
+        $inc = \WP\Incapacidad::paginate(3);
+        return view('incapacidades.lista',compact('inc'));
     }
 
     /**
@@ -62,7 +29,8 @@ class FrontController extends Controller
      */
     public function create()
     {
-        //
+        $emp = Empleado::pluck('nomb','id');
+        return view('incapacidades.crear',compact('emp'));
     }
 
     /**
@@ -73,7 +41,10 @@ class FrontController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \WP\Incapacidad::create($request->all());
+
+       Session::flash('message','Incapacidad Ingresada Correctamente');
+        return Redirect::to('/incapacidades');
     }
 
     /**

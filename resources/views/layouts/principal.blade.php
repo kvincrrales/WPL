@@ -44,11 +44,11 @@
                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Departamentos y Puestos
                      <span class="caret"></span></a>
                      <ul class="dropdown-menu">
-                        <li><a href="#">Registrar Departamento</a></li>
-                        <li><a href="#">Lista Departamentos</a>
+                        <li><a href="{!!URL::to('/departamentos/create')!!}">Registrar Departamento</a></li>
+                        <li><a href="{!!URL::to('/departamentos')!!}">Lista Departamentos</a>
                         </li>
-                        <li><a href="#">Registrar Puesto</a></li>
-                        <li><a href="#">Lista de Puestos</a>
+                        <li><a href="{!!URL::to('/puestos/create')!!}">Registrar Puesto</a></li>
+                        <li><a href="{!!URL::to('/puestos')!!}">Lista de Puestos</a>
                         </li>
                      </ul>
                   </li>
@@ -63,6 +63,38 @@
                      </ul>
                   </li>
                   <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Ahorros
+                     <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{!!URL::to('/ahorros/create')!!}">Registrar Ahorro</a></li>
+                        <li><a href="{!!URL::to('/ahorros')!!}">Lista de Ahorros</a></li>
+                     </ul>
+                  </li>
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Incapacidades
+                     <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{!!URL::to('/incapacidades/create')!!}">Registrar Incapacidad</a></li>
+                        <li><a href="{!!URL::to('/incapacidades')!!}">Lista de Incapacidades</a></li>
+                     </ul>
+                  </li>
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vacaciones
+                     <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{!!URL::to('/vacaciones/create')!!}">Registrar Vacaciones</a></li>
+                        <li><a href="{!!URL::to('/vacaciones')!!}">Lista de Vacaciones</a></li>
+                     </ul>
+                  </li>
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Aguinaldos
+                     <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{!!URL::to('/aguinaldos')!!}">Lista de Aguinaldos</a></li>
+                     </ul>
+                  </li>
+                  <!--
+                  <li class="dropdown">
                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuarios
                      <span class="caret"></span></a>
                      <ul class="dropdown-menu">
@@ -71,6 +103,7 @@
                         </li>
                      </ul>
                   </li>
+                  -->
                </ul>
                <ul class="nav navbar-nav navbar-right">
                   <li><a href="#"><span class="glyphicon glyphicon-user"></span> {!!Auth::user()->name!!}</a></li>
