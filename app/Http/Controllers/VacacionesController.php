@@ -5,6 +5,9 @@ namespace WP\Http\Controllers;
 use Illuminate\Http\Request;
 
 use WP\Http\Requests;
+use Session;
+use Redirect;
+use WP\Empleado;
 
 class VacacionesController extends Controller
 {
@@ -15,7 +18,8 @@ class VacacionesController extends Controller
      */
     public function index()
     {
-        return "lista vacaciones";
+         $vac = \WP\Vacacion::paginate(3);
+        return view('vacaciones.lista',compact('vac'));
     }
 
     /**
@@ -25,7 +29,8 @@ class VacacionesController extends Controller
      */
     public function create()
     {
-        return view('vacaciones.crear');
+        $emp = Empleado::pluck('nomb','id');
+        return view('vacaciones.crear',compact('emp'));
     }
 
     /**
@@ -36,7 +41,10 @@ class VacacionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         \WP\Vacacion::create($request->all());
+
+       Session::flash('message','Vacaciones Ingresadas Correctamente');
+        return Redirect::to('/vacaciones');
     }
 
     /**
@@ -58,7 +66,9 @@ class VacacionesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $emp = Empleado::pluck('nomb','id');
+        $vac = \WP\Vacacion::find($id);
+        return view ('vacaciones.editar',compact('emp'),['vac'=>$vac]);
     }
 
     /**
@@ -70,7 +80,12 @@ class VacacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vac = \WP\Vacacion::find($id);
+        $vac -> fill($request->all());
+        $vac -> save();
+
+        Session::flash('message','Vacaciones Editadas Correctamente');
+        return Redirect::to('/vacaciones');
     }
 
     /**
@@ -81,6 +96,8 @@ class VacacionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \WP\Vacacion::destroy($id);
+        Session::flash('message','Vacaciones Eliminadas Correctamente');
+        return Redirect::to('/vacaciones');
     }
 }

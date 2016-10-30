@@ -5,6 +5,9 @@ namespace WP\Http\Controllers;
 use Illuminate\Http\Request;
 
 use WP\Http\Requests;
+use Session;
+use Redirect;
+use WP\Empleado;
 
 class AhorrosController extends Controller
 {
@@ -15,7 +18,8 @@ class AhorrosController extends Controller
      */
     public function index()
     {
-        return view('ahorros.lista');
+        $aho = \WP\Ahorro::paginate(3);
+        return view('ahorros.lista',compact('aho'));
     }
 
     /**
@@ -25,7 +29,8 @@ class AhorrosController extends Controller
      */
     public function create()
     {
-        return view('ahorros.crear');
+        $emp = Empleado::pluck('nomb','id');
+        return view('ahorros.crear',compact('emp'));
     }
 
     /**
@@ -36,7 +41,10 @@ class AhorrosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         \WP\Ahorro::create($request->all());
+
+       Session::flash('message','Ahorro Ingresado Correctamente');
+        return Redirect::to('/ahorros');
     }
 
     /**
@@ -58,7 +66,9 @@ class AhorrosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $emp = Empleado::pluck('nomb','id');
+        $aho = \WP\Ahorro::find($id);
+        return view ('ahorros.editar',['aho'=>$aho],compact('emp'));
     }
 
     /**
@@ -70,7 +80,14 @@ class AhorrosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $aho = \WP\Ahorro::find($id);
+        $aho -> fill($request->all());
+        $aho -> save();
+
+        //dept = ahorros
+
+        Session::flash('message','Ahorro Editado Correctamente');
+        return Redirect::to('/ahorros');
     }
 
     /**
@@ -81,6 +98,8 @@ class AhorrosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \WP\Ahorro::destroy($id);
+        Session::flash('message','Ahorro Eliminado Correctamente');
+        return Redirect::to('/ahorros');
     }
 }

@@ -30,7 +30,7 @@
                   <td>{{$puestos -> nombre}}</td>
                   <td>{{$puestos -> desc}}</td>
                   
-                  <td><button type="button" class="btn btn-sucess">EDITAR</button></td>
+                  <td><button type="button" class="btn btn-sucess">{!!link_to_route('puestos.edit', $title = 'Editar', $parameters = $puestos->id)!!}</button></td>
               </tr>
             </tbody>
             @endforeach

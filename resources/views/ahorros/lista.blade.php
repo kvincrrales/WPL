@@ -17,22 +17,28 @@
                 <tr>
                   <th>ID Empleado</th>
                   <th>Fecha Inicio</th>
+                  <th>Ultima Modificación</th>
                   <th>Monto Semanal</th>
                   <th>Monto Actual</th>
                   <th>Notas</th>
                   <th>Accion</th>
                 </tr>
             </thead>
+              @foreach($aho as $ahorro)
               <tbody>
                       <tr>
-                      <td>1-15570079</td>
-                      <td>26-10-2016</td>
-                      <td>₡ 5000</td>
-                      <td>₡ 25000</td>
-                      <td>Ninguna</td>
-                      <td>EDITAR</td>
+                      <td>  {{$ahorro -> emp_id}}</td>
+                      <td>  {{$ahorro -> created_at}}</td>
+                      <td>  {{$ahorro -> updated_at}}</td>
+                      <td>₡ {{$ahorro -> montoS}}</td>
+                      <td>₡ {{$ahorro -> montoA}}</td>
+                      <td>  {{$ahorro -> nota}}</td>
+                      <td><button type="button" class="btn btn-sucess">{!!link_to_route('ahorros.edit', $title = 'Editar', $parameters = $ahorro->id)!!}</button></td>
                       </tr>
               </tbody>
+            @endforeach
             </table>
 </div>
+
+  {!!$aho->render()!!}
 @stop

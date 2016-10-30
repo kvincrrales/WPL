@@ -29,7 +29,7 @@
                       <td>{{$incapacidad -> fecha}}</td>
                       <td>{{$incapacidad -> tipo}}</td>
                       <td>{{$incapacidad -> nota}}</td>
-                      <td><button type="button" class="btn btn-sucess">EDITAR</button></td>
+                      <td><button type="button" class="btn btn-sucess">{!!link_to_route('incapacidades.edit', $title = 'Editar', $parameters = $incapacidad->id)!!}</button></td>
                       </tr>
               </tbody>
             @endforeach

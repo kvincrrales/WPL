@@ -14,8 +14,21 @@ class CreateVacacionsTable extends Migration
     public function up()
     {
         Schema::create('vacacions', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->timestamps();
+            $table->text('nomb');
+            $table->boolean('tVacaciones');
+            $table->integer('num_vac');
+            $table->date('fechaS');
+            $table->date('fechaIni');
+            $table->date('fechaFin');
+            $table->float('monto');
+
+
+            $table->integer('emp_id')->unsigned();
+
+            $table->foreign('emp_id')->references('id')->on('empleados');
         });
     }
 

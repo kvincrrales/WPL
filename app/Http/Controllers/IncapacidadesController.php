@@ -66,7 +66,9 @@ class IncapacidadesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $emp = Empleado::pluck('nomb','id');
+        $inc = \WP\Incapacidad::find($id);
+        return view ('incapacidades.editar',compact('emp'),['inc'=>$inc]);
     }
 
     /**
@@ -78,7 +80,12 @@ class IncapacidadesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inc = \WP\Incapacidad::find($id);
+        $inc -> fill($request->all());
+        $inc -> save();
+
+        Session::flash('message','Incapacidad Editado Correctamente');
+        return Redirect::to('/incapacidades');
     }
 
     /**
@@ -89,6 +96,8 @@ class IncapacidadesController extends Controller
      */
     public function destroy($id)
     {
-        //
+       \WP\Incapacidad::destroy($id);
+        Session::flash('message','Incapacidad Eliminado Correctamente');
+        return Redirect::to('/incapacidades');
     }
 }

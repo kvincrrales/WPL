@@ -7,15 +7,19 @@
                <h2 class="page-header">Nuevo Ahorro</h2>
             </div>
              <!-- 'route'=>'empleados.emp', -->
-            {!!Form::open(['method'=>'POST'])!!}
+            {!!Form::open(['route'=>'ahorros.store','method'=>'POST'])!!}
             <div class="row">
    <div class="form-group col-sm-6">
       {!!Form::label('Nombre del Empleado:')!!}
-      {!!Form::text('nomb',null,['class'=>'form-control','placeholder'=>'Ingresa el Nombre del departamento'])!!}
+               {!!Form::select('emp_id',$emp,null,['class'=>'form-control'])!!}
    </div>
    <div class="form-group col-sm-6">
       {!!Form::label('Monto del Ahorro por Semana:')!!}
-      {!!Form::text('monto',null,['class'=>'form-control'])!!}
+      {!!Form::text('montoS',null,['class'=>'form-control'])!!}
+   </div>
+   <div class="form-group col-sm-6">
+      {!!Form::label('Monto Actual:')!!}
+      {!!Form::text('montoA',null,['class'=>'form-control'])!!}
    </div>
             </div>
          <div class="row">

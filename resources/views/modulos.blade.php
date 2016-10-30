@@ -27,7 +27,7 @@
                 <h3>Buscar Empleado</h3>
                 <p>Modulo encargado de mostrar todos los datos del empleado!</p>
                 <p>
-                    <a href="{!!URL::to('/empleados/show')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
         </div>
@@ -75,7 +75,7 @@
                 <h3>Planillas</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="Planillas.php" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
