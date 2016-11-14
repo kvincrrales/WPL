@@ -37,5 +37,10 @@ Route::resource('prestamos','PrestamosController');
 Route::resource('vales','ValesController');
 Route::resource('planillas','PlanillasController');
 
+
+
+//controller@método de los ajax
+
 Route::get('calculo','SalariosController@calcularSalarios');
+Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
 

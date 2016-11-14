@@ -9,6 +9,7 @@
 </div>
 @endif
 <div class="row">
+
             <div class="col-lg-12">
                 <h2 class="page-header">Lista de Salarios</h2>
             </div>
