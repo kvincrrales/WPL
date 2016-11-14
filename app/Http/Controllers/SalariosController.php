@@ -8,6 +8,7 @@ use WP\Http\Requests;
 use Session;
 use Redirect;
 use WP\Empleado;
+use DB;
 
 class SalariosController extends Controller
 {
@@ -29,6 +30,16 @@ class SalariosController extends Controller
      */
     public function create()
     {
+        $variable = DB::table('empleados')->select('id','nomb')->get();
+
+         echo $variable;
+
+        // $id = 2;
+
+        // $nombre = Empleado::find($id);
+
+        // echo $nombre->nomb;
+
         $emp = Empleado::pluck('nomb','id');
         return view('salarios.crear',compact('emp'));
     }

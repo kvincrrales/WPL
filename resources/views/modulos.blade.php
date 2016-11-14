@@ -98,6 +98,14 @@
                     <a href="{!!URL::to('/dept')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 text-center">
+                <img class="img-circle img-responsive img-center" width="90" src="images/receipt.png" alt="">
+                <h3>Reportes a la Caja</h3>
+                <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+                <p>
+                    <a href="{!!URL::to('/dept')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                </p>
+            </div>
             
            
             
