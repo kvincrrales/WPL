@@ -31,6 +31,10 @@ Route::resource('ahorros','AhorrosController');
 Route::resource('aguinaldos','AguinaldosController');
 Route::resource('vacaciones','VacacionesController');
 
+
 Route::resource('otrasDeducciones','OtrasDeduccionesController');
 Route::resource('prestamos','PrestamosController');
 Route::resource('vales','ValesController');
+
+Route::get('calculo','SalariosController@calcularSalarios');
+

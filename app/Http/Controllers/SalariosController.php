@@ -17,10 +17,12 @@ class SalariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $sal = \WP\Salario::paginate(3);
         return view('salarios.lista',compact('sal'));
+
     }
 
     /**
@@ -30,17 +32,9 @@ class SalariosController extends Controller
      */
     public function create()
     {
-        $variable = DB::table('empleados')->select('id','nomb')->get();
 
-         echo $variable;
+        $emp = Empleado::pluck('id','nomb');
 
-        // $id = 2;
-
-        // $nombre = Empleado::find($id);
-
-        // echo $nombre->nomb;
-
-        $emp = Empleado::pluck('nomb','id');
         return view('salarios.crear',compact('emp'));
     }
 
@@ -119,5 +113,42 @@ class SalariosController extends Controller
         \WP\Salario::destroy($id);
         Session::flash('message','Salario Eliminado Correctamente');
         return Redirect::to('/salarios');
+    }
+
+    /**
+     * [calcularSalarios description]
+     * @param  [int] $salario [Valor base para calcular los demas salarios]
+     * @return [type]          [description]
+     * @autor Alexis Ramos Mora 
+     */
+    public function calcularSalarios(Request $request){
+
+        $response = array();
+
+        $val = $request['salario'];
+
+        // calcula el salario quinenal.
+        
+        $response['salarioQuincenal'] = $val/2;
+
+
+        // semanal
+        $response['salarioSemanal'] = $val/4;
+
+        // diario
+        $response['salarioDiario'] = $val/30;
+
+
+        $response['salarioHora'] = $response['salarioDiario']/8;
+
+        $response['salarioExtra'] = $response['salarioHora']*0.5+$response['salarioHora'];
+
+        $response['caja'] = $val/30;
+
+        $response['incapacidad'] = $val/30;
+
+        return $response;
+
+        
     }
 }
