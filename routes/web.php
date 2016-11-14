@@ -35,6 +35,7 @@ Route::resource('vacaciones','VacacionesController');
 Route::resource('otrasDeducciones','OtrasDeduccionesController');
 Route::resource('prestamos','PrestamosController');
 Route::resource('vales','ValesController');
+Route::resource('planillas','PlanillasController');
 
 Route::get('calculo','SalariosController@calcularSalarios');
 
