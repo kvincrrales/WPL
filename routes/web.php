@@ -44,3 +44,6 @@ Route::resource('planillas','PlanillasController');
 Route::get('calculo','SalariosController@calcularSalarios');
 Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
 
+//Route::get('vacaciones', 'VacacionesController@importExport');
+Route::get('downloadExcel/{type}', 'VacacionesController@downloadExcel');
+

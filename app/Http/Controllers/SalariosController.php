@@ -136,16 +136,16 @@ class SalariosController extends Controller
         $response['salarioSemanal'] = $val/4;
 
         // diario
-        $response['salarioDiario'] = $val/30;
+        $response['salarioDiario'] = $val/26;
 
 
         $response['salarioHora'] = $response['salarioDiario']/8;
 
-        $response['salarioExtra'] = $response['salarioHora']*0.5+$response['salarioHora'];
+        $response['salarioExtra'] = $response['salarioHora']*1.5+$response['salarioHora'];
 
         $response['caja'] = $val/30;
 
-        $response['incapacidad'] = $val/30;
+        $response['incapacidad'] = $val/52;
 
         return $response;
 

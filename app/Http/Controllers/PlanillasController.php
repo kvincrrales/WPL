@@ -24,8 +24,10 @@ class PlanillasController extends Controller
         $users = DB::table('empleados')
             ->join('salarios', 'salarios.emp_id', '=', 'empleados.id')
             ->join('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
+             ->join('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
             ->select(
-                'empleados.id', 
+                'empleados.id',
+                'empleados.numId', 
                 'empleados.nomb', 
                 'empleados.cBanc', 
                 'salarios.salarioM',
@@ -33,7 +35,8 @@ class PlanillasController extends Controller
                 'salarios.salarioH',    
                 'salarios.caja',
                 'salarios.incapacidad',
-                'ahorros.montoS')
+                'ahorros.montoS',
+                'vacacions.num_vac')
             ->get();
 
         // sumar todos los datos 

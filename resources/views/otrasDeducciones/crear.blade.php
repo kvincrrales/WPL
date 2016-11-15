@@ -6,8 +6,8 @@
             <div class="col-lg-12">
                <h2 class="page-header">Registrar Deducciones</h2>
             </div>
-             <!-- 'route'=>'empleados.emp', -->
-            {!!Form::open(['method'=>'POST'])!!}
+             <!-- 'route'=>'empleados.otrasDeducciones', -->
+            {!!Form::open(['route'=>'otrasDeducciones.store','method'=>'POST'])!!}
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('ID Empleado:')!!}

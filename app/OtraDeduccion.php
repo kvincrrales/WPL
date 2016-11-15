@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OtraDeduccion extends Model
 {
-    protected $table = 'otrasDeducciones';
+    protected $table = 'otra_deduccions';
 
     /**
      * The attributes that are mass assignable.
@@ -14,6 +14,6 @@ class OtraDeduccion extends Model
      * @var array
      */
     protected $fillable = [
-        '','','','emp_id'
+        'nomb','moneda','montoO','fSolicitud','notas','emp_id'
                           ];
 }

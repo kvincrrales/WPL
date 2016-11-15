@@ -18,8 +18,7 @@
       {!!Form::text('montoS',null,['class'=>'form-control'])!!}
    </div>
    <div class="form-group col-sm-6">
-      {!!Form::label('Monto Actual:')!!}
-      {!!Form::text('montoA',null,['class'=>'form-control'])!!}
+      {!!Form::text('montoA',0,['class'=>'hidden'])!!}
    </div>
             </div>
          <div class="row">

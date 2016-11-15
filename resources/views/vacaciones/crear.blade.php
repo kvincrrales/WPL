@@ -3,6 +3,8 @@
 @section('content')
  <!-- Team Members Row -->
          <div class="row">
+
+
             <div class="col-lg-12">
                <h2 class="page-header">Registrar Vacaciones</h2>
             </div>
@@ -68,9 +70,12 @@
             <div class="row">
                   {!!Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
             </div>
-   
+            <br>
+            {!!Form::close()!!}
 
-   {!!Form::close()!!}
+            <div class="row">
+               <a href="{{ URL::to('downloadExcel/xls') }}"><button class="btn btn-success">Download Excel xls</button></a>
+            </div>
             <hr class="divisor">
          </div>
 @stop

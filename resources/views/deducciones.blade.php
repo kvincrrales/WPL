@@ -38,7 +38,7 @@
                 <h3>Lista de Prestamos</h3>
                 <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
                 <p>
-                    <a href="{!!URL::to('/departamentos')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/prestamos')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
@@ -46,7 +46,7 @@
                 <h3>Lista de Vales</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="{!!URL::to('/puestos')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/vales')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
@@ -54,7 +54,7 @@
                 <h3>Lista de Otras Deducciones</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="{!!URL::to('/salarios')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/otrasDeducciones')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             

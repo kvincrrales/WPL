@@ -39,21 +39,21 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Monto:')!!}
-               {!!Form::text('montoP',null,['class'=>'form-control','placeholder'=>'Ingresa el monto de la deducción'])!!}
+               {!!Form::number('montoP',null,['class'=>'form-control','placeholder'=>'Ingresa el monto de la deducción'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Porcentaje de Interes:')!!}
-               {!!Form::text('interes',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje'])!!}
+               {!!Form::number('interes',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Plazo Semanal:')!!}
-               {!!Form::text('interes',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje'])!!}
+               {!!Form::number('plazoS',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje'])!!}
             </div>
             </div>
             <br>

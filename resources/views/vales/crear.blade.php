@@ -7,7 +7,7 @@
                <h2 class="page-header">Registrar Vales</h2>
             </div>
              <!-- 'route'=>'empleados.emp', -->
-            {!!Form::open(['method'=>'POST'])!!}
+            {!!Form::open(['route'=>'vales.store','method'=>'POST'])!!}
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('ID Empleado:')!!}
@@ -32,7 +32,21 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Monto:')!!}
-               {!!Form::text('montoV',null,['class'=>'form-control','placeholder'=>'Ingresa el monto de la deducción'])!!}
+               {!!Form::number('montoV',null,['class'=>'form-control','placeholder'=>'Ingresa el monto de la deducción'])!!}
+            </div>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               {!!Form::label('Interes:')!!}
+               {!!Form::number('interes',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje de interes'])!!}
+            </div>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               {!!Form::label('Total:')!!}
+               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Digite el total'])!!}
             </div>
             </div>
             <br>

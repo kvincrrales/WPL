@@ -14,6 +14,6 @@ class Vale extends Model
      * @var array
      */
     protected $fillable = [
-        'nomb','moneda','montoV','fSolicitud','notas','emp_id'
+        'nomb','moneda','montoV','interes','total','fSolicitud','notas','emp_id'
                           ];
 }

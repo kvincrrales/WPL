@@ -18,8 +18,8 @@ class ValesController extends Controller
      */
     public function index()
     {
-        $id = 1;
-        return $id;
+        $val = \WP\Vale::paginate(3);
+        return view('vales.lista',compact('val'));
     }
 
     /**
@@ -41,7 +41,10 @@ class ValesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \WP\Vale::create($request->all());
+
+       Session::flash('message','Vale Registrado Correctamente');
+        return Redirect::to('/vales');
     }
 
     /**

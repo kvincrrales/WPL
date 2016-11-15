@@ -9,6 +9,9 @@ use Session;
 use Redirect;
 use WP\Empleado;
 
+use DB;
+use Excel;
+
 class VacacionesController extends Controller
 {
     /**
@@ -100,4 +103,24 @@ class VacacionesController extends Controller
         Session::flash('message','Vacaciones Eliminadas Correctamente');
         return Redirect::to('/vacaciones');
     }
+
+
+    public function downloadExcel($type)
+    {
+        //$data = \WP\Vacacion::get()->toArray(); --> esta me jala toda la lista de vacaciones
+        // $nombre = \WP\Vacacion::find($id)->toArray(); --> esta me jala solo por id
+
+        $id = 3;
+        
+        $nombre = \WP\Vacacion::find($id)->toArray();
+        return Excel::create('accionPersonal', function($excel) use ($nombre) {
+            $excel->sheet('solicitudVacaciones', function($sheet) use ($nombre)
+            {
+                $sheet->fromArray($nombre);
+            });
+
+
+        })->download($type);
+    }
+
 }

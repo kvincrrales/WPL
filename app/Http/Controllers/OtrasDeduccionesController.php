@@ -18,7 +18,8 @@ class OtrasDeduccionesController extends Controller
      */
     public function index()
     {
-        //
+        $od = \WP\OtraDeduccion::paginate(3);
+        return view('otrasDeducciones.lista',compact('od'));
     }
 
     /**
@@ -40,7 +41,10 @@ class OtrasDeduccionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \WP\OtraDeduccion::create($request->all());
+
+       Session::flash('message','Vale Registrado Correctamente');
+        return Redirect::to('/otrasDeducciones');
     }
 
     /**

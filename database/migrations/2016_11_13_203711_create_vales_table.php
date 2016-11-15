@@ -16,6 +16,18 @@ class CreateValesTable extends Migration
         Schema::create('vales', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+
+            $table->text('nomb');
+            $table->text('moneda');
+            $table->integer('montoV');
+            $table->integer('interes');
+            $table->integer('total');
+            $table->date('fSolicitud');
+            $table->text('notas');
+
+            $table->integer('emp_id')->unsigned();
+
+            $table->foreign('emp_id')->references('id')->on('empleados');
         });
     }
 
