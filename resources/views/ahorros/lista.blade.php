@@ -10,7 +10,7 @@
 @endif
 <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Lista de Ahorros</h2>
+                <h2 class="page-header">Lista de Ahorros Semanales</h2>
             </div>
             <table class="table table-striped" id="tblGrid">
             <thead id="tblHead">

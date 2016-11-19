@@ -25,7 +25,7 @@
                   <th>Accion</th>
                 </tr>
             </thead>
-            @foreach($val as $vale)
+            @foreach($val as $vale) 
               <tbody>
                       <tr>
                       <td>{{$vale -> nomb}}</td>
@@ -39,6 +39,16 @@
                       </tr>
               </tbody>
             @endforeach
+             <tr>
+            <th scope="row">TOTAL</th>
+            <td></td>
+            <td><strong>{{$monto_val}}</strong></td>
+            <td></td>
+            <td><strong>{{$sum_val}}</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
             </table>
 </div>
 

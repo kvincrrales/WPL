@@ -9,6 +9,8 @@ use Session;
 use Redirect;
 use WP\Empleado;
 
+use DB;
+
 class ValesController extends Controller
 {
     /**
@@ -18,8 +20,11 @@ class ValesController extends Controller
      */
     public function index()
     {
+        $sum_val = DB::table('vales')->sum('total');
+        $monto_val = DB::table('vales')->sum('montoV');
+
         $val = \WP\Vale::paginate(3);
-        return view('vales.lista',compact('val'));
+        return view('vales.lista',compact('val','sum_val','monto_val'));
     }
 
     /**

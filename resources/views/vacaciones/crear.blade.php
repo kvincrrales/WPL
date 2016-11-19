@@ -72,10 +72,6 @@
             </div>
             <br>
             {!!Form::close()!!}
-
-            <div class="row">
-               <a href="{{ URL::to('downloadExcel/xls') }}"><button class="btn btn-success">Download Excel xls</button></a>
-            </div>
             <hr class="divisor">
          </div>
 @stop

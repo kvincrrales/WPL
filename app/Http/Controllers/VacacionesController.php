@@ -105,22 +105,22 @@ class VacacionesController extends Controller
     }
 
 
-    public function downloadExcel($type)
+    public function downloadExcel($id)
     {
-        //$data = \WP\Vacacion::get()->toArray(); --> esta me jala toda la lista de vacaciones
-        // $nombre = \WP\Vacacion::find($id)->toArray(); --> esta me jala solo por id
-
-        $id = 3;
+        //$data = \WP\Vacacion::get()->toArray(); --> Toda la lista
         
-        $nombre = \WP\Vacacion::find($id)->toArray();
-        return Excel::create('accionPersonal', function($excel) use ($nombre) {
-            $excel->sheet('solicitudVacaciones', function($sheet) use ($nombre)
+        $emp_id = \WP\Vacacion::find($id)->toArray();
+        return Excel::create('accionPersonal', function($excel) use ($emp_id) {
+
+            $excel->sheet('solicitudVacaciones', function($sheet) use ($emp_id)
             {
-                $sheet->fromArray($nombre);
+                //$sheet->cell('A2', function($cell){
+                    //$cell->setValue('ID');});
+                $sheet->fromArray($emp_id);
             });
 
 
-        })->download($type);
+        })->download('xls');
     }
 
 }

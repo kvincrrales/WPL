@@ -24,6 +24,7 @@
                   <th>Fecha Final</th>
                   <th>Monto</th>
                   <th>Accion</th>
+                   <th>Exportar Excel</th>
                 </tr>
             </thead>
             @foreach($vac as $vacacion)
@@ -38,6 +39,7 @@
                       <td>{{$vacacion -> fechaFin}}</td>
                       <td>{{$vacacion -> monto}}</td>
                       <td><button type="button" class="btn btn-sucess">{!!link_to_route('vacaciones.edit', $title = 'Editar', $parameters = $vacacion->id)!!}</button></td>
+                      <td><a href="{{ URL::to('downloadExcel',$parameters = $vacacion->id) }}"><button class="btn btn-success">Descargar</button></a></td>
                       </tr>
               </tbody>
             @endforeach
