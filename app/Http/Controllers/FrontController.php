@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use WP\Http\Requests;
 
+use DB;
+
 
 
 class FrontController extends Controller
@@ -23,6 +25,23 @@ class FrontController extends Controller
     public function modulos()
     {
         return view('modulos');
+    }
+
+    public function caja()
+    {
+        $users = DB::table('empleados')
+            ->join('salarios', 'salarios.emp_id', '=', 'empleados.id')
+            ->join('departamentos', 'departamentos.id', '=', 'empleados.id')
+            ->select(
+                'empleados.id',
+                'empleados.numId', 
+                'empleados.nomb',
+                'departamentos.nombre', 
+                'salarios.salarioM')
+            ->get();
+
+
+        return view('caja',compact('users'));
     }
 
     public function departamentos()

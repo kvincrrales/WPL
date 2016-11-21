@@ -23,27 +23,23 @@
                   <th>Salario Diario</th>
                   <th>Salario Horas</th>
                   <th>Salario Horas Extra</th>
-                  <th>C.C.S.S</th>
-                  <th>Incapacidad</th>
                   <th>Accion</th>
                 </tr>
             </thead>
-            @foreach($sal as $salario)
+            @foreach($users as $salario)
               <tbody>
                       <tr>
-                      <td>{{$salario -> emp_id}}</td>
+                      <td>  {{$salario ->nomb}}</td>
                       <td>₡ {{$salario -> salarioM}}</td>
                       <td>₡ {{$salario -> salarioQ}}</td>
                       <td>₡ {{$salario -> salarioS}}</td>
                       <td>₡ {{$salario -> salarioD}}</td>
                       <td>₡ {{$salario -> salarioH}}</td>
                       <td>₡ {{$salario -> salarioHE}}</td>
-                      <td>₡ {{$salario -> caja}}</td>
-                      <td>₡ {{$salario -> incapacidad}}</td>
                       <td><button type="button" class="btn btn-sucess">{!!link_to_route('salarios.edit', $title = 'Editar', $parameters = $salario->id)!!}</button></td>
                       </tr>
               </tbody>
-            @endforeach
+               @endforeach
             </table>
 </div>
 

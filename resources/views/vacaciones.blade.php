@@ -24,7 +24,7 @@
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
                 <img class="img-circle img-responsive img-center" width="90" src="images/notebook.png" alt="">
-                <h3>Historial de Vacaciones</h3>
+                <h3>Vacaciones Disponibles</h3>
                 <p>Modulo encargado de mostrar todos los datos del empleado!</p>
                 <p>
                     <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>

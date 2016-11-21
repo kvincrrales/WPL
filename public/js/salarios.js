@@ -33,8 +33,6 @@ $(document).on('keyup', '#salario', function(event) {
 			$('#salarioDia').val(data.salarioDiario);
 			$('#salarioHor').val(data.salarioHora);
 			$('#salarioExt').val(data.salarioExtra);
-			$('#incapacid').val(data.caja);
-			$('#ccss').val(data.incapacidad);
 
 
 		},

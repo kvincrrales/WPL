@@ -9,6 +9,7 @@ use WP\Departamento;
 use WP\Puesto;
 use Session;
 use Redirect;
+use DB;
 
 class EmpleadosController extends Controller
 {
@@ -17,10 +18,18 @@ class EmpleadosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $emp = \WP\Empleado::paginate(3);
-        return view('empleados.lista',compact('emp'));
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $emp=DB::table('empleados')->where('nomb','LIKE','%'.$query.'%')
+            ->where ('id','>','0')
+            ->orderBy('id','desc')
+            ->paginate(2);
+            return view('empleados.lista',["emp"=>$emp,"searchText"=>$query]);
+        }
+
     }
 
     /**

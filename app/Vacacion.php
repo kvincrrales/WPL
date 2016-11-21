@@ -14,6 +14,6 @@ class Vacacion extends Model
      * @var array
      */
     protected $fillable = [
-    		'nomb','tVacaciones','num_vac','fechaS','fechaIni','fechaFin','monto','emp_id'
+    		'nomb','tVacaciones','fechaS','fechaIni','fechaFin','diasD','caja','total','emp_id'
                           ];
 }

@@ -47,3 +47,21 @@ Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
 //Route::get('vacaciones', 'VacacionesController@importExport');
 Route::get('downloadExcel/{id}', 'VacacionesController@downloadExcel');
 
+Route::get('downloadExcelAhorros/{id}', 'AhorrosController@downloadExcel');
+
+Route::get('downloadExcelIncapacidades/{id}', 'IncapacidadesController@downloadExcel');
+
+Route::get('downloadExcelDeducciones/{id}', 'OtrasDeduccionesController@downloadExcel');
+
+Route::get('downloadExcelPrestamos/{id}', 'PrestamosController@downloadExcel');
+
+Route::get('downloadExcelVales/{id}', 'ValesController@downloadExcel');
+
+//Route::get('downloadExcel/{id}', 'PlanillasController@downloadExcel');
+
+Route::get('caja','FrontController@caja');
+
+
+
+
+

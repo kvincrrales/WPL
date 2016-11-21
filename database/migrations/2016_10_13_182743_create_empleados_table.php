@@ -15,24 +15,24 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('estatus');
+            $table->string('estatus');
             //$table->date('fBaja');
             $table->date('fIngreso');
-            $table->smallInteger('tipoId');
+            $table->string('tipoId');
             $table->string('numId')->unique();
             $table->string('nomb');
             $table->string('ape1');
             $table->string('ape2');
-            $table->boolean('sexo');
+            $table->string('sexo');
             $table->date('fNac');
             $table->string('nCel')->unique();
             $table->string('nCasa')->unique();
             $table->string('email')->unique();
             $table->text('dir');
-            $table->smallInteger('fPago');
+            $table->string('fPago');
             $table->string('cBanc')->unique();
             $table->string('cAhorro')->unique();
-            $table->smallInteger('tipoPlanilla');
+            $table->string('tipoPlanilla');
             $table->string('fotoEmpleado');
             $table->timestamps();
             $table->rememberToken();

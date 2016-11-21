@@ -23,6 +23,7 @@
                   <th>Fecha Solicitud</th>
                   <th>Notas</th>
                   <th>Accion</th>
+                  <th>Descargar</th>
                 </tr>
             </thead>
             @foreach($val as $vale) 
@@ -36,6 +37,7 @@
                       <td>{{$vale -> fSolicitud}}</td>
                       <td>{{$vale -> notas}}</td>
                       <td><button type="button" class="btn btn-sucess">EDITAR</button></td>
+                      <td><a href="{{ URL::to('downloadExcelVales',$parameters = $vale->id) }}"><button class="btn btn-success">Descargar</button></a></td>
                       </tr>
               </tbody>
             @endforeach
@@ -45,6 +47,7 @@
             <td><strong>{{$monto_val}}</strong></td>
             <td></td>
             <td><strong>{{$sum_val}}</strong></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>

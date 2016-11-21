@@ -10,6 +10,7 @@ use Redirect;
 use WP\Empleado;
 
 use DB;
+use Excel;
 
 class ValesController extends Controller
 {
@@ -95,5 +96,23 @@ class ValesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function downloadExcel($id)
+    {
+        //$data = \WP\Vacacion::get()->toArray(); --> Toda la lista
+        
+        $emp_id = \WP\Vale::find($id)->toArray();
+        return Excel::create('accionVale', function($excel) use ($emp_id) {
+
+            $excel->sheet('vales', function($sheet) use ($emp_id)
+            {
+                //$sheet->cell('A2', function($cell){
+                    //$cell->setValue('ID');});
+                $sheet->fromArray($emp_id);
+            });
+
+
+        })->download('xls');
     }
 }

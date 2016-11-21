@@ -9,6 +9,9 @@ use Session;
 use Redirect;
 use WP\Empleado;
 
+use DB;
+use Excel;
+
 class IncapacidadesController extends Controller
 {
     /**
@@ -16,10 +19,17 @@ class IncapacidadesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $inc = \WP\Incapacidad::paginate(3);
-        return view('incapacidades.lista',compact('inc'));
+        if ($request)
+        {
+            $query=trim($request->get('searchText'));
+            $incapacidades=DB::table('incapacidads')->where('emp_id','LIKE','%'.$query.'%')
+            ->where ('id','>','0')
+            ->orderBy('id','desc')
+            ->paginate(2);
+            return view('incapacidades.lista',["incapacidades"=>$incapacidades,"searchText"=>$query]);
+        }
     }
 
     /**
@@ -99,5 +109,23 @@ class IncapacidadesController extends Controller
        \WP\Incapacidad::destroy($id);
         Session::flash('message','Incapacidad Eliminado Correctamente');
         return Redirect::to('/incapacidades');
+    }
+
+    public function downloadExcel($id)
+    {
+        //$data = \WP\Vacacion::get()->toArray(); --> Toda la lista
+        
+        $emp_id = \WP\Incapacidad::find($id)->toArray();
+        return Excel::create('reporteIncapacidad', function($excel) use ($emp_id) {
+
+            $excel->sheet('solicitudVacaciones', function($sheet) use ($emp_id)
+            {
+                //$sheet->cell('A2', function($cell){
+                    //$cell->setValue('ID');});
+                $sheet->fromArray($emp_id);
+            });
+
+
+        })->download('xls');
     }
 }

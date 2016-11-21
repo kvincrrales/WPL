@@ -26,6 +26,10 @@
             </div>
             <div class="row">
             <div class="form-group col-sm-6">
+               {!!Form::label('Total:')!!}
+               {!!Form::number('total',null,['class'=>'form-control'])!!}
+            </div>
+            <div class="form-group col-sm-6">
                {!!Form::label('Notas:')!!}
                {!!Form::text('nota',null,['class'=>'form-control'])!!}
             </div>

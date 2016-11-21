@@ -9,6 +9,9 @@ use Session;
 use Redirect;
 use WP\Empleado;
 
+use DB;
+use Excel;
+
 class AhorrosController extends Controller
 {
     /**
@@ -16,51 +19,15 @@ class AhorrosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function actionIndex()
- {
-  Excel::create('Mi primer archivo excel desde Laravel', function($excel)
-  {
-   $excel->sheet('Sheetname', function($sheet)
-   {
-    $sheet->mergeCells('A1:C1');
-
-    $sheet->setBorder('A1:F1', 'thin');
-
-    $sheet->cells('A1:F1', function($cells)
-    {
-     $cells->setBackground('#000000');
-     $cells->setFontColor('#FFFFFF');
-     $cells->setAlignment('center');
-     $cells->setValignment('center');
-    });
-
-    $sheet->setWidth(array
-     (
-      'D' => '50'
-     )
-    );
-
-    $sheet->setHeight(array
-     (
-      '1' => '50'
-     )
-    );
-
-    $data=[];
-
-    array_push($data, array('Kevin', '', '', 'Arnold', 'Arias', 'Figueroa'));
-
-    $sheet->fromArray($data, null, 'A1', false, false);
-   });
-  })->download('xlsx');
-
-  //return View::make('index');
- }
 
     public function index()
     {
+        $montoSemanal = DB::table('ahorros')->sum('montoS');
+
+        $montoActual = DB::table('ahorros')->sum('montoA');
+
         $aho = \WP\Ahorro::paginate(3);
-        return view('ahorros.lista',compact('aho'));
+        return view('ahorros.lista',compact('aho','montoSemanal','montoActual'));
     }
 
     /**
@@ -142,5 +109,23 @@ class AhorrosController extends Controller
         \WP\Ahorro::destroy($id);
         Session::flash('message','Ahorro Eliminado Correctamente');
         return Redirect::to('/ahorros');
+    }
+
+    public function downloadExcel($id)
+    {
+        //$data = \WP\Vacacion::get()->toArray(); --> Toda la lista
+        
+        $emp_id = \WP\Ahorro::find($id)->toArray();
+        return Excel::create('reporteAhorro', function($excel) use ($emp_id) {
+
+            $excel->sheet('solicitudVacaciones', function($sheet) use ($emp_id)
+            {
+                //$sheet->cell('A2', function($cell){
+                    //$cell->setValue('ID');});
+                $sheet->fromArray($emp_id);
+            });
+
+
+        })->download('xls');
     }
 }

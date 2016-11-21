@@ -18,12 +18,13 @@ class CreateVacacionsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('nomb');
-            $table->boolean('tVacaciones');
-            $table->integer('num_vac');
+            $table->string('tVacaciones');
             $table->date('fechaS');
             $table->date('fechaIni');
             $table->date('fechaFin');
-            $table->float('monto');
+            $table->integer('diasD');
+            $table->integer('caja');
+            $table->float('total');
 
 
             $table->integer('emp_id')->unsigned();

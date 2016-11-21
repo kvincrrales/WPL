@@ -41,16 +41,6 @@
             </div>
             </div>
             <div class="row">
-            <div class="form-group col-sm-6">
-               {!!Form::label('C.C.S.S:')!!}
-               {!!Form::text('caja',null,['class'=>'form-control'])!!}
-            </div>
-            <div class="form-group col-sm-6">
-               {!!Form::label('Incapacidad:')!!}
-               {!!Form::text('incapacidad',null,['class'=>'form-control'])!!}
-            </div>
-            </div>
-            <div class="row">
             <div class="form-group col-sm-12">
             {!!Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}
             {!!Form::close()!!}

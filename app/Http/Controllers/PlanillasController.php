@@ -24,7 +24,10 @@ class PlanillasController extends Controller
         $users = DB::table('empleados')
             ->join('salarios', 'salarios.emp_id', '=', 'empleados.id')
             ->join('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
-             ->join('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
+            ->join('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
+            ->join('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
+            ->join('vales' ,'vales.emp_id', '=', 'empleados.id' )
+            ->join('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
             ->select(
                 'empleados.id',
                 'empleados.numId', 
@@ -33,10 +36,11 @@ class PlanillasController extends Controller
                 'salarios.salarioM',
                 'salarios.salarioHE',
                 'salarios.salarioH',    
-                'salarios.caja',
-                'salarios.incapacidad',
                 'ahorros.montoS',
-                'vacacions.num_vac')
+                'vacacions.diasD',
+                'vales.total',
+                'prestamos.montoP',
+                'otra_deduccions.montoO')
             ->get();
 
         // sumar todos los datos 
@@ -145,5 +149,23 @@ class PlanillasController extends Controller
 
 
         return $return;
+    }
+
+    public function downloadExcel($id)
+    {
+        //$data = \WP\Vacacion::get()->toArray(); --> Toda la lista
+        
+        $emp_id = \WP\Vacacion::find($id)->toArray();
+        return Excel::create('accionPersonal', function($excel) use ($emp_id) {
+
+            $excel->sheet('solicitudVacaciones', function($sheet) use ($emp_id)
+            {
+                //$sheet->cell('A2', function($cell){
+                    //$cell->setValue('ID');});
+                $sheet->fromArray($emp_id);
+            });
+
+
+        })->download('xls');
     }
 }

@@ -19,9 +19,22 @@ class SalariosController extends Controller
      */
     public function index(Request $request)
     {
+        $users = DB::table('empleados')
+            ->join('salarios', 'salarios.emp_id', '=', 'empleados.id')
+            ->select(
+                'empleados.nomb',
+                'salarios.id',
+                'salarios.salarioM',
+                'salarios.salarioQ',
+                'salarios.salarioS',
+                'salarios.salarioD',
+                'salarios.salarioH',
+                'salarios.salarioHE')
+            ->get();
+
 
         $sal = \WP\Salario::paginate(3);
-        return view('salarios.lista',compact('sal'));
+        return view('salarios.lista',compact('sal','users'));
 
     }
 
@@ -54,8 +67,6 @@ class SalariosController extends Controller
             'salarioD' => $request['salarioD'],
             'salarioH' => $request['salarioH'],
             'salarioHE' => $request['salarioHE'],
-            'caja' => $request['caja'],
-            'incapacidad' => $request['incapacidad'],
         ]);
 
        Session::flash('message','Salario Ingresado Correctamente');
@@ -142,10 +153,6 @@ class SalariosController extends Controller
         $response['salarioHora'] = $response['salarioDiario']/8;
 
         $response['salarioExtra'] = $response['salarioHora']*1.5+$response['salarioHora'];
-
-        $response['caja'] = $val/30;
-
-        $response['incapacidad'] = $val/52;
 
         return $response;
 

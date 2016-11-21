@@ -7,7 +7,7 @@
                <h2 class="page-header">Registrar Prestamos</h2>
             </div>
              <!-- 'route'=>'empleados.emp', -->
-            {!!Form::open(['method'=>'POST'])!!}
+            {!!Form::open(['route'=>'prestamos.store','method'=>'POST'])!!}
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('ID Empleado:')!!}
@@ -54,6 +54,13 @@
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Plazo Semanal:')!!}
                {!!Form::number('plazoS',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje'])!!}
+            </div>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               {!!Form::label('Total:')!!}
+               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Digite el total'])!!}
             </div>
             </div>
             <br>

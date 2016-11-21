@@ -14,6 +14,6 @@ class Incapacidad extends Model
      * @var array
      */
     protected $fillable = [
-        'fecha','tipo','nota','emp_id'
+        'fecha','tipo','total','nota','emp_id'
                           ];
 }

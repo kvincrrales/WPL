@@ -14,7 +14,7 @@
                <div class="row">
                   <div class="form-group col-sm-6">
                      {!!Form::label('Estatus: ')!!}
-                      {!!Form::select('estatus', ['0' => 'Activo', '1' => 'Inactivo'],null, ['class' => 'form-control'])!!}
+                      {!!Form::select('estatus', ['Activo' => 'Activo', 'Inactivo' => 'Inactivo'],null, ['class' => 'form-control'])!!}
                   </div>
                   <div class="form-group col-sm-6">
                      {!!Form::label('Fecha de Ingreso: ')!!}
@@ -24,11 +24,12 @@
                <div class="row">
                   <div class="form-group col-sm-6">
                      {!!Form::label('Sexo: ')!!}
-                     {!!Form::select('sexo', ['0' => 'Masculino', '1' => 'Femenino'],null, ['class' => 'form-control'])!!}
+                     {!!Form::select('sexo', ['Masculino' => 'Masculino', 'Femenino' => 'Femenino'],null, ['class' => 'form-control'])!!}
                   </div>
                   <div class="form-group col-sm-6">
                       {!!Form::label('Tipo ID: ')!!}
-                     {!!Form::select('tipoId', ['0' => 'Cédula de Identidad', '1' => 'Cédula Jurídica','2' => 'Cédula de Residencia', '3' => 'Pasaporte', '4' => 'Carnet de Refugiado'],null, ['class' => 'form-control'])!!}
+                     {!!Form::select('tipoId', ['Cedula Identidad' => 'Cédula de Identidad', '1
+                     Cedula Juridica' => 'Cédula Jurídica','Cedula de Residencia' => 'Cédula de Residencia', 'Pasaporte' => 'Pasaporte', 'Carnet de Refugiado' => 'Carnet de Refugiado'],null, ['class' => 'form-control'])!!}
                   </div>
                   <div class="form-group col-sm-6">
                      {!!Form::label('Num Id: ')!!}
@@ -86,7 +87,7 @@
                <div class="row">
                   <div class="form-group col-sm-4">
                      {!!Form::label('Forma de Pago: ')!!}
-                     {!!Form::select('fPago', ['0' => 'Efectivo', '1' => 'Cheque', '2' => 'Transaccion'],null, ['class' => 'form-control'])!!}
+                     {!!Form::select('fPago', ['Efectivo' => 'Efectivo', 'Cheque' => 'Cheque', 'Transaccion' => 'Transaccion'],null, ['class' => 'form-control'])!!}
                   </div>
                   <div class="form-group col-sm-4">
                      {!!Form::label('Cuenta Bancaria: ')!!}
@@ -100,7 +101,7 @@
                <div class="row">
                   <div class="form-group col-sm-6">
                      {!!Form::label('Tipo de Planilla: ')!!}
-                     {!!Form::select('tipoPlanilla', ['0' => 'Semanal', '1' => 'Quincenal', '2' => 'Mensual'],null, ['class' => 'form-control'])!!}
+                     {!!Form::select('tipoPlanilla', ['Semanal' => 'Semanal', 'Quincenal' => 'Quincenal', 'Mensual' => 'Mensual'],null, ['class' => 'form-control'])!!}
                   </div>
                </div>
                <div class="row">

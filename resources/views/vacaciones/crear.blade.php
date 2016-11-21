@@ -27,14 +27,7 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Tipo de Vacaciones:')!!}
-               {!!Form::select('tVacaciones', ['0' => 'Disfrutadas', '1' => 'Pagadas'],null, ['class' => 'form-control'])!!}
-            </div>
-            </div>
-            <br>
-            <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-               {!!Form::label('Número de Vacaciones:')!!}
-               {!!Form::number('num_vac',null,['class'=>'form-control','placeholder'=>'Ingresa el Nombre del departamento'])!!}
+               {!!Form::select('tVacaciones', ['Disfrutadas' => 'Disfrutadas', 'Pagadas' => 'Pagadas'],null, ['class' => 'form-control'])!!}
             </div>
             </div>
             <br>
@@ -61,8 +54,22 @@
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
-               {!!Form::label('Monto:')!!}
-               {!!Form::text('monto',null,['class'=>'form-control','placeholder'=>'Digite el monto a pagar'])!!}
+               {!!Form::label('Días Disfrutados:')!!}
+               {!!Form::number('diasD',null,['class'=>'form-control','placeholder'=>'Digite el total de días disfrutados'])!!}
+            </div>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               {!!Form::label('C.C.S.S:')!!}
+               {!!Form::number('caja',null,['class'=>'form-control','placeholder'=>'Porcentaje de la C.C.S.S'])!!}
+            </div>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+               {!!Form::label('Total:')!!}
+               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Total'])!!}
             </div>
             </div>
             <br>

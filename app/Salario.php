@@ -14,6 +14,5 @@ class Salario extends Model
      * @var array
      */
     protected $fillable = [
-        'salarioM','salarioQ','salarioS','salarioD','salarioH','salarioHE','caja','incapacidad','emp_id'
-                          ];
+        'salarioM','salarioQ','salarioS','salarioD','salarioH','salarioHE','emp_id'];
 }

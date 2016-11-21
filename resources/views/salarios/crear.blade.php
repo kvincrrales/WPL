@@ -54,16 +54,6 @@ foreach ($emp as $key => $value) {
                {!!Form::text('salarioHE',null,['class'=>'form-control','readonly','id'=>'salarioExt'])!!}
             </div>
             </div>
-            <div class="row">
-            <div class="form-group col-sm-6">
-               {!!Form::label('C.C.S.S:')!!}
-               {!!Form::text('caja',null,['class'=>'form-control','readonly','id'=>'ccss'])!!}
-            </div>
-            <div class="form-group col-sm-6">
-               {!!Form::label('Incapacidad:')!!}
-               {!!Form::text('incapacidad',null,['class'=>'form-control','readonly','id'=>'incapacid'])!!}
-            </div>
-            </div>
             {!!Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
             {!!Form::close()!!}
             <hr class="divisor">

@@ -15,14 +15,15 @@
             <table class="table table-striped" id="tblGrid">
             <thead id="tblHead">
                 <tr>
-                  <th>ID Empleado</th>
-                  <th>Nombre Empleado</th>
+                  <th>ID</th>
+                  <th>Nombre</th>
                   <th>Tipo de Vacaciones</th>
-                  <th>Cantidad de Días</th>
                   <th>Fecha de Solicitud</th>
                   <th>Fecha Inicio</th>
                   <th>Fecha Final</th>
-                  <th>Monto</th>
+                  <th>Días Disfrutados</th>
+                  <th>C.C.S.S</th>
+                  <th>Total</th>
                   <th>Accion</th>
                    <th>Exportar Excel</th>
                 </tr>
@@ -33,11 +34,12 @@
                       <td>{{$vacacion -> emp_id}}</td>
                       <td>{{$vacacion -> nomb}}</td>
                       <td>{{$vacacion -> tVacaciones}}</td>
-                      <td>{{$vacacion -> num_vac}}</td>
                       <td>{{$vacacion -> fechaS}}</td>
                       <td>{{$vacacion -> fechaIni}}</td>
                       <td>{{$vacacion -> fechaFin}}</td>
-                      <td>{{$vacacion -> monto}}</td>
+                      <td>{{$vacacion -> diasD}}</td>
+                      <td>{{$vacacion -> caja}}</td>
+                      <td>{{$vacacion -> total}}</td>
                       <td><button type="button" class="btn btn-sucess">{!!link_to_route('vacaciones.edit', $title = 'Editar', $parameters = $vacacion->id)!!}</button></td>
                       <td><a href="{{ URL::to('downloadExcel',$parameters = $vacacion->id) }}"><button class="btn btn-success">Descargar</button></a></td>
                       </tr>

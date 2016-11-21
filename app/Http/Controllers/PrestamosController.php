@@ -9,6 +9,9 @@ use Session;
 use Redirect;
 use WP\Empleado;
 
+use DB;
+use Excel;
+
 class PrestamosController extends Controller
 {
     /**
@@ -18,7 +21,11 @@ class PrestamosController extends Controller
      */
     public function index()
     {
-        //
+        $sum_prestamo = DB::table('prestamos')->sum('montoP');
+        $sum_total = DB::table('prestamos')->sum('total');
+
+        $pre = \WP\Prestamo::paginate(3);
+        return view('prestamos.lista',compact('pre','sum_prestamo','sum_total'));
     }
 
     /**
@@ -40,7 +47,13 @@ class PrestamosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \WP\Prestamo::create($request->all());
+
+        Session::flash('message','Prestamo Ingresado Correctamente');
+        return Redirect::to('/prestamos');
+        
+
+        return "Prestamo registrado";
     }
 
     /**
@@ -86,5 +99,23 @@ class PrestamosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function downloadExcel($id)
+    {
+        //$data = \WP\Vacacion::get()->toArray(); --> Toda la lista
+        
+        $emp_id = \WP\Prestamo::find($id)->toArray();
+        return Excel::create('accionPrestamo', function($excel) use ($emp_id) {
+
+            $excel->sheet('solicitudPrestamo', function($sheet) use ($emp_id)
+            {
+                //$sheet->cell('A2', function($cell){
+                    //$cell->setValue('ID');});
+                $sheet->fromArray($emp_id);
+            });
+
+
+        })->download('xls');
     }
 }

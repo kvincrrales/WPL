@@ -8,7 +8,7 @@
 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
             <div class="col-lg-12">
-                <h2 class="page-header">Planillas</h2>
+                <h2 class="page-header">Planillas ----> ENTRE FECHAS X . X</h2>
             </div>
             <table class="table table-striped" id="tblGrid">
             <thead id="tblHead">
@@ -26,7 +26,7 @@
                   <th>Otros</th>
                   <th>Salario Neto</th>
                   <th>Ahorros</th>
-                  <th>Total Pagado</th>
+                  <th>Total</th>
                 </tr>
             </thead>
               @foreach($users as $user)
@@ -38,11 +38,11 @@
                         <td>{{$user -> salarioM}}</td>
                         <td><input data-id='<?php echo $user -> id;?>' type="number" value="48" style="max-width: 50px !important" id="horasNormal"></td>
                         <td><input data-id='<?php echo $user -> id;?>' type="number" value="0" style="max-width: 50px !important" id="horasExtra"></td>
-                        <td>{{$user -> num_vac}}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$user -> diasD}}</td>
+                        <td>X HORAS</td>
+                        <td>REV{{$user -> montoP}}</td>
+                        <td>{{$user -> total}}</td>
+                        <td>{{$user -> montoO}}</td>
                         <td></td>
                         <td>{{$user -> montoS}}</td>
                         <td><span id="total<?php echo $user -> id;?>" >{{$user->total}}</span></td>

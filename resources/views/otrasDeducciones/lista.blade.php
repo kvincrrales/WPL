@@ -21,6 +21,7 @@
                   <th>Fecha Solicitud</th>
                   <th>Notas</th>
                   <th>Accion</th>
+                  <th>Descargar</th>
                 </tr>
             </thead>
             @foreach($od as $otraDeduccion)
@@ -32,9 +33,19 @@
                       <td>{{$otraDeduccion -> fSolicitud}}</td>
                       <td>{{$otraDeduccion -> notas}}</td>
                       <td><button type="button" class="btn btn-sucess">EDITAR</button></td>
+                      <td><a href="{{ URL::to('downloadExcelDeducciones',$parameters = $otraDeduccion->id) }}"><button class="btn btn-success">Descargar</button></a></td>
                       </tr>
               </tbody>
             @endforeach
+            <tr>
+            <th scope="row">TOTAL</th>
+            <td></td>
+            <td><strong>{{$sum_total}}</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
             </table>
 </div>
 
