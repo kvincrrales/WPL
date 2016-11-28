@@ -8,6 +8,7 @@
             </div>
              <!-- 'route'=>'empleados.emp', -->
             {!!Form::open(['route'=>'prestamos.store','method'=>'POST'])!!}
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('ID Empleado:')!!}
@@ -39,28 +40,28 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Monto:')!!}
-               {!!Form::number('montoP',null,['class'=>'form-control','placeholder'=>'Ingresa el monto de la deducción'])!!}
+               {!!Form::number('montoP',null,['class'=>'form-control','placeholder'=>'Ingresa el monto de la deducción','id' => 'monto'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Porcentaje de Interes:')!!}
-               {!!Form::number('interes',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje'])!!}
+               {!!Form::number('interes',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje','id' => 'intereses'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Plazo Semanal:')!!}
-               {!!Form::number('plazoS',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje'])!!}
+               {!!Form::number('plazoS',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje','id' => 'plazoSemanal'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Total:')!!}
-               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Digite el total'])!!}
+               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Digite el total','id' => 'totales','readonly'])!!}
             </div>
             </div>
             <br>
@@ -86,4 +87,6 @@
    {!!Form::close()!!}
             <hr class="divisor">
          </div>
+   {!!Html::script('js/jquery.js')!!}
+   {!!Html::script('js/prestamos.js')!!}
 @stop

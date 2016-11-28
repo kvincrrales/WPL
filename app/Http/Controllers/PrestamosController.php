@@ -118,4 +118,14 @@ class PrestamosController extends Controller
 
         })->download('xls');
     }
+
+    public function calcularPrestamo(Request $data){
+
+        $return['total'] = 0;
+
+
+        $return['total'] = $data['nMonto'] + $data['nPlazo'] + $data['nMonto'] * $data['nPorcentaje'] /100 ;
+        
+        return $return;
+    }
 }

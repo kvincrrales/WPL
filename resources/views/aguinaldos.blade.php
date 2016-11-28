@@ -11,7 +11,7 @@
                 <p>Modulo encargado de ingresar empleados al sistema de planillas!</p>
                 <p>
                    <!-- <a href="Registrar_Empleado.html" class="btn btn-primary center-block" role="button" data-toggle="modal" data-target="#factGasolina">Ingresar</a>-->
-                    <a href="{!!URL::to('/aguinaldos/create')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/aguinaldos')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
@@ -19,7 +19,7 @@
                 <h3>Pago de Aguinaldos</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="{!!URL::to('/aguinaldos')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">

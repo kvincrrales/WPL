@@ -123,4 +123,25 @@ class VacacionesController extends Controller
         })->download('xls');
     }
 
+    public function calcularVacacion(Request $data){
+
+    $response = array();
+
+    $emp_id = DB::table('salarios')
+                ->select('salarioD','salarioH')
+                ->where('emp_id',$data['idE'])
+                ->get();
+
+    $emp_id = $emp_id[0];
+
+    $response['total'] = 0;
+
+    $response['caja'] = $emp_id->salarioH * 48 * 0.9;
+    
+    $response['total'] = $data['nDias'] * $emp_id->salarioD;
+        
+    return $response;
+
+    }
+
 }

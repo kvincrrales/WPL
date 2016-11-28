@@ -32,7 +32,7 @@
                      Cedula Juridica' => 'Cédula Jurídica','Cedula de Residencia' => 'Cédula de Residencia', 'Pasaporte' => 'Pasaporte', 'Carnet de Refugiado' => 'Carnet de Refugiado'],null, ['class' => 'form-control'])!!}
                   </div>
                   <div class="form-group col-sm-6">
-                     {!!Form::label('Num Id: ')!!}
+                     {!!Form::label('Número de Cédula: ')!!}
                      {!!Form::text('numId',null,['class'=>'form-control','placeholder'=>'Digite el primer apellido'])!!}
                   </div>
                </div>

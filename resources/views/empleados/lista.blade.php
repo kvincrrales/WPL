@@ -26,7 +26,7 @@
             <table class="table table-striped" id="tblGrid">
             <thead id="tblHead">
                 <tr>
-                  <th>ID</th>
+                  <th>Cédula</th>
                   <th>Nombre</th>
                   <th>Primer Apellido</th>
                   <th>Departamento</th>

@@ -30,8 +30,8 @@ class FrontController extends Controller
     public function caja()
     {
         $users = DB::table('empleados')
-            ->join('salarios', 'salarios.emp_id', '=', 'empleados.id')
-            ->join('departamentos', 'departamentos.id', '=', 'empleados.id')
+            ->leftJoin('salarios', 'salarios.emp_id', '=', 'empleados.id')
+            ->leftJoin('departamentos', 'departamentos.id', '=', 'empleados.id')
             ->select(
                 'empleados.id',
                 'empleados.numId', 

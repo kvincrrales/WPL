@@ -118,14 +118,53 @@ class IncapacidadesController extends Controller
         $emp_id = \WP\Incapacidad::find($id)->toArray();
         return Excel::create('reporteIncapacidad', function($excel) use ($emp_id) {
 
-            $excel->sheet('solicitudVacaciones', function($sheet) use ($emp_id)
+            $excel->sheet('registroIncapacidad', function($sheet) use ($emp_id)
             {
-                //$sheet->cell('A2', function($cell){
-                    //$cell->setValue('ID');});
+                $sheet->cell('A2', function($cell){
+                $cell->setValue('ID');});
+
+                $sheet->cells('A1:H1', function($cells) {
+
+                    $cells->setFont(array(
+                    'family'     => 'Calibri',
+                    'size'       => '12',
+                    'bold'       =>  false
+                ));
+
+                $cells->setBorder('solid', 'none', 'none', 'solid');
+
+                });
+
+                $sheet->setBorder('A1:H1', 'thin');
+
+                
+
                 $sheet->fromArray($emp_id);
             });
 
 
         })->download('xls');
     }
+
+    public function calcularIncapacidad(Request $data){
+
+    $response = array();
+
+    $emp_id = DB::table('salarios')
+                ->select('salarioD')
+                ->where('emp_id',$data['idE'])
+                ->get();
+
+    $emp_id = $emp_id[0];
+
+    $response['total'] = 0;
+    
+    $response['total'] = $emp_id->salarioD/2;
+        
+    return $response;
+
+    }
+
+
+
 }

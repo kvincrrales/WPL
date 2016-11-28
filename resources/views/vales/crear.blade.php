@@ -8,6 +8,7 @@
             </div>
              <!-- 'route'=>'empleados.emp', -->
             {!!Form::open(['route'=>'vales.store','method'=>'POST'])!!}
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('ID Empleado:')!!}
@@ -32,21 +33,21 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Monto:')!!}
-               {!!Form::number('montoV',null,['class'=>'form-control','placeholder'=>'Ingresa el monto de la deducción'])!!}
+               {!!Form::number('montoV',null,['class'=>'form-control','placeholder'=>'Ingresa el monto de la deducción','id' => 'monto'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Interes:')!!}
-               {!!Form::number('interes',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje de interes'])!!}
+               {!!Form::number('interes',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje de interes','id' => 'intereses'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Total:')!!}
-               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Digite el total'])!!}
+               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Digite el total','readonly','id'=>'totales'])!!}
             </div>
             </div>
             <br>
@@ -70,6 +71,10 @@
    
 
    {!!Form::close()!!}
+
             <hr class="divisor">
          </div>
+         {!!Html::script('js/jquery.js')!!}
+
+         {!!Html::script('js/vales.js')!!}
 @stop

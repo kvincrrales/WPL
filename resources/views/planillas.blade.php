@@ -8,8 +8,17 @@
 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
             <div class="col-lg-12">
-                <h2 class="page-header">Planillas ----> ENTRE FECHAS X . X</h2>
+                <h2 class="page-header"><code>Planillas</code></h2>
             </div>
+          <div class="form-group col-sm-4">
+            Inicio
+            {!!Form::date('fechaIni',null,['class'=>'form-control','id'=>'inicio'])!!}
+          </div>
+         <div class="form-group col-sm-4">
+            Final
+            {!!Form::date('fechaIni',null,['class'=>'form-control','id'=>'final'])!!}
+          </div>
+        <br>
             <table class="table table-striped" id="tblGrid">
             <thead id="tblHead">
                 <tr>
@@ -40,10 +49,10 @@
                         <td><input data-id='<?php echo $user -> id;?>' type="number" value="0" style="max-width: 50px !important" id="horasExtra"></td>
                         <td>{{$user -> diasD}}</td>
                         <td>X HORAS</td>
-                        <td>REV{{$user -> montoP}}</td>
+                        <td>{{$user -> montoP}}</td>
                         <td>{{$user -> total}}</td>
                         <td>{{$user -> montoO}}</td>
-                        <td></td>
+                        <td><span id="total<?php echo $user -> id;?>" >{{$user->total}}</span></td>
                         <td>{{$user -> montoS}}</td>
                         <td><span id="total<?php echo $user -> id;?>" >{{$user->total}}</span></td>
                       </tr>

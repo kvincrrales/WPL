@@ -10,10 +10,11 @@
             </div>
              <!-- 'route'=>'empleados.emp', -->
             {!!Form::open(['route'=>'vacaciones.store','method'=>'POST'])!!}
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('ID Empleado:')!!}
-                {!!Form::select('emp_id',$emp,null,['class'=>'form-control'])!!}
+                {!!Form::select('emp_id',$emp,null,['class'=>'form-control','id'=>'idE'])!!}
             </div>
             </div>
             <br>
@@ -55,21 +56,21 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Días Disfrutados:')!!}
-               {!!Form::number('diasD',null,['class'=>'form-control','placeholder'=>'Digite el total de días disfrutados'])!!}
+               {!!Form::number('diasD',null,['class'=>'form-control','placeholder'=>'Digite el total de días disfrutados','id'=>'cDias'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('C.C.S.S:')!!}
-               {!!Form::number('caja',null,['class'=>'form-control','placeholder'=>'Porcentaje de la C.C.S.S'])!!}
+               {!!Form::number('caja',null,['class'=>'form-control','placeholder'=>'Porcentaje de la C.C.S.S','id'=>'caja','readonly'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Total:')!!}
-               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Total'])!!}
+               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Total','id'=>'totales','readonly'])!!}
             </div>
             </div>
             <br>
@@ -81,4 +82,7 @@
             {!!Form::close()!!}
             <hr class="divisor">
          </div>
+         {!!Html::script('js/jquery.js')!!}
+
+         {!!Html::script('js/vacaciones.js')!!}
 @stop

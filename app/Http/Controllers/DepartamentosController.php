@@ -28,7 +28,7 @@ class DepartamentosController extends Controller
      */
     public function create()
     {
-         $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::pluck('nomb','id');
         return view('departamentos.crear',compact('emp'));
     }
 
@@ -70,8 +70,9 @@ class DepartamentosController extends Controller
      */
     public function edit($id)
     {
+        $emp = Empleado::pluck('nomb','id');
         $dept = \WP\Departamento::find($id);
-        return view ('departamentos.editar',['dept'=>$dept]);
+        return view ('departamentos.editar',compact('emp'),['dept'=>$dept]);
     }
 
     /**

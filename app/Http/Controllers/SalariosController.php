@@ -92,8 +92,9 @@ class SalariosController extends Controller
      */
     public function edit($id)
     {
+        $emp = Empleado::pluck('id','nomb');
         $sal = \WP\Salario::find($id);
-        return view ('salarios.editar',['sal'=>$sal]);
+        return view ('salarios.editar',compact('emp'),['sal'=>$sal]);
     }
 
     /**
@@ -126,12 +127,7 @@ class SalariosController extends Controller
         return Redirect::to('/salarios');
     }
 
-    /**
-     * [calcularSalarios description]
-     * @param  [int] $salario [Valor base para calcular los demas salarios]
-     * @return [type]          [description]
-     * @autor Alexis Ramos Mora 
-     */
+
     public function calcularSalarios(Request $request){
 
         $response = array();

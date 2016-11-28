@@ -80,8 +80,10 @@ class EmpleadosController extends Controller
      */
     public function edit($id)
     {
-         $emp = \WP\Empleado::find($id);
-        return view ('empleados.editar',['emp'=>$emp]);
+        $depart = Departamento::pluck('nombre','id');
+        $puesto = Puesto::pluck('nombre','id');
+        $emp = \WP\Empleado::find($id);
+        return view ('empleados.editar',compact('depart','puesto'),['emp'=>$emp]);
     }
 
     /**

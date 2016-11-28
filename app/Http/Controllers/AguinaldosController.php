@@ -15,7 +15,7 @@ class AguinaldosController extends Controller
      */
     public function index()
     {
-        return "lista aguinaldo";
+        return view('aguinaldos.lista');
     }
 
     /**

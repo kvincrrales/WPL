@@ -11,7 +11,7 @@
             <div class="row">
             <div class="form-group col-sm-12">
                {!!Form::label('Nombre del Empleado [ID]:')!!}
-               {!!Form::select('emp_id',$emp,null,['class'=>'form-control'])!!}
+               {!!Form::select('emp_id',$emp,null,['class'=>'form-control','id'=>'idE'])!!}
             </div>
             </div>
             <div class="row">
@@ -27,7 +27,7 @@
             <div class="row">
             <div class="form-group col-sm-6">
                {!!Form::label('Total:')!!}
-               {!!Form::number('total',null,['class'=>'form-control'])!!}
+               {!!Form::number('total',null,['class'=>'form-control','id'=>'totales'])!!}
             </div>
             <div class="form-group col-sm-6">
                {!!Form::label('Notas:')!!}
@@ -38,4 +38,6 @@
             {!!Form::close()!!}
             <hr class="divisor">
          </div>
+{!!Html::script('js/jquery.js')!!}
+{!!Html::script('js/incapacidades.js')!!}
 @stop

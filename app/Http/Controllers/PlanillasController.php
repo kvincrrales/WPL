@@ -22,12 +22,21 @@ class PlanillasController extends Controller
     {
 
         $users = DB::table('empleados')
-            ->join('salarios', 'salarios.emp_id', '=', 'empleados.id')
-            ->join('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
-            ->join('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
-            ->join('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
-            ->join('vales' ,'vales.emp_id', '=', 'empleados.id' )
-            ->join('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
+            ->leftJoin('salarios', 'salarios.emp_id', '=', 'empleados.id')
+            ->leftJoin('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
+
+            ->leftJoin('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
+            ->whereBetween('vacacions.fechaS', ['2016-11-20', '2016-11-22'])
+
+            ->leftJoin('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
+            ->whereBetween('prestamos.fSolicitud', ['2016-11-20', '2016-11-22'])
+
+            ->leftJoin('vales' ,'vales.emp_id', '=', 'empleados.id' )
+            ->whereBetween('vales.fSolicitud', ['2016-11-20', '2016-11-22'])
+
+            ->leftJoin('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
+            ->whereBetween('otra_deduccions.fSolicitud', ['2016-11-20', '2016-11-22'])
+
             ->select(
                 'empleados.id',
                 'empleados.numId', 
@@ -42,13 +51,6 @@ class PlanillasController extends Controller
                 'prestamos.montoP',
                 'otra_deduccions.montoO')
             ->get();
-
-        // sumar todos los datos 
-        foreach ($users as $key => $u) {
-
-            $u->total = $u->salarioM-3000;
-        }
-
 
         return view('planillas',compact('users'));
     }

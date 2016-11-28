@@ -115,4 +115,14 @@ class ValesController extends Controller
 
         })->download('xls');
     }
+
+    public function calcularVale(Request $data){
+
+        $return['total'] = 0;
+
+
+        $return['total'] = $data['nMonto'] + $data['nMonto'] * $data['nInteres'] /100;
+        
+        return $return;
+    }
 }
