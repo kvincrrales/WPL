@@ -38,7 +38,7 @@
             @foreach($incapacidades as $incapacidad)
               <tbody>
                       <tr>
-                      <td>{{$incapacidad -> emp_id}}</td>
+                      <td>{{$incapacidad -> nomb}}</td>
                       <td>{{$incapacidad -> fecha}}</td>
                       <td>{{$incapacidad -> tipo}}</td>
                       <td>{{$incapacidad -> total}}</td>

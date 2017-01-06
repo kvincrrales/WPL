@@ -27,7 +27,7 @@
                 <h3>Vacaciones Disponibles</h3>
                 <p>Modulo encargado de mostrar todos los datos del empleado!</p>
                 <p>
-                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/disponibles')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
         </div>

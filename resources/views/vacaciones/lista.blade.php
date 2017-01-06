@@ -15,7 +15,6 @@
             <table class="table table-striped" id="tblGrid">
             <thead id="tblHead">
                 <tr>
-                  <th>ID</th>
                   <th>Nombre</th>
                   <th>Tipo de Vacaciones</th>
                   <th>Fecha de Solicitud</th>
@@ -31,7 +30,6 @@
             @foreach($vac as $vacacion)
               <tbody>
                       <tr>
-                      <td>{{$vacacion -> emp_id}}</td>
                       <td>{{$vacacion -> nomb}}</td>
                       <td>{{$vacacion -> tVacaciones}}</td>
                       <td>{{$vacacion -> fechaS}}</td>

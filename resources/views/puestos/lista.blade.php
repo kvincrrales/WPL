@@ -16,7 +16,6 @@
             <thead id="tblHead">
                 <tr>
                   <th>ID Puesto</th>
-                  <th>ID Departamento</th>
                   <th>Nombre</th>
                   <th>Descripcion</th>
                   <th>Accion</th>
@@ -26,7 +25,6 @@
             <tbody>
                   <tr>
                   <td>{{$puestos -> id}}</td>
-                  <td>{{$puestos -> dept_id}}</td>
                   <td>{{$puestos -> nombre}}</td>
                   <td>{{$puestos -> desc}}</td>
                   

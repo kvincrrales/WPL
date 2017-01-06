@@ -5,10 +5,10 @@
 
 <!--<?php var_dump($users); ?>-->
 
-<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+     <meta name="csrf-token" content="{{ csrf_token() }}">
 
             <div class="col-lg-12">
-                <h2 class="page-header"><code>Planillas</code></h2>
+                <h2 class="page-header">Planillas</h2>
             </div>
           <div class="form-group col-sm-4">
             Inicio
@@ -22,8 +22,8 @@
             <table class="table table-striped" id="tblGrid">
             <thead id="tblHead">
                 <tr>
-                  <th>Nombre</th>
                   <th>Cédula</th>
+                  <th>Nombre</th>
                   <th>Cuenta</th>
                   <th>Salario</th>
                   <th>Horas</th>
@@ -38,32 +38,51 @@
                   <th>Total</th>
                 </tr>
             </thead>
-              @foreach($users as $user)
-              <tbody>
-                      <tr>
-                        <td>{{$user -> nomb}}</td>
-                        <td><span id="id" >{{$user -> numId}}</span></td>
-                        <td style="width: 130px !important">{{$user -> cBanc}}</td>
-                        <td>{{$user -> salarioM}}</td>
-                        <td><input data-id='<?php echo $user -> id;?>' type="number" value="48" style="max-width: 50px !important" id="horasNormal"></td>
-                        <td><input data-id='<?php echo $user -> id;?>' type="number" value="0" style="max-width: 50px !important" id="horasExtra"></td>
-                        <td>{{$user -> diasD}}</td>
-                        <td>X HORAS</td>
-                        <td>{{$user -> montoP}}</td>
-                        <td>{{$user -> total}}</td>
-                        <td>{{$user -> montoO}}</td>
-                        <td><span id="total<?php echo $user -> id;?>" >{{$user->total}}</span></td>
-                        <td>{{$user -> montoS}}</td>
-                        <td><span id="total<?php echo $user -> id;?>" >{{$user->total}}</span></td>
-                      </tr>
-              </tbody>
+            @foreach($users as $user)
+            <tbody>
+              <tr>
+                <td><span id="cedula">{{$user -> numId}}</span></td>
+                <td><span id="nombre">{{$user -> nomb}}</span></td>
+                <td><span id="banco">{{$user -> cBanc}}</span></td>
+                <td><span id="salario">{{$user -> salarioM}}</span></td>
+                <td><input type="number" value="48" style="max-width: 50px" id="horas"></td>
+                <td><input type="number" value="0" style="max-width: 50px" id="horasExtra"></td>
+                <td><span id="vacaciones">{{$user -> diasD}}</span></td>
+                <td><span id="caja">0</span></td>
+                <td><span id="prestamos">{{$user -> montoP}}</span></td>
+                <td><span id="vales">{{$user -> total}}</span></td>
+                <td><span id="deducciones">{{$user -> montoO}}</span></td>
+                <td><span id="neto">0</span></td>
+                <td><span id="ahorros">{{$user -> montoS}}</span></td>
+                <td><span id="total">0</span></td>
+              </tr>
+            </tbody>
             @endforeach
+            <tr>
+            <th scope="row">TOTAL</th>
+            <td><strong></strong></td>
+            <td><strong></strong></td>
+            <td><strong>₡{{$salarios}}</strong></td>
+            <td><strong></strong></td>
+            <td><strong></strong></td>
+            <td><strong></strong></td>
+            <td><strong></strong></td>
+            <td><strong>₡{{$prestamos}}</strong></td>
+            <td><strong>₡{{$vales}}</strong></td>
+            <td><strong>₡{{$deducciones}}</strong></td>
+            <td><strong></strong></td>
+            <td><strong>₡{{$ahorros}}</strong></td>
+            <td><strong></strong></td>
+          </tr>
             </table>
             <p class="note">Si no aparece un usuario, es por que aún no le ha asignado un salario.</p>
 
             {!!Html::script('js/jquery.js')!!}
 
             {!!Html::script('js/planillas.js')!!}
+
+            {!!Html::script('js/prueba.js')!!}
+
 </div>
 
 

@@ -24,7 +24,7 @@ class IncapacidadesController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $incapacidades=DB::table('incapacidads')->where('emp_id','LIKE','%'.$query.'%')
+            $incapacidades=DB::table('incapacidads')->where('nomb','LIKE','%'.$query.'%')
             ->where ('id','>','0')
             ->orderBy('id','desc')
             ->paginate(2);
@@ -39,7 +39,7 @@ class IncapacidadesController extends Controller
      */
     public function create()
     {
-        $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
         return view('incapacidades.crear',compact('emp'));
     }
 
@@ -76,7 +76,7 @@ class IncapacidadesController extends Controller
      */
     public function edit($id)
     {
-        $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
         $inc = \WP\Incapacidad::find($id);
         return view ('incapacidades.editar',compact('emp'),['inc'=>$inc]);
     }
@@ -157,9 +157,10 @@ class IncapacidadesController extends Controller
 
     $emp_id = $emp_id[0];
 
-    $response['total'] = 0;
+    $response['total'] = 0 ;
+
     
-    $response['total'] = $emp_id->salarioD/2;
+    $response['total'] = $data['nDias'] * $emp_id->salarioD/2;
         
     return $response;
 

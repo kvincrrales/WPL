@@ -27,12 +27,12 @@
             @foreach($od as $otraDeduccion)
               <tbody>
                       <tr>
-                      <td>{{$otraDeduccion -> nomb}}</td>
+                      <td>{{$otraDeduccion -> nombE}}</td>
                       <td>{{$otraDeduccion -> moneda}}</td>
                       <td>{{$otraDeduccion -> montoO}}</td>
                       <td>{{$otraDeduccion -> fSolicitud}}</td>
                       <td>{{$otraDeduccion -> notas}}</td>
-                      <td><button type="button" class="btn btn-sucess">EDITAR</button></td>
+                       <td><button type="button" class="btn btn-sucess">{!!link_to_route('otrasDeducciones.edit', $title = 'Editar', $parameters = $otraDeduccion->id)!!}</button></td>
                       <td><a href="{{ URL::to('downloadExcelDeducciones',$parameters = $otraDeduccion->id) }}"><button class="btn btn-success">Descargar</button></a></td>
                       </tr>
               </tbody>

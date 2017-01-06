@@ -14,15 +14,11 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('ID Empleado:')!!}
-                {!!Form::select('emp_id',$emp,null,['class'=>'form-control','id'=>'idE'])!!}
+               {!!Form::select('emp_id',$emp,null,['class'=>'form-control','onchange'=>"document.getElementById('text_content').value=this.options[this.selectedIndex].text",'id'=>'idE'])!!}
             </div>
             </div>
-            <br>
-            <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-               {!!Form::label('Nombre del Empleado:')!!}
-               {!!Form::text('nomb',null,['class'=>'form-control','placeholder'=>'Ingresa el Nombre del departamento'])!!}
-            </div>
+            <div class="hidden">
+            {!!Form::text('nomb',null,['class'=>'hidden','id' => 'text_content'])!!}
             </div>
             <br>
             <div class="row">

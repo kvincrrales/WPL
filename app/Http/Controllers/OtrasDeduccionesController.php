@@ -34,7 +34,7 @@ class OtrasDeduccionesController extends Controller
      */
     public function create()
     {
-         $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
         return view('otrasDeducciones.crear',compact('emp'));
     }
 
@@ -71,7 +71,9 @@ class OtrasDeduccionesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
+        $oD = \WP\OtraDeduccion::find($id);
+        return view ('otrasDeducciones.editar',compact('emp'),['oD'=>$oD]);
     }
 
     /**
@@ -83,7 +85,12 @@ class OtrasDeduccionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $oD = \WP\OtraDeduccion::find($id);
+        $oD -> fill($request->all());
+        $oD -> save();
+
+        Session::flash('message','Deducción Editada Correctamente');
+        return Redirect::to('/otrasDeducciones');
     }
 
     /**
@@ -94,7 +101,9 @@ class OtrasDeduccionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \WP\OtraDeduccion::destroy($id);
+        Session::flash('message','Deducción Eliminada Correctamente');
+        return Redirect::to('/otrasDeducciones');
     }
 
     public function downloadExcel($id)

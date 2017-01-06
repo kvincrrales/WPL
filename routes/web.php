@@ -18,6 +18,7 @@ Route::get('deducciones','FrontController@deducciones');
 Route::get('vacacion','FrontController@vacaciones');
 Route::get('ahorro','FrontController@ahorros');
 Route::get('aguinaldo','FrontController@aguinaldos');
+Route::get('disponibles','VacacionesController@vdisponibles');
 Route::resource('log','LogController');
 Route::get('logout','LogController@logout');
 
@@ -42,7 +43,9 @@ Route::resource('planillas','PlanillasController');
 //controller@método de los ajax
 
 Route::get('calculo','SalariosController@calcularSalarios');
-Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
+//Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
+
+Route::get('calculoPlanillas','PlanillasController@calcularPlanilla');
 
 Route::get('calculoVale','ValesController@calcularVale');
 

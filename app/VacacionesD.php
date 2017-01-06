@@ -4,15 +4,14 @@ namespace WP;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Salario extends Model
+class VacacionesD extends Model
 {
-    protected $table = 'salarios';
-
+    protected $table = 'vacaciones_ds';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'salarioM','salarioQ','salarioS','salarioD','salarioH','salarioHE','emp_id','nomb'];
+        'disponibles','emp_id'];
 }

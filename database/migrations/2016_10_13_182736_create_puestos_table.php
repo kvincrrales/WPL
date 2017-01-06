@@ -20,10 +20,6 @@ class CreatePuestosTable extends Migration
             $table->text('desc');
             $table->timestamps();
 
-            $table->integer('dept_id')->unsigned();
-
-            $table->foreign('dept_id')->references('id')->on('departamentos');
-
         });
     }
 

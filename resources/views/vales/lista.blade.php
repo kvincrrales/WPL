@@ -29,14 +29,14 @@
             @foreach($val as $vale) 
               <tbody>
                       <tr>
-                      <td>{{$vale -> nomb}}</td>
+                      <td>{{$vale -> nombE}}</td>
                       <td>{{$vale -> moneda}}</td>
                       <td>{{$vale -> montoV}}</td>
                       <td>% {{$vale -> interes}}</td>
                       <td>{{$vale -> total}}</td>
                       <td>{{$vale -> fSolicitud}}</td>
                       <td>{{$vale -> notas}}</td>
-                      <td><button type="button" class="btn btn-sucess">EDITAR</button></td>
+                      <td><button type="button" class="btn btn-sucess">{!!link_to_route('vales.edit', $title = 'Editar', $parameters = $vale->id)!!}</button></td>
                       <td><a href="{{ URL::to('downloadExcelVales',$parameters = $vale->id) }}"><button class="btn btn-success">Descargar</button></a></td>
                       </tr>
               </tbody>

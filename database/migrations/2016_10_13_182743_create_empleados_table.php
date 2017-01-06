@@ -33,17 +33,16 @@ class CreateEmpleadosTable extends Migration
             $table->string('cBanc')->unique();
             $table->string('cAhorro')->unique();
             $table->string('tipoPlanilla');
+            $table->string('vacaciones_disponibles');
             $table->string('fotoEmpleado');
             $table->timestamps();
             $table->rememberToken();
             
             $table->integer('dept_id')->unsigned();
-
-            $table->foreign('dept_id')->references('id')->on('departamentos');
+            $table->string('nombD');
 
             $table->integer('puesto_id')->unsigned();
-
-            $table->foreign('puesto_id')->references('id')->on('puestos');
+            $table->string('nombP');
         });
     }
 

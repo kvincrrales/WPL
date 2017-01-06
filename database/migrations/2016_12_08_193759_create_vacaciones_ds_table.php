@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAhorrosTable extends Migration
+class CreateVacacionesDsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,14 @@ class CreateAhorrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('ahorros', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('vacaciones_ds', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->float('montoS');
-            $table->float('montoA')->nullable();
-            $table->text('nota');
-            $table->string('nomb');
-
+            $table->integer('disponibles');
 
             $table->integer('emp_id')->unsigned();
 
             $table->foreign('emp_id')->references('id')->on('empleados');
-
         });
     }
 
@@ -37,6 +31,6 @@ class CreateAhorrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ahorros');
+        Schema::dropIfExists('vacaciones_ds');
     }
 }

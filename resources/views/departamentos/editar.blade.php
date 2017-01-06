@@ -4,7 +4,7 @@
  <!-- Team Members Row -->
          <div class="row">
             <div class="col-lg-12">
-               <h2 class="page-header">Nuevo Departamento</h2>
+               <h2 class="page-header">Editar Departamento</h2>
             </div>
              <!-- 'route'=>'empleados.emp', -->
             {!!Form::model($dept,['route'=>['departamentos.update',$dept->id],'method'=>'PUT'])!!}
@@ -12,10 +12,6 @@
    <div class="form-group col-sm-6">
       {!!Form::label('Nombre del Departamento:')!!}
       {!!Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Ingresa el Nombre del departamento'])!!}
-   </div>
-   <div class="form-group col-sm-6">
-      {!!Form::label('Jefe del Departamento:')!!}
-      {!!Form::select('jefe',$emp,null,['class'=>'form-control'])!!}
    </div>
          </div>
          <div class="row">

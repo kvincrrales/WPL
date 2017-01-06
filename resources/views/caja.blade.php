@@ -17,6 +17,7 @@
             <thead id="tblHead">
                 <tr>
                   <th>Nombre</th>
+                  <th>Apellidos</th>
                   <th>Cédula</th>
                   <th>Puesto</th>
                   <th>Salario Actual</th>
@@ -29,8 +30,9 @@
               <tbody>
                       <tr>
                       <td>{{$user -> nomb}}</td>
+                      <td>{{$user -> ape1}} {{$user -> ape2}}</td>
                       <td>{{$user -> numId}}</td>
-                      <td>{{$user -> nombre}}</td>
+                      <td>{{$user -> nombD}}</td>
                       <td>{{$user -> salarioM}}</td>
                       <td></td>
                       <td></td>

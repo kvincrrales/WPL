@@ -41,7 +41,7 @@
                       <td>{{$empleado -> numId}}</td>
                       <td>{{$empleado -> nomb}}</td>
                       <td>{{$empleado -> ape1}}</td>
-                      <td>{{$empleado -> dept_id}}</td>
+                      <td>{{$empleado -> nombD}}</td>
                       <td>{{$empleado -> cBanc}}</td>
                       <td>{{$empleado -> email}}</td>
                       <td><button type="button" class="btn btn-sucess">{!!link_to_route('empleados.edit', $title = 'Editar', $parameters = $empleado->id)!!}</button></td>

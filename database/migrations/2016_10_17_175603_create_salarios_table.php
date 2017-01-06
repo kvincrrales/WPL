@@ -23,6 +23,7 @@ class CreateSalariosTable extends Migration
             $table->float('salarioD');
             $table->float('salarioH');
             $table->float('salarioHE');
+            $table->string('nomb');
             $table->integer('emp_id')->unsigned();
 
             $table->foreign('emp_id')->references('id')->on('empleados');

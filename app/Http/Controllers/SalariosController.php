@@ -19,23 +19,8 @@ class SalariosController extends Controller
      */
     public function index(Request $request)
     {
-        $users = DB::table('empleados')
-            ->join('salarios', 'salarios.emp_id', '=', 'empleados.id')
-            ->select(
-                'empleados.nomb',
-                'salarios.id',
-                'salarios.salarioM',
-                'salarios.salarioQ',
-                'salarios.salarioS',
-                'salarios.salarioD',
-                'salarios.salarioH',
-                'salarios.salarioHE')
-            ->get();
-
-
         $sal = \WP\Salario::paginate(3);
-        return view('salarios.lista',compact('sal','users'));
-
+        return view('salarios.lista',compact('sal'));
     }
 
     /**
@@ -46,7 +31,7 @@ class SalariosController extends Controller
     public function create()
     {
 
-        $emp = Empleado::pluck('id','nomb');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('id', 'nomC');
 
         return view('salarios.crear',compact('emp'));
     }
@@ -59,15 +44,7 @@ class SalariosController extends Controller
      */
     public function store(Request $request)
     {
-         \WP\Salario::create([
-            'emp_id' => $request['emp_id'],
-            'salarioM' => $request['salarioM'],
-            'salarioQ' => $request['salarioQ'],
-            'salarioS' => $request['salarioS'],
-            'salarioD' => $request['salarioD'],
-            'salarioH' => $request['salarioH'],
-            'salarioHE' => $request['salarioHE'],
-        ]);
+         \WP\Salario::create($request->all());
 
        Session::flash('message','Salario Ingresado Correctamente');
         return Redirect::to('/salarios');
@@ -92,7 +69,7 @@ class SalariosController extends Controller
      */
     public function edit($id)
     {
-        $emp = Empleado::pluck('id','nomb');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('id', 'nomC');
         $sal = \WP\Salario::find($id);
         return view ('salarios.editar',compact('emp'),['sal'=>$sal]);
     }

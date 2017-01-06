@@ -9,7 +9,7 @@ class Departamento extends Model
     protected $table = 'departamentos';
     
     protected $fillable = [
-        'nombre', 'jefe', 'tel', 'desc',
+        'nombre', 'tel', 'desc',
     ];
 
     /**

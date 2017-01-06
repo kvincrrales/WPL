@@ -22,6 +22,7 @@ class CreateOtraDeduccionsTable extends Migration
             $table->integer('montoO');
             $table->date('fSolicitud');
             $table->text('notas');
+            $table->string('nombE');
 
             $table->integer('emp_id')->unsigned();
 

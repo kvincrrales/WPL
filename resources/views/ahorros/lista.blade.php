@@ -28,7 +28,7 @@
               @foreach($aho as $ahorro)
               <tbody>
                       <tr>
-                      <td>  {{$ahorro -> emp_id}}</td>
+                      <td>  {{$ahorro -> nomb}}</td>
                       <td>  {{$ahorro -> created_at}}</td>
                       <td>  {{$ahorro -> updated_at}}</td>
                       <td>₡ {{$ahorro -> montoS}}</td>

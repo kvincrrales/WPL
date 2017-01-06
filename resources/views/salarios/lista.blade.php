@@ -26,10 +26,10 @@
                   <th>Accion</th>
                 </tr>
             </thead>
-            @foreach($users as $salario)
+            @foreach($sal as $salario)
               <tbody>
                       <tr>
-                      <td>  {{$salario ->nomb}}</td>
+                      <td>  {{$salario -> nomb}}</td>
                       <td>₡ {{$salario -> salarioM}}</td>
                       <td>₡ {{$salario -> salarioQ}}</td>
                       <td>₡ {{$salario -> salarioS}}</td>

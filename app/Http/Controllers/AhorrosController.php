@@ -37,7 +37,7 @@ class AhorrosController extends Controller
      */
     public function create()
     {
-        $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
         return view('ahorros.crear',compact('emp'));
     }
 
@@ -74,7 +74,7 @@ class AhorrosController extends Controller
      */
     public function edit($id)
     {
-        $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
         $aho = \WP\Ahorro::find($id);
         return view ('ahorros.editar',['aho'=>$aho],compact('emp'));
     }

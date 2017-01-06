@@ -24,6 +24,7 @@ class CreateValesTable extends Migration
             $table->integer('total');
             $table->date('fSolicitud');
             $table->text('notas');
+            $table->string('nombE');
 
             $table->integer('emp_id')->unsigned();
 

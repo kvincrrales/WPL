@@ -10,7 +10,7 @@ var url = '/calculoPlanilla';
 /////////////////////////
 //listener de #salario //
 /////////////////////////
-$(document).on('change', '#horasNormal', function(event) {
+$(document).on('change', '#horasNormal,#horasExtra', function(event) {
 	
 	var id = $(this).attr('data-id');
 	// json con los datos que quiero enviar

@@ -36,8 +36,12 @@ class FrontController extends Controller
                 'empleados.id',
                 'empleados.numId', 
                 'empleados.nomb',
+                'empleados.ape1',
+                'empleados.ape2',
+                'empleados.nombD',
                 'departamentos.nombre', 
                 'salarios.salarioM')
+
             ->get();
 
 
@@ -72,6 +76,11 @@ class FrontController extends Controller
     public function aguinaldos()
     {
         return view('aguinaldos');
+    }
+
+    public function vDisponibles()
+    {
+        return view('vacaciones/disponibles');
     }
 
     /**

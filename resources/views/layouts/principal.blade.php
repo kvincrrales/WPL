@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <meta name="author" content="">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>WIMOT</title>
       <link rel="icon" href="{!! asset('images/tools.png') !!}"/>
       <!-- Bootstrap Core CSS -->
@@ -84,13 +85,6 @@
                      <ul class="dropdown-menu">
                         <li><a href="{!!URL::to('/vacaciones/create')!!}">Registrar Vacaciones</a></li>
                         <li><a href="{!!URL::to('/vacaciones')!!}">Lista de Vacaciones</a></li>
-                     </ul>
-                  </li>
-                  <li class="dropdown">
-                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Aguinaldos
-                     <span class="caret"></span></a>
-                     <ul class="dropdown-menu">
-                        <li><a href="{!!URL::to('/aguinaldos')!!}">Lista de Aguinaldos</a></li>
                      </ul>
                   </li>
                   <!--

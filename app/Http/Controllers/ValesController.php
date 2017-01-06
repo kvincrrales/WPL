@@ -35,7 +35,7 @@ class ValesController extends Controller
      */
     public function create()
     {
-         $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
         return view('vales.crear',compact('emp'));
     }
 
@@ -72,7 +72,9 @@ class ValesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
+        $val = \WP\Vale::find($id);
+        return view ('vales.editar',compact('emp'),['val'=>$val]);
     }
 
     /**
@@ -84,7 +86,12 @@ class ValesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $val = \WP\Vale::find($id);
+        $val -> fill($request->all());
+        $val -> save();
+
+        Session::flash('message','Vale Editado Correctamente');
+        return Redirect::to('/vales');
     }
 
     /**
@@ -95,7 +102,9 @@ class ValesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \WP\Vale::destroy($id);
+        Session::flash('message','Vale Eliminado Correctamente');
+        return Redirect::to('/vales');
     }
 
     public function downloadExcel($id)

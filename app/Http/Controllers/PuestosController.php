@@ -29,8 +29,7 @@ class PuestosController extends Controller
      */
     public function create()
     {
-        $dept = Departamento::pluck('nombre','id');
-        return view('puestos.crear',compact('dept'));
+        return view('puestos.crear');
     }
 
     /**
@@ -42,7 +41,6 @@ class PuestosController extends Controller
     public function store(Request $request)
     {
         \WP\Puesto::create([
-            'dept_id' => $request['dep'],
             'nombre' => $request['nomb'],
             'desc' => $request['desc'],
         ]);
@@ -70,9 +68,8 @@ class PuestosController extends Controller
      */
     public function edit($id)
     {
-        $dept = Departamento::pluck('nombre','id');
         $pue = \WP\Puesto::find($id);
-        return view ('puestos.editar',compact('dept'),['pue'=>$pue]);
+        return view ('puestos.editar',['pue'=>$pue]);
     }
 
     /**

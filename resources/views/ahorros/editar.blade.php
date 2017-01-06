@@ -4,15 +4,18 @@
  <!-- Team Members Row -->
          <div class="row">
             <div class="col-lg-12">
-               <h2 class="page-header">Nuevo Ahorro</h2>
+               <h2 class="page-header">Editar Ahorro</h2>
             </div>
              <!-- 'route'=>'empleados.emp', -->
             {!!Form::model($aho,['route'=>['ahorros.update',$aho->id],'method'=>'PUT'])!!}
             <div class="row">
    <div class="form-group col-sm-6">
-      {!!Form::label('Nombre del Empleado:')!!}
-               {!!Form::select('emp_id',$emp,null,['class'=>'form-control'])!!}
-   </div>
+            {!!Form::label('Nombre del Empleado:')!!}
+            {!!Form::select('emp_id',$emp,null,['class'=>'form-control','onchange'=>"document.getElementById('text_content').value=this.options[this.selectedIndex].text"])!!}
+            </div>
+            <div class="hidden">
+            {!!Form::text('nomb',null,['class'=>'hidden','id' => 'text_content'])!!}
+            </div>
    <div class="form-group col-sm-6">
       {!!Form::label('Monto del Ahorro por Semana:')!!}
       {!!Form::text('montoS',null,['class'=>'form-control'])!!}

@@ -21,7 +21,7 @@ class VacacionesController extends Controller
      */
     public function index()
     {
-         $vac = \WP\Vacacion::paginate(3);
+        $vac = \WP\Vacacion::paginate(3);
         return view('vacaciones.lista',compact('vac'));
     }
 
@@ -32,7 +32,8 @@ class VacacionesController extends Controller
      */
     public function create()
     {
-        $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
+        
         return view('vacaciones.crear',compact('emp'));
     }
 
@@ -69,7 +70,7 @@ class VacacionesController extends Controller
      */
     public function edit($id)
     {
-        $emp = Empleado::pluck('nomb','id');
+        $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
         $vac = \WP\Vacacion::find($id);
         return view ('vacaciones.editar',compact('emp'),['vac'=>$vac]);
     }
@@ -142,6 +143,25 @@ class VacacionesController extends Controller
         
     return $response;
 
+    }
+
+    public function vDisponibles()
+    {
+        $vacD = DB::table('empleados')
+            ->select(
+                'empleados.numId',
+                'empleados.nomb',
+                'empleados.ape1',
+                'empleados.ape2',
+                'empleados.fIngreso',
+                'empleados.vacaciones_disponibles')
+            ->get();
+
+
+        //$sal = \WP\Salario::paginate(3);
+        return view('vacaciones.disponibles',compact('vacD'));
+
+        //return view('vacaciones/disponibles');
     }
 
 }

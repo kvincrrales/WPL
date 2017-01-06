@@ -21,9 +21,12 @@ foreach ($emp as $key => $value) {
             {!!Form::model($sal,['route'=>['salarios.update',$sal->id],'method'=>'PUT'])!!}
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
             <div class="row">
-            <div class="form-group col-sm-12">
-               {!!Form::label('Nombre del Empleado [ID]:')!!}
-               {!!Form::select('emp_id',$datos,null,['class'=>'form-control'])!!}
+            <div class="form-group col-sm-6">
+            {!!Form::label('Nombre del Empleado:')!!}
+            {!!Form::select('emp_id',$datos,null,['class'=>'form-control','onchange'=>"document.getElementById('text_content').value=this.options[this.selectedIndex].text"])!!}
+            </div>
+            <div class="hidden">
+            {!!Form::text('nomb',null,['class'=>'hidden','id' => 'text_content'])!!}
             </div>
             </div>
             <div class="row">

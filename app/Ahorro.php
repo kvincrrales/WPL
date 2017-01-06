@@ -14,6 +14,6 @@ class Ahorro extends Model
      * @var array
      */
     protected $fillable = [
-		'montoS','montoA','nota','emp_id'
+		'montoS','montoA','nota','nomb','emp_id'
                           ];
 }

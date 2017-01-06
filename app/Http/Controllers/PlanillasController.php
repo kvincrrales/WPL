@@ -18,25 +18,17 @@ class PlanillasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $data)
     {
-
         $users = DB::table('empleados')
             ->leftJoin('salarios', 'salarios.emp_id', '=', 'empleados.id')
             ->leftJoin('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
 
             ->leftJoin('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
-            ->whereBetween('vacacions.fechaS', ['2016-11-20', '2016-11-22'])
-
             ->leftJoin('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
-            ->whereBetween('prestamos.fSolicitud', ['2016-11-20', '2016-11-22'])
-
             ->leftJoin('vales' ,'vales.emp_id', '=', 'empleados.id' )
-            ->whereBetween('vales.fSolicitud', ['2016-11-20', '2016-11-22'])
 
             ->leftJoin('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
-            ->whereBetween('otra_deduccions.fSolicitud', ['2016-11-20', '2016-11-22'])
-
             ->select(
                 'empleados.id',
                 'empleados.numId', 
@@ -52,7 +44,18 @@ class PlanillasController extends Controller
                 'otra_deduccions.montoO')
             ->get();
 
-        return view('planillas',compact('users'));
+         $salarios = DB::table('salarios')->sum('salarioM');
+         $ahorros = DB::table('ahorros')->sum('montoS');
+         $vales = DB::table('vales')->sum('total');
+         $prestamos = DB::table('prestamos')->sum('montoP');
+         $deducciones = DB::table('otra_deduccions')->sum('montoO');
+
+
+        //$users = [0];
+           
+
+       return view('planillas',compact('users','salarios','ahorros','vales','prestamos','deducciones'));
+     
     }
 
     /**
@@ -152,6 +155,85 @@ class PlanillasController extends Controller
 
         return $return;
     }
+
+
+    public function calcularPlanilla(Request $data){
+
+        $return['fechaI'] = $data['nInicio'];
+        $return['fechaF'] = $data['nFinal'];
+
+      //  $x = array();
+
+        $consulta = DB::table('empleados')
+            ->leftJoin('salarios', 'salarios.emp_id', '=', 'empleados.id')
+            ->leftJoin('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
+
+            ->leftJoin('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
+            ->whereBetween('vacacions.fechaS', [$return['fechaI'], $return['fechaF'] ])
+
+            ->leftJoin('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
+            ->whereBetween('prestamos.fSolicitud', [$return['fechaI'], $return['fechaF'] ])
+            //->select('prestamos.*montoP', 'sum(*) as suma')
+
+
+            ->leftJoin('vales' ,'vales.emp_id', '=', 'empleados.id' )
+            ->whereBetween('vales.fSolicitud', [$return['fechaI'], $return['fechaF'] ])
+
+
+            ->leftJoin('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
+            ->whereBetween('otra_deduccions.fSolicitud', [$return['fechaI'], $return['fechaF'] ])
+
+            ->select(
+                'empleados.id',
+                'empleados.numId', 
+                'empleados.nomb', 
+                'empleados.cBanc', 
+                'salarios.salarioM',
+                'salarios.salarioS',
+                'salarios.salarioHE',
+                'salarios.salarioH',    
+                'ahorros.montoS',
+                'vacacions.diasD',
+                'vales.total',
+                'prestamos.montoP',
+                'otra_deduccions.montoO')
+            ->get();
+            
+        $consulta = $consulta[0];
+
+    /*  $x['cedula,nombre,banco,salMensual,montoAhorro,enVacaciones,
+        vales,prestamos,deducciones,caja,neto,total'] = 0;
+    */
+
+        $x['cedula'] = $consulta->numId;
+
+        $x['nombre'] = $consulta->nomb;
+
+        $x['banco'] = $consulta->cBanc;
+
+        $x['salMensual'] = $consulta->salarioM;
+
+        $x['montoAhorro'] = $consulta->montoS;
+
+        $x['enVacaciones'] = $consulta->diasD;
+
+        $x['vales'] = $consulta->total;
+
+        $x['prestamos'] = $consulta->montoP;
+
+        $x['deducciones'] = $consulta->montoO;
+
+        $x['caja'] = $consulta->salarioH * 48 / 9.34;
+
+        $x['neto'] = $consulta->salarioS - $x['montoAhorro'] - $x['vales'] - $x['prestamos'] - $x['deducciones'] - $x['caja'];
+
+        $x['total'] = $consulta->salarioS - $x['montoAhorro'] - $x['vales'] - $x['prestamos'] - $x['deducciones'] - $x['caja'];
+
+
+        return $x;
+    }
+
+
 
     public function downloadExcel($id)
     {

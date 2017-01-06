@@ -13,10 +13,6 @@
       {!!Form::label('Nombre del Departamento:')!!}
       {!!Form::text('nomb',null,['class'=>'form-control','placeholder'=>'Ingresa el Nombre del departamento'])!!}
    </div>
-   <div class="form-group col-sm-6">
-      {!!Form::label('Jefe del Departamento:')!!}
-      {!!Form::select('jefe',$emp,null,['class'=>'form-control'])!!}
-   </div>
          </div>
          <div class="row">
    <div class="form-group col-sm-6">

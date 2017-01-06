@@ -15,7 +15,7 @@ class Empleado extends Model
      */
     protected $fillable = [
         'name', 'email', 'password',
-        'estatus','fIngreso','tipoId','numId','nomb','ape1','ape2','sexo','fNac','nCel','nCasa','email','dir','fPago','cBanc','cAhorro','tipoPlanilla','fotoEmpleado','dept_id','puesto_id'
+        'estatus','fIngreso','tipoId','numId','nomb','ape1','ape2','sexo','fNac','nCel','nCasa','email','dir','fPago','cBanc','cAhorro','tipoPlanilla','fotoEmpleado','dept_id','puesto_id','nombD','nombP','vacaciones_disponibles'
                           ];
 
     /**

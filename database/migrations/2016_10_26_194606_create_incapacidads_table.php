@@ -19,6 +19,8 @@ class CreateIncapacidadsTable extends Migration
             $table->date('fecha');
             $table->string('tipo');
             $table->integer('total');
+            $table->integer('cDias');
+            $table->string('nomb');
             $table->string('nota');
 
             $table->integer('emp_id')->unsigned();

@@ -17,7 +17,6 @@ class CreateDepartamentosTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre', 100);
-            $table->string('jefe', 100);
             $table->string('tel', 100);
             $table->text('desc');
             $table->timestamps();

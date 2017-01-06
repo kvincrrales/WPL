@@ -7,6 +7,7 @@ use Session;
 use Redirect;
 use WP\Http\Requests;
 use WP\Empleado;
+use DB;
 
 class DepartamentosController extends Controller
 {
@@ -28,8 +29,7 @@ class DepartamentosController extends Controller
      */
     public function create()
     {
-        $emp = Empleado::pluck('nomb','id');
-        return view('departamentos.crear',compact('emp'));
+        return view('departamentos.crear');
     }
 
     /**
@@ -70,9 +70,8 @@ class DepartamentosController extends Controller
      */
     public function edit($id)
     {
-        $emp = Empleado::pluck('nomb','id');
         $dept = \WP\Departamento::find($id);
-        return view ('departamentos.editar',compact('emp'),['dept'=>$dept]);
+        return view ('departamentos.editar',['dept'=>$dept]);
     }
 
     /**

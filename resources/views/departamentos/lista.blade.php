@@ -17,7 +17,6 @@
                 <tr>
                   <th>ID DEPT</th>
                   <th>Nombre</th>
-                  <th>Jefe</th>
                   <th>Télefono</th>
                   <th>Descripcion</th>
                   <th>Accion</th>
@@ -28,7 +27,6 @@
                       <tr>
                       <td>{{$departamento -> id}}</td>
                       <td>{{$departamento -> nombre}}</td>
-                      <td>{{$departamento -> jefe}}</td>
                       <td>{{$departamento -> tel}}</td>
                       <td>{{$departamento -> desc}}</td>
                       <td><button type="button" class="btn btn-sucess">{!!link_to_route('departamentos.edit', $title = 'Editar', $parameters = $departamento->id)!!}</button></td>

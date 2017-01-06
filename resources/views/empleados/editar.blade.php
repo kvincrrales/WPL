@@ -75,11 +75,17 @@
                <div class="row">
                 <div class="form-group col-sm-6">
                      {!!Form::label('Departamento: ')!!}
-                      {!!Form::select('dept_id',$depart,null,['class'=>'form-control'])!!}
+                     {!!Form::select('dept_id',$depart,null,['class'=>'form-control','onchange'=>"document.getElementById('text_contentD').value=this.options[this.selectedIndex].text"])!!}
+                  </div>
+                  <div class="hidden">
+                  {!!Form::text('nombD',null,['class'=>'hidden','id' => 'text_contentD'])!!}
                   </div>
                   <div class="form-group col-sm-6">
                      {!!Form::label('Puesto: ')!!}
-                       {!!Form::select('puesto_id',$puesto,null,['class'=>'form-control'])!!}
+                       {!!Form::select('puesto_id',$puesto,null,['class'=>'form-control','onchange'=>"document.getElementById('text_contentP').value=this.options[this.selectedIndex].text"])!!}
+                  </div>
+                  <div class="hidden">
+                  {!!Form::text('nombP',null,['class'=>'hidden','id' => 'text_contentP'])!!}
                   </div>
                </div>
                <div class="row">
@@ -100,6 +106,10 @@
                   <div class="form-group col-sm-6">
                      {!!Form::label('Tipo de Planilla: ')!!}
                      {!!Form::select('tipoPlanilla', ['0' => 'Semanal', '1' => 'Quincenal', '2' => 'Mensual'],null, ['class' => 'form-control'])!!}
+                  </div>
+                  <div class="form-group col-sm-6">
+                     {!!Form::label('Vacaciones Disponibles:')!!}
+                     {!!Form::text('vacaciones_disponibles',null,['class'=>'form-control','value'=>'0'])!!}
                   </div>
                </div>
                <div class="row">

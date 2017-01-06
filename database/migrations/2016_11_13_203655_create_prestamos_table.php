@@ -16,8 +16,6 @@ class CreatePrestamosTable extends Migration
         Schema::create('prestamos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-
-            $table->text('nomb');
             $table->date('fechaP');
             $table->text('moneda');
             $table->integer('montoP');
@@ -26,6 +24,7 @@ class CreatePrestamosTable extends Migration
             $table->integer('total');
             $table->date('fSolicitud');
             $table->text('notas');
+            $table->string('nombE');
 
             $table->integer('emp_id')->unsigned();
 

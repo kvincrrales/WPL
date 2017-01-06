@@ -27,11 +27,11 @@ class EmpleadosController extends Controller
             ->where ('id','>','0')
             ->orderBy('id','desc')
             ->paginate(2);
+
             return view('empleados.lista',["emp"=>$emp,"searchText"=>$query]);
         }
 
     }
-
     /**
      * Show the form for creating a new resource.
      *

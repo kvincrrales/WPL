@@ -11,21 +11,18 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('ID Empleado:')!!}
-                {!!Form::select('emp_id',$emp,null,['class'=>'form-control'])!!}
+               {!!Form::select('emp_id',$emp,null,['class'=>'form-control','onchange'=>"document.getElementById('text_content').value=this.options[this.selectedIndex].text",'id'=>'idE'])!!}
             </div>
             </div>
-            <br>
-            <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-               {!!Form::label('Nombre del Empleado:')!!}
-               {!!Form::text('nomb',null,['class'=>'form-control','placeholder'=>'Ingresa el Nombre del departamento'])!!}
+            <div class="hidden">
+            {!!Form::text('nomb',null,['class'=>'hidden','id' => 'text_content'])!!}
             </div>
             </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Tipo de Vacaciones:')!!}
-               {!!Form::select('tVacaciones', ['0' => 'Disfrutadas', '1' => 'Pagadas'],null, ['class' => 'form-control'])!!}
+               {!!Form::select('tVacaciones', ['Disfrutadas' => 'Disfrutadas', 'Pagadas' => 'Pagadas'],null, ['class' => 'form-control'])!!}
             </div>
             </div>
             <br>

@@ -10,6 +10,6 @@ class OtraDeduccion extends Model
      * @var array
      */
     protected $fillable = [
-        'nomb','moneda','montoO','fSolicitud','notas','emp_id'
+        'moneda','montoO','fSolicitud','notas','nombE','emp_id'
                           ];
 }

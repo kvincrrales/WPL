@@ -22,6 +22,7 @@
                     <a href="{!!URL::to('/ahorros')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
+            <!--
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
                 <img class="img-circle img-responsive img-center" width="90" src="images/receipt.png" alt="">
                 <h3>Pago de Ahorros</h3>
@@ -30,6 +31,7 @@
                     <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
+            -->
         </div>
         <hr class="divisor">
         </div>

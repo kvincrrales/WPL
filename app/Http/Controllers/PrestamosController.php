@@ -35,7 +35,7 @@ class PrestamosController extends Controller
      */
     public function create()
     {
-         $emp = Empleado::pluck('nomb','id');
+       $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
         return view('prestamos.crear',compact('emp'));
     }
 
@@ -75,7 +75,9 @@ class PrestamosController extends Controller
      */
     public function edit($id)
     {
-        //
+       $emp = Empleado::select(DB::raw("CONCAT(nomb,' ',ape1,' ',ape2,' ',numId) AS nomC, id"))->pluck('nomC', 'id');
+        $pres = \WP\Prestamo::find($id);
+        return view ('prestamos.editar',compact('emp'),['pres'=>$pres]);
     }
 
     /**
@@ -87,7 +89,12 @@ class PrestamosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pres = \WP\Prestamo::find($id);
+        $pres -> fill($request->all());
+        $pres -> save();
+
+        Session::flash('message','Prestamo Editado Correctamente');
+        return Redirect::to('/prestamos');
     }
 
     /**
@@ -98,7 +105,9 @@ class PrestamosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \WP\Prestamo::destroy($id);
+        Session::flash('message','Prestamo Eliminado Correctamente');
+        return Redirect::to('/prestamos');
     }
 
     public function downloadExcel($id)
@@ -123,9 +132,10 @@ class PrestamosController extends Controller
 
         $return['total'] = 0;
 
+        $return['total'] = $data['nMonto'] + $data['nMonto'] * $data['nPorcentaje'] /100 + $data['nPlazo'];
 
-        $return['total'] = $data['nMonto'] + $data['nPlazo'] + $data['nMonto'] * $data['nPorcentaje'] /100 ;
-        
+        //$return['semanal'] = $return['total'] / $data['nPlazo'];
+
         return $return;
     }
 }

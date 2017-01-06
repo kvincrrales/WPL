@@ -15,7 +15,6 @@
             <table class="table table-striped" id="tblGrid">
             <thead id="tblHead">
                 <tr>
-                  <th>ID</th>
                   <th>Nombre</th>
                   <th>Fecha Prestamo</th>
                   <th>Moneda</th>
@@ -32,8 +31,7 @@
               @foreach($pre as $prestamo)
               <tbody>
                       <tr>
-                      <td>  {{$prestamo -> emp_id}}</td>
-                      <td>  {{$prestamo -> nomb}}</td>
+                      <td>  {{$prestamo -> nombE}}</td>
                       <td>  {{$prestamo -> fechaP}}</td>
                       <td>  {{$prestamo -> moneda}}</td>
                       <td>₡ {{$prestamo -> montoP}}</td>
@@ -42,7 +40,7 @@
                       <td>  {{$prestamo -> total}}</td>
                       <td>  {{$prestamo -> fSolicitud}}</td>
                       <td>  {{$prestamo -> notas}}</td>
-                      <td><button type="button" class="btn btn-sucess">EDITAR</button></td>
+                      <td><button type="button" class="btn btn-sucess">{!!link_to_route('prestamos.edit', $title = 'Editar', $parameters = $prestamo->id)!!}</button></td>
                       <td><a href="{{ URL::to('downloadExcelPrestamos',$parameters = $prestamo->id) }}"><button class="btn btn-success">Descargar</button></a></td>
                       </tr>
               </tbody>
