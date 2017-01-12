@@ -223,11 +223,11 @@ class PlanillasController extends Controller
 
         $x['deducciones'] = $consulta->montoO;
 
-        $x['caja'] = $consulta->salarioH * 48 / 9.34;
+        $x['caja'] = round($consulta->salarioH * 48 / 9.34);
 
-        $x['neto'] = $consulta->salarioS - $x['montoAhorro'] - $x['vales'] - $x['prestamos'] - $x['deducciones'] - $x['caja'];
+        $x['neto'] = round($consulta->salarioS - $x['montoAhorro'] - $x['vales'] - $x['prestamos'] - $x['deducciones'] - $x['caja']);
 
-        $x['total'] = $consulta->salarioS - $x['montoAhorro'] - $x['vales'] - $x['prestamos'] - $x['deducciones'] - $x['caja'];
+        $x['total'] = round($consulta->salarioS - $x['montoAhorro'] - $x['vales'] - $x['prestamos'] - $x['deducciones'] - $x['caja']);
 
 
         return $x;

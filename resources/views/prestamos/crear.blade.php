@@ -56,7 +56,7 @@
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
-               {!!Form::label('Total:')!!}
+               {!!Form::label('Monto a Pagar por Semana:')!!}
                {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Digite el total','id' => 'totales','readonly'])!!}
             </div>
             </div>

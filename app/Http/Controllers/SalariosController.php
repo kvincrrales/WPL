@@ -113,19 +113,19 @@ class SalariosController extends Controller
 
         // calcula el salario quinenal.
         
-        $response['salarioQuincenal'] = $val/2;
+        $response['salarioQuincenal'] = round($val/2);
 
 
         // semanal
-        $response['salarioSemanal'] = $val/4;
+        $response['salarioSemanal'] = round($val/4);
 
         // diario
-        $response['salarioDiario'] = $val/26;
+        $response['salarioDiario'] = round($val/26);
 
 
-        $response['salarioHora'] = $response['salarioDiario']/8;
+        $response['salarioHora'] = round($response['salarioDiario']/8);
 
-        $response['salarioExtra'] = $response['salarioHora']*1.5+$response['salarioHora'];
+        $response['salarioExtra'] = round($response['salarioHora']*1.5+$response['salarioHora']);
 
         return $response;
 

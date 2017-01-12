@@ -109,13 +109,8 @@
                      {!!Form::label('Tipo de Planilla: ')!!}
                      {!!Form::select('tipoPlanilla', ['Semanal' => 'Semanal', 'Quincenal' => 'Quincenal', 'Mensual' => 'Mensual'],null, ['class' => 'form-control'])!!}
                   </div>
+                     {!!Form::text('vacaciones_disponibles',null,['class'=>'hidden','value'=>'0'])!!}
                   <div class="form-group col-sm-6">
-                     {!!Form::label('Vacaciones Disponibles:')!!}
-                     {!!Form::text('vacaciones_disponibles',null,['class'=>'form-control','value'=>'0'])!!}
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="form-group col-sm-12">
                      {!!Form::label('Foto del Empleado: ')!!}
                      {!!Form::file('fotoEmpleado',null,['class'=>'form-control'])!!}
                   </div>

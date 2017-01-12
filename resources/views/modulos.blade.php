@@ -102,5 +102,31 @@
             </div>
         </div>
         -->
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-4 text-center">
+                <img class="img-circle img-responsive img-center" width="90" src="images/technology.png" alt="">
+                <h3>Alquiler Motos</h3>
+                <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
+                <p>
+                    <a href="{!!URL::to('/motos')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 text-center">
+                <img class="img-circle img-responsive img-center" width="90" src="images/point-of-service.png" alt="">
+                <h3>Cajas</h3>
+                <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
+                <p>
+                    <a href="{!!URL::to('/cajas')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4 text-center">
+                <img class="img-circle img-responsive img-center" width="90" src="images/check.png" alt="">
+                <h3>Salarios</h3>
+                <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
+                <p>
+                    <a href="{!!URL::to('/salariosEmpleados')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                </p>
+            </div>
+        </div>
     </div>
 @stop

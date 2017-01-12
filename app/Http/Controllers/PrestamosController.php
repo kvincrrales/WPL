@@ -132,7 +132,8 @@ class PrestamosController extends Controller
 
         $return['total'] = 0;
 
-        $return['total'] = $data['nMonto'] + $data['nMonto'] * $data['nPorcentaje'] /100 + $data['nPlazo'];
+        $return['total'] = $data['nMonto'] + $data['nMonto'] * $data['nPorcentaje'] /100;
+        $return['total'] = $return['total'] / $data['nPlazo'];
 
         //$return['semanal'] = $return['total'] / $data['nPlazo'];
 

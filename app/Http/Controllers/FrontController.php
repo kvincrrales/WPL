@@ -78,6 +78,11 @@ class FrontController extends Controller
         return view('aguinaldos');
     }
 
+     public function salarios()
+    {
+        return view('salarios');
+    }
+
     public function vDisponibles()
     {
         return view('vacaciones/disponibles');

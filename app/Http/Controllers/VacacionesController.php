@@ -137,9 +137,9 @@ class VacacionesController extends Controller
 
     $response['total'] = 0;
 
-    $response['caja'] = $emp_id->salarioH * 48 * 0.9;
+    $response['caja'] = $data['nDias'] *  $emp_id->salarioD *0.925 - $emp_id->salarioD;
     
-    $response['total'] = $data['nDias'] * $emp_id->salarioD;
+    $response['total'] = $emp_id->salarioD * $data['nDias'] - $response['caja'];
         
     return $response;
 

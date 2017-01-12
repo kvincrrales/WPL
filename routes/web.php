@@ -18,6 +18,7 @@ Route::get('deducciones','FrontController@deducciones');
 Route::get('vacacion','FrontController@vacaciones');
 Route::get('ahorro','FrontController@ahorros');
 Route::get('aguinaldo','FrontController@aguinaldos');
+Route::get('salariosEmpleados','FrontController@salarios');
 Route::get('disponibles','VacacionesController@vdisponibles');
 Route::resource('log','LogController');
 Route::get('logout','LogController@logout');
@@ -31,6 +32,7 @@ Route::resource('incapacidades','IncapacidadesController');
 Route::resource('ahorros','AhorrosController');
 Route::resource('aguinaldos','AguinaldosController');
 Route::resource('vacaciones','VacacionesController');
+Route::resource('cajas','CajasController');
 
 
 Route::resource('otrasDeducciones','OtrasDeduccionesController');
@@ -71,6 +73,8 @@ Route::get('downloadExcelVales/{id}', 'ValesController@downloadExcel');
 //Route::get('downloadExcel/{id}', 'PlanillasController@downloadExcel');
 
 Route::get('caja','FrontController@caja');
+
+Route::get('calculoCaja','CajasController@calcularCaja');
 
 
 
