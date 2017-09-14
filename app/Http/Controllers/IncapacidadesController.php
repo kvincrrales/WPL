@@ -53,7 +53,7 @@ class IncapacidadesController extends Controller
     {
         \WP\Incapacidad::create($request->all());
 
-       Session::flash('message','Incapacidad Ingresada Correctamente');
+        Session::flash('message','Incapacidad Ingresada Correctamente');
         return Redirect::to('/incapacidades');
     }
 
@@ -106,66 +106,65 @@ class IncapacidadesController extends Controller
      */
     public function destroy($id)
     {
-       \WP\Incapacidad::destroy($id);
-        Session::flash('message','Incapacidad Eliminado Correctamente');
-        return Redirect::to('/incapacidades');
-    }
+     \WP\Incapacidad::destroy($id);
+     Session::flash('message','Incapacidad Eliminado Correctamente');
+     return Redirect::to('/incapacidades');
+ }
 
-    public function downloadExcel($id)
-    {
+ public function downloadExcel($id)
+ {
         //$data = \WP\Vacacion::get()->toArray(); --> Toda la lista
-        
-        $emp_id = \WP\Incapacidad::find($id)->toArray();
-        return Excel::create('reporteIncapacidad', function($excel) use ($emp_id) {
 
-            $excel->sheet('registroIncapacidad', function($sheet) use ($emp_id)
-            {
-                $sheet->cell('A2', function($cell){
+    $emp_id = \WP\Incapacidad::find($id)->toArray();
+    return Excel::create('reporteIncapacidad', function($excel) use ($emp_id) {
+
+        $excel->sheet('registroIncapacidad', function($sheet) use ($emp_id)
+        {
+            $sheet->cell('A2', function($cell){
                 $cell->setValue('ID');});
 
-                $sheet->cells('A1:H1', function($cells) {
+            $sheet->cells('A1:H1', function($cells) {
 
-                    $cells->setFont(array(
+                $cells->setFont(array(
                     'family'     => 'Calibri',
                     'size'       => '12',
                     'bold'       =>  false
-                ));
+                    ));
 
                 $cells->setBorder('solid', 'none', 'none', 'solid');
 
-                });
-
-                $sheet->setBorder('A1:H1', 'thin');
-
-                
-
-                $sheet->fromArray($emp_id);
             });
 
+            $sheet->setBorder('A1:H1', 'thin');
 
-        })->download('xls');
-    }
 
-    public function calcularIncapacidad(Request $data){
+
+            $sheet->fromArray($emp_id);
+        });
+
+
+    })->download('xls');
+}
+
+public function calcularIncapacidad(Request $data){
 
     $response = array();
 
     $emp_id = DB::table('salarios')
-                ->select('salarioD')
-                ->where('emp_id',$data['idE'])
-                ->get();
+    ->select('salarioD')
+    ->where('emp_id',$data['idE'])
+    ->get();
 
     $emp_id = $emp_id[0];
 
-    $response['total'] = 0 ;
-
     
-    $response['total'] = $data['nDias'] * $emp_id->salarioD/2;
-        
-    return $response;
+    if($data['tI']=="C.C.S.S"){
+        $response['total'] = $data['nDias'] * $emp_id->salarioD/2;
+    } else {
+       $response['total'] = 0 ;
+    }
+   
+   return $response;
 
     }
-
-
-
 }

@@ -117,7 +117,7 @@ class SalariosController extends Controller
 
 
         // semanal
-        $response['salarioSemanal'] = round($val/4);
+        $response['salarioSemanal'] = round($val/4.33);
 
         // diario
         $response['salarioDiario'] = round($val/26);
@@ -125,7 +125,7 @@ class SalariosController extends Controller
 
         $response['salarioHora'] = round($response['salarioDiario']/8);
 
-        $response['salarioExtra'] = round($response['salarioHora']*1.5+$response['salarioHora']);
+        $response['salarioExtra'] = round($response['salarioHora']*1.5);
 
         return $response;
 

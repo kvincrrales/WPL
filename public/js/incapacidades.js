@@ -10,12 +10,13 @@ var url = '/calculoIncapacidad';
 /////////////////////////
 //listener de #salario //
 /////////////////////////
-$(document).on('change','#idE,#cDiasD', function(event) {
+$(document).on('change','#idE,#cDiasD,#tInc', function(event) {
 	
 	// json con los datos que quiero enviar
 	var data = {
 		'nDias': $('#cDiasD').val(),
-		'idE': $('#idE').val()
+		'idE': $('#idE').val(),
+		'tI': $('#tInc').val()
 		};
 
 	//ajax

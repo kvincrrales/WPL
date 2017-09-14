@@ -11,6 +11,7 @@ use WP\Empleado;
 
 use DB;
 use Excel;
+use PDF;
 
 class VacacionesController extends Controller
 {
@@ -137,9 +138,19 @@ class VacacionesController extends Controller
 
     $response['total'] = 0;
 
-    $response['caja'] = $data['nDias'] *  $emp_id->salarioD *0.925 - $emp_id->salarioD;
+
+
+    if($data['tV']=="Disfrutadas"){
+        $response['caja'] = round($data['nDias'] *  $emp_id->salarioD * 0.0934);
     
-    $response['total'] = $emp_id->salarioD * $data['nDias'] - $response['caja'];
+        $response['total'] = round($data['nDias'] *  $emp_id->salarioD - $response['caja']);
+    } else {
+        $response['caja'] = 0;
+
+        $response['total'] = round($data['nDias'] *  $emp_id->salarioD);
+
+    }
+    
         
     return $response;
 
@@ -162,6 +173,15 @@ class VacacionesController extends Controller
         return view('vacaciones.disponibles',compact('vacD'));
 
         //return view('vacaciones/disponibles');
+    }
+
+    public function downloadPdf($id)
+    {
+
+        //$emp_id = \WP\Vale::find($id)->toArray();
+        $emp_id = DB::select('select * from vacacions where id=' . $id);
+        $pdf = PDF::loadview('invoice.invacaciones',['emp_id'=>$emp_id]);
+        return $pdf->download('accionPersonal.pdf');
     }
 
 }

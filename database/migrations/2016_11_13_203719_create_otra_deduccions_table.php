@@ -17,7 +17,7 @@ class CreateOtraDeduccionsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->text('nomb');
+  
             $table->text('moneda');
             $table->integer('montoO');
             $table->date('fSolicitud');

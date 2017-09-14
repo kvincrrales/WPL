@@ -10,13 +10,14 @@ var url = '/calculoVacacion';
 /////////////////////////
 //listener de #salario //
 /////////////////////////
-$(document).on('change', '#cDias,#caja,#idE', function(event) {
+$(document).on('change', '#cDias,#caja,#idE,#tVac', function(event) {
 	
 	// json con los datos que quiero enviar
 	var data = {
 		'nDias': $('#cDias').val(),
 		'nCaja': $('#caja').val(),
-		'idE': $('#idE').val()
+		'idE': $('#idE').val(),
+		'tV': $('#tVac').val()
 		};
 
 	//ajax

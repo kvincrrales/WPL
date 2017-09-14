@@ -11,6 +11,7 @@ use WP\Empleado;
 
 use DB;
 use Excel;
+use PDF;
 
 class ValesController extends Controller
 {
@@ -133,5 +134,14 @@ class ValesController extends Controller
         $return['total'] = $data['nMonto'] + $data['nMonto'] * $data['nInteres'] /100;
         
         return $return;
+    }
+
+    public function downloadPdf($id)
+    {
+
+        //$emp_id = \WP\Vale::find($id)->toArray();
+        $emp_id = DB::select('select * from vales where id=' . $id);
+        $pdf = PDF::loadview('vista',['emp_id'=>$emp_id]);
+        return $pdf->download('vale.pdf');
     }
 }

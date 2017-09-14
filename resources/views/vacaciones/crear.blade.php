@@ -24,7 +24,7 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Tipo de Vacaciones:')!!}
-               {!!Form::select('tVacaciones', ['Disfrutadas' => 'Disfrutadas', 'Pagadas' => 'Pagadas'],null, ['class' => 'form-control'])!!}
+               {!!Form::select('tVacaciones', ['Disfrutadas' => 'Disfrutadas', 'Pagadas' => 'Pagadas'],null, ['class' => 'form-control','id'=>'tVac'])!!}
             </div>
             </div>
             <br>

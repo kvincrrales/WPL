@@ -43,6 +43,7 @@ Route::resource('planillas','PlanillasController');
 
 
 //controller@método de los ajax
+Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
 
 Route::get('calculo','SalariosController@calcularSalarios');
 //Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
@@ -70,11 +71,22 @@ Route::get('downloadExcelPrestamos/{id}', 'PrestamosController@downloadExcel');
 
 Route::get('downloadExcelVales/{id}', 'ValesController@downloadExcel');
 
+Route::get('downloadPdfVales/{id}', 'ValesController@downloadPdf');
+
+Route::get('downloadPdfVacaciones/{id}', 'VacacionesController@downloadPdf');
+
+Route::get('downloadPdfListaEmpleados', 'EmpleadosController@downloadPdf');
+
 //Route::get('downloadExcel/{id}', 'PlanillasController@downloadExcel');
 
 Route::get('caja','FrontController@caja');
 
 Route::get('calculoCaja','CajasController@calcularCaja');
+
+Route::get('pdf',function(){
+	$pdf = PDF::loadview('vista');
+	return $pdf->download('archivo.pdf');
+});
 
 
 

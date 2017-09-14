@@ -10,6 +10,7 @@ use WP\Puesto;
 use Session;
 use Redirect;
 use DB;
+use PDF;
 
 class EmpleadosController extends Controller
 {
@@ -114,5 +115,14 @@ class EmpleadosController extends Controller
         \WP\Empleado::destroy($id);
         Session::flash('message','Empleado Eliminado Correctamente');
         return Redirect::to('/empleados');
+    }
+
+    public function downloadPdf()
+    {
+
+        $emp_id = \WP\Empleado::all();
+        //$emp_id = DB::select('select * from vacacions where id=' . $id);
+        $pdf = PDF::loadview('invoice.listaEmpleados',['emp_id'=>$emp_id]);
+        return $pdf->download('listaEmpleados.pdf');
     }
 }

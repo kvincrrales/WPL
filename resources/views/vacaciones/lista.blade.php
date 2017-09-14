@@ -24,7 +24,8 @@
                   <th>C.C.S.S</th>
                   <th>Total</th>
                   <th>Accion</th>
-                   <th>Exportar Excel</th>
+                  <th>Descargar PDF</th>
+                  <th>Descargar Excel</th>
                 </tr>
             </thead>
             @foreach($vac as $vacacion)
@@ -39,6 +40,7 @@
                       <td>{{$vacacion -> caja}}</td>
                       <td>{{$vacacion -> total}}</td>
                       <td><button type="button" class="btn btn-sucess">{!!link_to_route('vacaciones.edit', $title = 'Editar', $parameters = $vacacion->id)!!}</button></td>
+                      <td><a href="{{ URL::to('downloadPdfVacaciones',$parameters = $vacacion->id) }}"><button class="btn btn-danger">PDF</button></a></td>
                       <td><a href="{{ URL::to('downloadExcel',$parameters = $vacacion->id) }}"><button class="btn btn-success">Descargar</button></a></td>
                       </tr>
               </tbody>

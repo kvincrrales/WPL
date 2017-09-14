@@ -24,7 +24,7 @@
             </div>
             <div class="form-group col-sm-6">
                      {!!Form::label('Tipo de Incapacidad: ')!!}
-                      {!!Form::select('tipo', ['C.C.S.S' => 'C.C.S.S', 'I.N.S' => 'I.N.S'],null, ['class' => 'form-control'])!!}
+                      {!!Form::select('tipo', ['C.C.S.S' => 'C.C.S.S', 'I.N.S' => 'I.N.S'],null, ['class' => 'form-control','id'=>'tInc'])!!}
             </div>
             </div>
             <div class="row">

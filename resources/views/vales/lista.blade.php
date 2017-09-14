@@ -23,7 +23,8 @@
                   <th>Fecha Solicitud</th>
                   <th>Notas</th>
                   <th>Accion</th>
-                  <th>Descargar</th>
+                  <th>Descargar PDF</th>
+                  <th>Descargar Excel</th>
                 </tr>
             </thead>
             @foreach($val as $vale) 
@@ -37,7 +38,8 @@
                       <td>{{$vale -> fSolicitud}}</td>
                       <td>{{$vale -> notas}}</td>
                       <td><button type="button" class="btn btn-sucess">{!!link_to_route('vales.edit', $title = 'Editar', $parameters = $vale->id)!!}</button></td>
-                      <td><a href="{{ URL::to('downloadExcelVales',$parameters = $vale->id) }}"><button class="btn btn-success">Descargar</button></a></td>
+                      <td><a href="{{ URL::to('downloadPdfVales',$parameters = $vale->id) }}"><button class="btn btn-danger">PDF</button></a></td>
+                      <td><a href="{{ URL::to('downloadExcelVales',$parameters = $vale->id) }}"><button class="btn btn-success">XLS</button></a></td>
                       </tr>
               </tbody>
             @endforeach
