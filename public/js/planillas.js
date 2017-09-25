@@ -29,10 +29,9 @@ $(document).on('change', '#horasNormal', function(event) {
 		dataType: 'json',
 
 		success: function (data) {
-
-			$('#total'+id).text(data.total);
-			$('#caja'+id).text(data.caja);
 			$('#neto'+id).text(data.neto);
+			$('#totales'+id).text(data.totales);
+
 
 			console.log(data);
 
@@ -70,52 +69,12 @@ $(document).on('change', '#horasExtra', function(event) {
 
 		success: function (data) {
 
-			$('#total'+id).text(data.total);
-			$('#caja'+id).text(data.caja);
 			$('#neto'+id).text(data.neto);
-
+			$('#totales'+id).text(data.totales);
 
 			console.log(data);
 
 		},
-		error: function (err) {
-
-			console.log('error al ejecutar ajax',err);
-
-		}
-
-	});
-
-});
-
-$(document).on('change', '#inicio,#final,#idx,#nombrex,#totalx', function(event) {
-	
-	// json con los datos que quiero enviar
-	var data = {
-		'nInicio': $('#inicio').val(),
-		'nFinal': $('#final').val(),
-		'ids': $('#idx').val(),
-		'nombres': $('#nombrex').val(),
-		'totaless': $('#totalx').val()
-		};
-
-	//ajax
-	$.ajax({
-
-		type:'GET',
-		headers: {
-    	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  },
-		url:url,
-		data: data,
-		dataType: 'json',
-
-		success: function (data) {
-		
-		console.log(data);
-
-		},
-		
 		error: function (err) {
 
 			console.log('error al ejecutar ajax',err);

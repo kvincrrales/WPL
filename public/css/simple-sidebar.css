@@ -5,6 +5,9 @@
  */
 
 /* Toggle Styles */
+.foo {
+    width: 100px;
+}
 
 #wrapper {
     padding-left: 0;

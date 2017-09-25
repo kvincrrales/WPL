@@ -13,41 +13,62 @@ class PlanillasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $data)
     {
-        $users = DB::table('empleados')
-            ->join('salarios', 'salarios.emp_id', '=', 'empleados.id')
-            ->join('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
-            ->leftJoin('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
-            ->leftJoin('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
-            ->leftJoin('vales' ,'vales.emp_id', '=', 'empleados.id' )
-            ->leftJoin('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
+     $consulta = DB::table('empleados')
+     ->leftJoin('salarios', 'salarios.emp_id', '=', 'empleados.id')
+     ->leftJoin('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
+     ->leftJoin('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
+     ->leftJoin('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
+     ->leftJoin('vales' ,'vales.emp_id', '=', 'empleados.id' )
+     ->leftJoin('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
+     ->select(
+        'empleados.id',
+        'empleados.numId', 
+        'empleados.nomb', 
+        'empleados.cBanc',
+        'salarios.salarioD', 
+        'salarios.salarioS',
+        'salarios.salarioHE',
+        'salarios.salarioH',    
+        'ahorros.montoS',
+        'vacacions.diasD',
+        'vacacions.total as totalVacas',
+        'vales.total as totalVales',
+        'prestamos.montoP',
+        'otra_deduccions.montoO')
+     ->get();
+     $vacaciones = DB::table('vacacions')->sum('total');
+     $salarios = DB::table('salarios')->sum('salarioS');
+     $ahorros = DB::table('ahorros')->sum('montoS');
+     $vales = DB::table('vales')->sum('total');
+     $prestamos = DB::table('prestamos')->sum('montoP');
+     $deducciones = DB::table('otra_deduccions')->sum('montoO');    
 
-            ->select(
-                'empleados.id', 
-                'empleados.nomb', 
-                'empleados.cBanc', 
-                'salarios.salarioM',
-                'salarios.salarioHE',
-                'salarios.salarioH',
-                'ahorros.montoS',
-                'vacacions.diasD',
-                'vales.total',
-                'prestamos.montoP',
-                'otra_deduccions.montoO')
-            ->get();
+      $sumCaja = 0;
+       $sumNeto = 0;
+        $sumTotal = 0;
 
-         $salarios = DB::table('salarios')->sum('salarioM');
-         $ahorros = DB::table('ahorros')->sum('montoS');
-         $vales = DB::table('vales')->sum('total');
-         $prestamos = DB::table('prestamos')->sum('montoP');
-         $deducciones = DB::table('otra_deduccions')->sum('montoO');
-        // sumar todos los datos 
-        foreach ($users as $key => $u) {
-            $u->total = $u->salarioM-3000;
-        }
-        return view('planillas',compact('users','salarios','ahorros','vales','prestamos','deducciones'));
+     foreach ($consulta as $key => $u) {
+
+        $u->caja = round($u->salarioS * 0.0934);
+
+         if(isset($u->caja))
+        $sumCaja += $u->caja;
+
+        $u->neto = round($u->salarioS + $u->salarioD * $u->diasD - $u->totalVales - $u->montoP - $u->montoO - $u->caja);
+
+          if(isset($u->neto))
+        $sumNeto += $u->neto;
+
+        $u->totales = round($u->neto - $u->montoS);
+
+          if(isset($u->totales))
+        $sumTotal += $u->totales;
     }
+
+    return view('planillas',compact('consulta','salarios','vacaciones','ahorros','vales','prestamos','deducciones','sumCaja','sumNeto','sumTotal'));
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -108,36 +129,43 @@ class PlanillasController extends Controller
     {
         //
     }
-
-    public function prueba(Request $data){
-
-        $tracks = $data;
-
-        foreach ($tracks as $track){ 
-
-        Playlist::create(array ($track));  //casting object to array
-
-        }
-    }
     public function reCalcularSalario(Request $data){
         $return = array();
-            $detalle = DB::table('salarios')
-                            ->select('salarioQ','salarioH','salarioHE','salarioS')
-                            ->where('emp_id',$data['id'])
-                            ->get();
+
+        $detalle = DB::table('salarios')
+        ->select('salarioS','salarioH','salarioHE')
+        ->where('emp_id',$data['id'])
+        ->get();
             // resultado a array
-            $detalle = $detalle[0];
-            $return['total'] = 0;
-            $return['horasNormal'] = $data['nHorasN'] * $detalle->salarioH;
-            $return['horasExtra'] = $data['nHorasE'] * $detalle->salarioHE;
-
-            $return['caja'] = round($detalle->salarioS * 0.0934);
-
-            $return['neto'] = round($detalle->salarioH * 48 / 9.34);
+        $detalle = $detalle[0];
+        $return['totales'] = 0;
+        $return['horasNormal'] = $data['nHorasN'] * $detalle->salarioH;
+        $return['horasExtra'] = $data['nHorasE'] * $detalle->salarioHE;
 
             //sumar todo
-            $return['total'] += $return['horasNormal'] + $return['horasExtra'];
+        $return['totales'] += $return['horasNormal'] + $return['horasExtra'];
+
 
         return $return;
+    }
+
+    public function fecha(Request $data){
+       // $return['inicioG'] = $data['nInicio'];
+       // $return['finalG'] = $data['nFinal'];
+        $valores = array();
+
+        $return['fechaI'] = $data['nInicio'];
+        $return['fechaF'] = $data['nFinal'];
+        //  $x = array();
+        $valores['caja'] = round($consulta->salarioS * 0.0934);
+
+        $valores['neto'] = round($consulta->salarioS + $valores['enVacaciones'] * $consulta->salarioD  = $consulta->diasD  - $valores['vales'] - $valores['prestamos'] - $valores['deducciones'] - $valores['caja'] );
+
+
+        $valores['total'] = round($consulta->salarioS - $valores['montoAhorro'] - $valores['vales'] - $valores['prestamos'] - $valores['deducciones'] - $valores['caja']);
+
+
+        return $valores;
+
     }
 }

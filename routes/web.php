@@ -43,6 +43,9 @@ Route::resource('planillas','PlanillasController');
 
 
 //controller@método de los ajax
+
+Route::get('fecha','PlanillasController@fecha');
+
 Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
 
 Route::get('calculo','SalariosController@calcularSalarios');

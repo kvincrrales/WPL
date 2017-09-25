@@ -17,7 +17,6 @@
             <div class="hidden">
             {!!Form::text('nomb',null,['class'=>'hidden','id' => 'text_content'])!!}
             </div>
-            </div>
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">

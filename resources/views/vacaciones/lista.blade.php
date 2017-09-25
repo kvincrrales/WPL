@@ -47,8 +47,5 @@
             @endforeach
             </table>
 </div>
-
-  {!!$vac->render()!!}
-
-  
-         @stop
+{!!$vac->render()!!}
+@stop

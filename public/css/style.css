@@ -164,3 +164,6 @@ hr{height:1px;background-color:#00ADEE;margin-top:20px;margin-bottom:20px;width:
 .camposTexto{
     resize:none;
 }
+.foo {
+    width: 60px;
+}
