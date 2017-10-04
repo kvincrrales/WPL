@@ -43,15 +43,9 @@ Route::resource('planillas','PlanillasController');
 
 
 //controller@método de los ajax
-
-Route::get('fecha','PlanillasController@fecha');
-
-Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
+Route::post('/insert',array('as'=>'insert','uses'=>'PlanillasController@insert'));
 
 Route::get('calculo','SalariosController@calcularSalarios');
-//Route::get('calculoPlanilla','PlanillasController@reCalcularSalario');
-
-Route::get('calculoPlanillas','PlanillasController@calcularPlanilla');
 
 Route::get('calculoVale','ValesController@calcularVale');
 
@@ -61,7 +55,6 @@ Route::get('calculoVacacion','VacacionesController@calcularVacacion');
 
 Route::get('calculoIncapacidad','IncapacidadesController@calcularIncapacidad');
 
-//Route::get('vacaciones', 'VacacionesController@importExport');
 Route::get('downloadExcel/{id}', 'VacacionesController@downloadExcel');
 
 Route::get('downloadExcelAhorros/{id}', 'AhorrosController@downloadExcel');
@@ -79,8 +72,6 @@ Route::get('downloadPdfVales/{id}', 'ValesController@downloadPdf');
 Route::get('downloadPdfVacaciones/{id}', 'VacacionesController@downloadPdf');
 
 Route::get('downloadPdfListaEmpleados', 'EmpleadosController@downloadPdf');
-
-//Route::get('downloadExcel/{id}', 'PlanillasController@downloadExcel');
 
 Route::get('caja','FrontController@caja');
 
