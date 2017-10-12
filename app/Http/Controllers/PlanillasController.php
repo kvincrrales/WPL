@@ -9,6 +9,7 @@ use WP\Empleado;
 use WP\Salario;
 use WP\Planilla;
 use DB;
+use PDF;
 
 class PlanillasController extends Controller
 {
@@ -19,49 +20,59 @@ class PlanillasController extends Controller
      */
     public function index(Request $data)
     {
-       $consulta = DB::table('empleados')
-       ->leftJoin('salarios', 'salarios.emp_id', '=', 'empleados.id')
-       ->leftJoin('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
-       ->leftJoin('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
-       ->leftJoin('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
-       ->leftJoin('vales' ,'vales.emp_id', '=', 'empleados.id' )
-       ->leftJoin('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
-       ->select(
+     $consulta = DB::table('empleados')
+     ->leftJoin('salarios', 'salarios.emp_id', '=', 'empleados.id')
+     ->leftJoin('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
+     ->leftJoin('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
+     ->leftJoin('prestamos' ,'prestamos.emp_id', '=', 'empleados.id' )
+     ->leftJoin('vales' ,'vales.emp_id', '=', 'empleados.id' )
+     ->leftJoin('otra_deduccions' ,'otra_deduccions.emp_id', '=', 'empleados.id' )
+     ->select(
         'empleados.id',
         'empleados.numId', 
         'empleados.nomb', 
+        'empleados.ape1',
         'empleados.cBanc',
-        'salarios.salarioD', 
         'salarios.salarioS',
-        'salarios.salarioHE',
-        'salarios.salarioH',    
+        'salarios.salarioH',
+        'salarios.salarioHE',   
         'ahorros.montoS',
-        'vacacions.diasD',
         'vacacions.total as totalVacas',
         'vales.total as totalVales',
         'prestamos.montoP',
         'otra_deduccions.montoO')
-       ->get();
+     ->get();
 
-       $vacaciones = DB::table('vacacions')->sum('total');
-       $salarios = DB::table('salarios')->sum('salarioS');
-       $ahorros = DB::table('ahorros')->sum('montoS');
-       $vales = DB::table('vales')->sum('total');
-       $prestamos = DB::table('prestamos')->sum('montoP');
-       $deducciones = DB::table('otra_deduccions')->sum('montoO');    
+     $vacacionesT = DB::table('vacacions')->sum('total');
+     $salarios = DB::table('salarios')->sum('salarioS');
+     $ahorros = DB::table('ahorros')->sum('montoS');
+     $vales = DB::table('vales')->sum('total');
+     $prestamos = DB::table('prestamos')->sum('montoP');
+     $deducciones = DB::table('otra_deduccions')->sum('montoO');    
 
-       $sumCaja = 0;
-       $sumNeto = 0;
-       $sumTotal = 0;
+     $sumH = 0;
+     $sumCaja = 0;
+     $sumNeto = 0;
+     $sumTotal = 0;
 
-       foreach ($consulta as $key => $u) {
+     foreach ($consulta as $key => $u) {
+
+        $u->horasx = $u->salarioH * 48;
+
+        if(isset($u->horasx))
+            $sumH += $u->horasx;
 
         $u->caja = round($u->salarioS * 0.0934);
 
         if(isset($u->caja))
             $sumCaja += $u->caja;
 
-        $u->neto = round($u->salarioS + $u->salarioD * $u->diasD - $u->totalVales - $u->montoP - $u->montoO - $u->caja);
+        $u->caja = round($u->salarioS * 0.0934);
+
+        if(isset($u->caja))
+            $sumCaja += $u->caja;
+
+        $u->neto = round($u->salarioS + $u->totalVacas - $u->totalVales - $u->montoP - $u->montoO - $u->caja);
 
         if(isset($u->neto))
             $sumNeto += $u->neto;
@@ -72,7 +83,13 @@ class PlanillasController extends Controller
             $sumTotal += $u->totales;
     }
 
-    return view('planillas',compact('consulta','salarios','vacaciones','ahorros','vales','prestamos','deducciones','sumCaja','sumNeto','sumTotal'));
+    return view('planillas',compact('consulta','salarios','vacacionesT','ahorros','vales','prestamos','deducciones','sumH','sumCaja','sumNeto','sumTotal'));
+}
+
+public function lista()
+{
+    $pla = \WP\Planilla::paginate(18);
+    return view('planillas.lista',compact('pla'));
 }
     /**
      * Show the form for creating a new resource.
@@ -136,17 +153,22 @@ class PlanillasController extends Controller
     }
 
     public function insert(Request $request){
+        
+        $inicio = implode($request->fInicio);
+        $finals = implode($request->fFinal);
 
         foreach ($request->id as $key => $v){
 
             $data = array(
+                'emp_fSta'=>$inicio, 
+                'emp_fEnd'=>$finals, 
                 'emp_id'=>$request->id[$key], 
                 'emp_ced'=>$request->cedula [$key], 
                 'emp_nomb'=>$request->nombre [$key], 
                 'emp_banc'=>$request->banco [$key], 
                 'emp_sal'=>$request->salario [$key], 
-                'emp_hN'=>$request->horasNormal [$key], 
-                'emp_hE'=>$request->horasExtra [$key], 
+                'emp_hN'=>$request->horasNormal2 [$key], 
+                'emp_hE'=>$request->horasExtra2 [$key], 
                 'emp_vac'=>$request->vacaciones [$key], 
                 'emp_caj'=>$request->caja [$key], 
                 'emp_pre'=>$request->prestamos [$key], 
@@ -160,6 +182,15 @@ class PlanillasController extends Controller
         Session::flash('message','Planilla Ingresada Correctamente');
         
         return back();
+    }
+
+    public function downloadPdf()
+    {
+
+        $emp_id = \WP\Planilla::all();
+        //$emp_id = DB::select('select * from vacacions where id=' . $id);
+        $pdf = PDF::loadview('planillas',['emp_id'=>$emp_id]);
+        return $pdf->download('listaEmpleados.pdf');
     }
 
 

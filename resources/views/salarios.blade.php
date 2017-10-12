@@ -10,7 +10,6 @@
                 <h3>Registrar Salario</h3>
                 <p>Modulo encargado de ingresar empleados al sistema de planillas!</p>
                 <p>
-                   <!-- <a href="Registrar_Empleado.html" class="btn btn-primary center-block" role="button" data-toggle="modal" data-target="#factGasolina">Ingresar</a>-->
                     <a href="{!!URL::to('/salarios/create')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>

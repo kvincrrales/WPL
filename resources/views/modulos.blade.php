@@ -83,7 +83,7 @@
                 <h3>Reportes a la Caja</h3>
                 <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
                 <p>
-                    <a href="{!!URL::to('/caja')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="{!!URL::to('/cajaCrear')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             

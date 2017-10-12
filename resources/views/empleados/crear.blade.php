@@ -112,7 +112,7 @@
                      {!!Form::text('vacaciones_disponibles',null,['class'=>'hidden','value'=>'0'])!!}
                   <div class="form-group col-sm-6">
                      {!!Form::label('Foto del Empleado: ')!!}
-                     {!!Form::file('fotoEmpleado',null,['class'=>'form-control'])!!}
+                     <input name="fotoEmpleado" type="file" class="form-control">
                   </div>
                </div>
                <br>

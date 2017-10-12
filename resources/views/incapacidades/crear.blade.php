@@ -30,7 +30,7 @@
             <div class="row">
             <div class="form-group col-sm-6">
                {!!Form::label('Cantidad de Días:')!!}
-               {!!Form::number('cDias',null,['class'=>'form-control','id'=>'cDiasD'])!!}
+               {!!Form::number('cDias',null,['class'=>'form-control','id'=>'cDiasD','max'=>'3'])!!}
             </div>
             <div class="form-group col-sm-6">
                {!!Form::label('Total:')!!}

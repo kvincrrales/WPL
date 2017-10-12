@@ -39,6 +39,8 @@ Route::resource('otrasDeducciones','OtrasDeduccionesController');
 Route::resource('prestamos','PrestamosController');
 Route::resource('vales','ValesController');
 Route::resource('planillas','PlanillasController');
+Route::resource('planillasLista','PlanillasController@lista');
+Route::resource('cajaCrear','CcSsController@crear');
 
 
 
@@ -76,6 +78,10 @@ Route::get('downloadPdfListaEmpleados', 'EmpleadosController@downloadPdf');
 Route::get('caja','FrontController@caja');
 
 Route::get('calculoCaja','CajasController@calcularCaja');
+
+Route::get('downloadPdfPlanilla', 'PlanillasController@downloadPdf');
+
+Route::get('calculoCajaCCSS','CcSsController@crears');
 
 Route::get('pdf',function(){
 	$pdf = PDF::loadview('vista');
