@@ -108,7 +108,7 @@
                 <h3>Alquiler Motos</h3>
                 <p>Modulo encargado de mostrar la lista de empleados actuales!</p>
                 <p>
-                    <a href="{!!URL::to('/motos')!!}" class="btn btn-primary center-block" role="button">Ingresar</a>
+                    <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">

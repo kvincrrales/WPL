@@ -15,6 +15,8 @@
       {!!Html::style('css/round-about.css')!!}
       <!-- Bootstrap Core CSS -->
       {!!Html::style('css/style.css')!!}
+
+       {!!Html::style('css/jquery-ui.css')!!}
    </head>
    <body>
       <!-- Navigation -->

@@ -27,7 +27,7 @@ class EmpleadosController extends Controller
             $emp=DB::table('empleados')->where('nomb','LIKE','%'.$query.'%')
             ->where ('id','>','0')
             ->orderBy('id','desc')
-            ->paginate(2);
+            ->paginate(20);
 
             return view('empleados.lista',["emp"=>$emp,"searchText"=>$query]);
         }

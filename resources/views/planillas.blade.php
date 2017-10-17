@@ -109,8 +109,7 @@
 </div>
 <div class=row>
   <div class="col-lg-12">
-    <a href="{{ URL::to('downloadPdfPlanilla')}}"><button class="btn btn-danger">PDF</button></a>
-    {!!Form::submit('Save',array('class'=>'btn btn-primary'))!!}
+    {!!Form::submit('Guardar',array('class'=>'btn btn-primary'))!!}
   </div>
 </div>
 <br>

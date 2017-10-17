@@ -16,7 +16,7 @@ $(document).on('change','#inicio,#final', function(event) {
 	var data = {
 		'nInicio': $('#inicio').val(),
 		'nFinal': $('#final').val()
-		};
+	};
 
 	//ajax
 	$.ajax({
@@ -29,11 +29,29 @@ $(document).on('change','#inicio,#final', function(event) {
 
 		success: function (data) {
 
+			//console.log(data);
 
-		$('#totali').val(data.totali);
-		$('#totalu').val(data.totalu);
+			$.each(data, function(key,val){
+				//console.log(key);
+             	//console.log(val); //depending on your data, you might call val.url or whatever you may have
 
-		console.log(data);
+             	var  tr=
+             	'<tr>'+
+             	'<td><input type="text" name="id[]" value="'+val.emp_id+'" class="inputPlanillas id" readonly></td>'+
+
+             	'<td><input type="text" name="cedula[]" value="'+val.emp_ced+'" class="inputPlanillas cedula" readonly></td>'+
+
+             	'<td><input type="text" name="nombre[]" value="'+val.emp_nomb+'" class="inputPlanillas nombre" readonly></span></td>'+
+
+             	'<td><input type="text" name="salario[]" value="'+val.emp_sal+'" class="inputPlanillas salario" readonly></td>'+
+
+             	'<td><input type="text" name="total[]" value="'+val.total+'" class="inputPlanillas total" readonly></td>'+
+
+             	'<td><input type="text" name="comentario[]" value="" class="inputPlanillas comentario" readonly></td>'+
+             	'</tr>';
+
+             	$('tbody').append(tr);
+             });
 
 		},
 		error: function (err) {

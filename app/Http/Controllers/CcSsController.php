@@ -10,54 +10,10 @@ class CcSsController extends Controller
 {
 	public function index()
 	{
-        //$ccss = \WP\Caja::paginate(18);
-        //return view('ccss.lista',compact('ccss'));
+		return view('ccss.crear');
 	}
 
 	public function crear(Request $data)
-	{
-
-		$return['fechaI'] = $data['nInicio'];
-		$return['fechaF'] = $data['nFinal'];
-
-		$consulta = DB::table('planillas')
-		//->whereBetween('planillas.emp_fSta', [$return['fechaI'], $return['fechaF'] ])
-		->select(
-			'planillas.id',
-			'planillas.emp_id',
-			'planillas.emp_ced',
-			'planillas.emp_nomb',
-			'planillas.emp_sal',
-			'planillas.emp_hE',
-			'planillas.emp_vac',
-			'planillas.emp_he',
-			DB::raw('sum(planillas.emp_sal + planillas.emp_hE + planillas.emp_vac) as total'))
-		->groupBy('emp_id')
-		->get();
-
-		$sumCaja = 0;
-		$sumSal = 0;
-
-
-		foreach ($consulta as $key => $u) {
-
-			$u->emp_sal = round($u->emp_sal * 4.33);
-			if(isset($u->emp_sal))
-				$sumCaja += $u->emp_sal;
-
-			if(isset($u->total))
-				$sumSal += $u->total;
-			
-
-		}
-		//Sumar filas GG, solo falta pasarle las fechas 
-		//$suma = Planilla::select(DB::raw('sum(emp_sal + emp_hE + emp_vac) as total'))
-		//->groupBy('emp_id')
-		//->get();
-		return view('ccss.crear',compact('consulta','sumCaja','sumSal'));
-	}
-
-	public function crears(Request $data)
 	{
 		$return['fechaI'] = $data['nInicio'];
 		$return['fechaF'] = $data['nFinal'];
@@ -66,6 +22,7 @@ class CcSsController extends Controller
 		->whereBetween('planillas.emp_fSta', [$return['fechaI'], $return['fechaF'] ])
 		->select(
 			'planillas.emp_id',
+			'planillas.emp_ced',
 			'planillas.emp_nomb',
 			'planillas.emp_sal',
 			'planillas.emp_hE',

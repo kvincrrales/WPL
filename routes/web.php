@@ -40,7 +40,7 @@ Route::resource('prestamos','PrestamosController');
 Route::resource('vales','ValesController');
 Route::resource('planillas','PlanillasController');
 Route::resource('planillasLista','PlanillasController@lista');
-Route::resource('cajaCrear','CcSsController@crear');
+Route::resource('cajaCrear','CcSsController@index');
 
 
 
@@ -81,13 +81,15 @@ Route::get('calculoCaja','CajasController@calcularCaja');
 
 Route::get('downloadPdfPlanilla', 'PlanillasController@downloadPdf');
 
-Route::get('calculoCajaCCSS','CcSsController@crears');
+Route::get('calculoCajaCCSS','CcSsController@crear');
 
 Route::get('pdf',function(){
 	$pdf = PDF::loadview('vista');
 	return $pdf->download('archivo.pdf');
 });
 
+
+Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'IncapacidadesController@autocomplete'));
 
 
 

@@ -187,9 +187,9 @@ public function lista()
     public function downloadPdf()
     {
 
-        $emp_id = \WP\Planilla::all();
+        //$emp_id = \WP\Planilla::all();
         //$emp_id = DB::select('select * from vacacions where id=' . $id);
-        $pdf = PDF::loadview('planillas',['emp_id'=>$emp_id]);
+        $pdf = PDF::loadview('planillas');
         return $pdf->download('listaEmpleados.pdf');
     }
 

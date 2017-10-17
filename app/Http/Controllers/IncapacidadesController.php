@@ -11,6 +11,7 @@ use WP\Empleado;
 
 use DB;
 use Excel;
+use Input;
 
 class IncapacidadesController extends Controller
 {
@@ -162,9 +163,23 @@ public function calcularIncapacidad(Request $data){
         $response['total'] = $data['nDias'] * $emp_id->salarioD/2;
     } else {
        $response['total'] = 0 ;
-    }
-   
+   }
+
    return $response;
 
+}
+
+public function autocomplete(Request $request){
+
+    $term=$request->term;
+    $data = Empleado::where('nomb','LIKE','%'.$term.'%')
+    ->take(10)
+    ->get();
+
+    foreach($data as $key => $v){
+        $results[]=['id'=>$v->id,'value'=>$v->nomb];
     }
+    return response()->json($results);
+
+}
 }

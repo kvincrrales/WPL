@@ -7,6 +7,8 @@ var token = $("#token").val();
 ////////////////////////////////////////////////////////////////////////////////////
 var url = '/calculoIncapacidad';
 
+var urlx = '/autocomplete';
+
 /////////////////////////
 //listener de #salario //
 /////////////////////////
@@ -17,7 +19,7 @@ $(document).on('change','#idE,#cDiasD,#tInc', function(event) {
 		'nDias': $('#cDiasD').val(),
 		'idE': $('#idE').val(),
 		'tI': $('#tInc').val()
-		};
+	};
 
 	//ajax
 	$.ajax({
@@ -31,17 +33,27 @@ $(document).on('change','#idE,#cDiasD,#tInc', function(event) {
 		success: function (data) {
 
 
-		$('#totales').val(data.total);
+			$('#totales').val(data.total);
 
 		//console.log(data);
 
-		},
-		error: function (err) {
+	},
+	error: function (err) {
 
-			console.log('error al ejecutar ajax',err);
+		console.log('error al ejecutar ajax',err);
 
-		}
+	}
 
-	});
+});
 
+});
+
+$('#searchname').autocomplete({
+	source : urlx,
+	minlenght: 1,
+	autoFocus: true,
+	select:function(e , ui){
+		$('#id').val(ui.item.id);
+		$('#name').val(ui.item.name);
+	}
 });
