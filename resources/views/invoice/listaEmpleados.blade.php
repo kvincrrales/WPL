@@ -54,6 +54,7 @@
             <th>Apellidos</th>
             <th>Fecha de Ingreso</th>
             <th>Salario Mensual</th>
+            <th>Vacaciones por Año</th>
           </tr>
         </thead>
         <br>
@@ -64,7 +65,8 @@
             <td>{{$empleado -> nomb}}</td>
             <td>{{$empleado -> ape1}} {{$empleado -> ape2}}</td>
             <td>{{$empleado -> fIngreso}}</td>
-            <td>350,000</td>
+            <td>{{$empleado -> salario}}</td>
+            <td>{{$empleado -> totalVacaciones}}</td>
           </tr>
           @endforeach
         </tbody>

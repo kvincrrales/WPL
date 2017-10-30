@@ -33,7 +33,8 @@ class CreateEmpleadosTable extends Migration
             $table->string('cBanc')->unique();
             $table->string('cAhorro')->unique();
             $table->string('tipoPlanilla');
-            $table->string('vacaciones_disponibles');
+            $table->string('salario');
+            $table->string('totalVacaciones');
             $table->string('fotoEmpleado');
             $table->timestamps();
             $table->rememberToken();

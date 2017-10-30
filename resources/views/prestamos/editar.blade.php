@@ -49,6 +49,13 @@
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
+               {!!Form::label('Monto Total del Prestamo:')!!}
+               {!!Form::number('montoTotal',null,['class'=>'form-control','id' => 'montoTotal','readonly'])!!}
+            </div>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Plazo Semanal:')!!}
                {!!Form::number('plazoS',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje','id' => 'plazoSemanal'])!!}
             </div>
@@ -83,7 +90,7 @@
             </div>
             <div class="row">
             <div class="form-group col-sm-12">
-            {!!Form::open(['route'=>['otrasDeducciones.destroy',$pres->id],'method'=>'DELETE'])!!}
+            {!!Form::open(['route'=>['prestamos.destroy',$pres->id],'method'=>'DELETE'])!!}
             {!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
             {!!Form::close()!!}
             </div>

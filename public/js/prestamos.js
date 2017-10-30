@@ -33,6 +33,7 @@ $(document).on('change', '#monto,#intereses,#plazoSemanal,#totales', function(ev
 
 
 		$('#totales').val(data.total);
+		$('#montoTotal').val(data.montoTotal);
 
 			console.log(data);
 

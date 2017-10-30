@@ -20,6 +20,7 @@ class CreatePrestamosTable extends Migration
             $table->text('moneda');
             $table->integer('montoP');
             $table->integer('interes');
+            $table->integer('montoTotal');
             $table->integer('plazoS');
             $table->integer('total');
             $table->date('fSolicitud');

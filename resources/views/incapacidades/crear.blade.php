@@ -12,16 +12,11 @@
    <div class="row">
       <div class="form-group col-sm-12">
          {!!Form::label('Nombre del Empleado:')!!}
-         {!!Form::select('emp_id',$emp,null,['class'=>'form-control','onchange'=>"document.getElementById('text_content').value=this.options[this.selectedIndex].text",'id'=>'idE'])!!}
+         {!!Form::text('nomb',null,['class'=>'form-control','id'=>'emp'])!!}
       </div>
       <div class="hidden">
-         {!!Form::text('nomb',null,['class'=>'hidden','id' => 'text_content'])!!}
+         {!!Form::text('emp_id',null,['class'=>'hidden','id' => 'id'])!!}
       </div>
-   </div>
-   <div class="row">
-   <div class="form-group col-sm-12">
-      <input type="text" name="searchname" class="form-control" id="searchname">
-   </div>
    </div>
    <div class="row">
       <div class="form-group col-sm-6">

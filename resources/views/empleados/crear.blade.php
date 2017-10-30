@@ -69,8 +69,8 @@
 </div>
 <div class="row">
    <div class="form-group col-sm-12">
-      {!!Form::label('Direccion: ')!!}
-      {!!Form::text('dir',null,['class'=>'form-control','placeholder'=>'Digite el domicilio'])!!}
+         {!!Form::label('Direccion:')!!}
+         {!!Form::text('dir',null,['class'=>'form-control','placeholder'=>'Seleccione el domicilio','id'=>'dir'])!!}
    </div>
 </div>
 <div class="row">
@@ -105,6 +105,16 @@
 </div>
 <div class="row">
    <div class="form-group col-sm-6">
+      {!!Form::label('Salario: ')!!}
+       {!!Form::text('salario',null,['class'=>'form-control','placeholder'=>'Digite el Salario'])!!}
+   </div>
+   <div class="form-group col-sm-6">
+      {!!Form::label('Vacaciones al Año: ')!!}
+       {!!Form::text('totalVacaciones',null,['class'=>'form-control','placeholder'=>'Digite la cantidad de vacaciones anuales'])!!}
+   </div>
+</div>
+<div class="row">
+   <div class="form-group col-sm-6">
       {!!Form::label('Tipo de Planilla: ')!!}
       {!!Form::select('tipoPlanilla', ['Semanal' => 'Semanal', 'Quincenal' => 'Quincenal', 'Mensual' => 'Mensual'],null, ['class' => 'form-control'])!!}
    </div>
@@ -122,6 +132,9 @@
 {!!Form::close()!!}
 <hr class="divisor">
 </div>
+{!!Html::script('js/jquery.js')!!}
+{!!Html::script('js/jqueryui.js')!!}
 
+{!!Html::script('js/autocomplete.js')!!}
 @stop
  

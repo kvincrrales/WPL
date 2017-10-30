@@ -51,8 +51,8 @@
   </table>
   <a href="{{ URL::to('downloadPdfListaEmpleados')}}"><button class="btn btn-danger">PDF</button></a>
 </div>
-
-{!!$emp->render()!!}
-
+<div class="text-center">
+  {!!$emp->render()!!}
+</div>
 
 @stop

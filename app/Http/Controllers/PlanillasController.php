@@ -8,6 +8,9 @@ use Redirect;
 use WP\Empleado;
 use WP\Salario;
 use WP\Planilla;
+use WP\Vale;
+use WP\OtraDeduccion;
+use WP\Ahorro;
 use DB;
 use PDF;
 
@@ -18,9 +21,10 @@ class PlanillasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $data)
+    public function index()
     {
      $consulta = DB::table('empleados')
+     ->where ('estatus','=','Activo')
      ->leftJoin('salarios', 'salarios.emp_id', '=', 'empleados.id')
      ->leftJoin('ahorros' ,'ahorros.emp_id', '=', 'empleados.id' )
      ->leftJoin('vacacions' ,'vacacions.emp_id', '=', 'empleados.id' )
@@ -33,13 +37,14 @@ class PlanillasController extends Controller
         'empleados.nomb', 
         'empleados.ape1',
         'empleados.cBanc',
+        'empleados.salario',
         'salarios.salarioS',
         'salarios.salarioH',
         'salarios.salarioHE',   
         'ahorros.montoS',
         'vacacions.total as totalVacas',
         'vales.total as totalVales',
-        'prestamos.montoP',
+        'prestamos.total as totalPrestamos',
         'otra_deduccions.montoO')
      ->get();
 
@@ -47,7 +52,7 @@ class PlanillasController extends Controller
      $salarios = DB::table('salarios')->sum('salarioS');
      $ahorros = DB::table('ahorros')->sum('montoS');
      $vales = DB::table('vales')->sum('total');
-     $prestamos = DB::table('prestamos')->sum('montoP');
+     $prestamos = DB::table('prestamos')->sum('total');
      $deducciones = DB::table('otra_deduccions')->sum('montoO');    
 
      $sumH = 0;
@@ -72,7 +77,7 @@ class PlanillasController extends Controller
         if(isset($u->caja))
             $sumCaja += $u->caja;
 
-        $u->neto = round($u->salarioS + $u->totalVacas - $u->totalVales - $u->montoP - $u->montoO - $u->caja);
+        $u->neto = round($u->salarioS + $u->totalVacas - $u->totalVales - $u->totalPrestamos - $u->montoO - $u->caja);
 
         if(isset($u->neto))
             $sumNeto += $u->neto;
@@ -83,7 +88,7 @@ class PlanillasController extends Controller
             $sumTotal += $u->totales;
     }
 
-    return view('planillas',compact('consulta','salarios','vacacionesT','ahorros','vales','prestamos','deducciones','sumH','sumCaja','sumNeto','sumTotal'));
+return view('planillas',compact('consulta','salarios','vacacionesT','ahorros','vales','prestamos','deducciones','sumH','sumCaja','sumNeto','sumTotal'));
 }
 
 public function lista()
@@ -153,9 +158,10 @@ public function lista()
     }
 
     public function insert(Request $request){
+
+        $inicio = $request->fInicio;
+        $finals = $request->fFinal;
         
-        $inicio = implode($request->fInicio);
-        $finals = implode($request->fFinal);
 
         foreach ($request->id as $key => $v){
 
@@ -177,8 +183,13 @@ public function lista()
                 'emp_aho'=>$request->ahorros [$key], 
                 'emp_net'=>$request->neto [$key], 
                 'emp_tot'=>$request->totales [$key]);
+
             Planilla::insert($data); 
         }
+        Vale::truncate();
+        OtraDeduccion::truncate();
+        DB::update('update ahorros set montoA = montoA + montoS where emp_id = emp_id');
+
         Session::flash('message','Planilla Ingresada Correctamente');
         
         return back();
@@ -186,11 +197,11 @@ public function lista()
 
     public function downloadPdf()
     {
-
-        //$emp_id = \WP\Planilla::all();
-        //$emp_id = DB::select('select * from vacacions where id=' . $id);
-        $pdf = PDF::loadview('planillas');
-        return $pdf->download('listaEmpleados.pdf');
+        $date = date('Y-m-d');
+        $invoice = "2222";
+     //$view =  \View::make('invoice.planillas', compact('date', 'invoice'))->render();
+        $pdf = PDF::loadView('invoice.planillas', compact('date', 'invoice'));
+        return $pdf->download('pruebapdf.pdf');
     }
 
 

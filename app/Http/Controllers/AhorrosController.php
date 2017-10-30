@@ -26,7 +26,10 @@ class AhorrosController extends Controller
 
         $montoActual = DB::table('ahorros')->sum('montoA');
 
-        $aho = \WP\Ahorro::paginate(3);
+        $aho = \WP\Ahorro::paginate(7);
+        //$aho=DB::table('ahorros')
+        //->where ('estatus','=','Activo')
+        //->paginate(10);
         return view('ahorros.lista',compact('aho','montoSemanal','montoActual'));
     }
 

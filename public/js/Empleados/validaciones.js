@@ -117,6 +117,15 @@ $(document).ready(function () {
             cAhorro: {
                 required: false,
             },
+            salario: {
+                required: true,
+            },
+            totalVacaciones: {
+                required: true,
+            },
+            cAhorro: {
+                required: false,
+            },
             tipoPlanilla: {
                 required: true,
             },
@@ -161,6 +170,8 @@ $(document).ready(function () {
             fPago:"Seleccione una forma de pago",
             cBanc:"Digite la cuenta cliente del empleado",
             cAhorro:"Digite la cuenta cliente de ahorros del empleado",
+            salario:"Digite el salario mensual del empleado",
+            totalVacaciones:"Digite el total de vacaciones por año",
             fotoEmpleado:"Adjunte una foto del empleado"
         }
 

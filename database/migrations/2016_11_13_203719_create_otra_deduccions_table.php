@@ -13,21 +13,22 @@ class CreateOtraDeduccionsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('otra_deduccions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+          $table->increments('id');
+          $table->timestamps();
 
-  
-            $table->text('moneda');
-            $table->integer('montoO');
-            $table->date('fSolicitud');
-            $table->text('notas');
-            $table->string('nombE');
 
-            $table->integer('emp_id')->unsigned();
+          $table->text('moneda');
+          $table->integer('montoO');
+          $table->date('fSolicitud');
+          $table->text('notas');
+          $table->string('nombE');
 
-            $table->foreign('emp_id')->references('id')->on('empleados');
-        });
+          $table->integer('emp_id')->unsigned();
+
+          $table->foreign('emp_id')->references('id')->on('empleados');
+      });
     }
 
     /**

@@ -12,12 +12,12 @@ var urlx = '/autocomplete';
 /////////////////////////
 //listener de #salario //
 /////////////////////////
-$(document).on('change','#idE,#cDiasD,#tInc', function(event) {
+$(document).on('change','#id,#cDiasD,#tInc', function(event) {
 	
 	// json con los datos que quiero enviar
 	var data = {
 		'nDias': $('#cDiasD').val(),
-		'idE': $('#idE').val(),
+		'id': $('#id').val(),
 		'tI': $('#tInc').val()
 	};
 
@@ -48,12 +48,12 @@ $(document).on('change','#idE,#cDiasD,#tInc', function(event) {
 
 });
 
-$('#searchname').autocomplete({
+$('#emp').autocomplete({
 	source : urlx,
 	minlenght: 1,
 	autoFocus: true,
 	select:function(e , ui){
 		$('#id').val(ui.item.id);
-		$('#name').val(ui.item.name);
+		$('#nomb').val(ui.item.name);
 	}
 });

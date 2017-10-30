@@ -79,7 +79,7 @@ Route::get('caja','FrontController@caja');
 
 Route::get('calculoCaja','CajasController@calcularCaja');
 
-Route::get('downloadPdfPlanilla', 'PlanillasController@downloadPdf');
+Route::get('downloadPdfPlanillas', 'PlanillasController@downloadPdf');
 
 Route::get('calculoCajaCCSS','CcSsController@crear');
 
@@ -90,6 +90,10 @@ Route::get('pdf',function(){
 
 
 Route::get('/autocomplete',array('as'=>'autocomplete','uses'=>'IncapacidadesController@autocomplete'));
+
+Route::get('/autocompletePadron',array('as'=>'autocomplete','uses'=>'EmpleadosController@autocomplete'));
+
+
 
 
 

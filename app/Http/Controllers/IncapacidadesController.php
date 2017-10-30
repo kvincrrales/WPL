@@ -28,7 +28,7 @@ class IncapacidadesController extends Controller
             $incapacidades=DB::table('incapacidads')->where('nomb','LIKE','%'.$query.'%')
             ->where ('id','>','0')
             ->orderBy('id','desc')
-            ->paginate(2);
+            ->paginate(7);
             return view('incapacidades.lista',["incapacidades"=>$incapacidades,"searchText"=>$query]);
         }
     }
@@ -153,7 +153,7 @@ public function calcularIncapacidad(Request $data){
 
     $emp_id = DB::table('salarios')
     ->select('salarioD')
-    ->where('emp_id',$data['idE'])
+    ->where('emp_id',$data['id'])
     ->get();
 
     $emp_id = $emp_id[0];
@@ -177,7 +177,7 @@ public function autocomplete(Request $request){
     ->get();
 
     foreach($data as $key => $v){
-        $results[]=['id'=>$v->id,'value'=>$v->nomb];
+        $results[]=['id'=>$v->id,'value'=>$v->nomb.' '.$v->ape1.' '.$v->ape2.' '.$v->numId];
     }
     return response()->json($results);
 

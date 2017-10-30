@@ -23,9 +23,11 @@ class PrestamosController extends Controller
     {
         $sum_prestamo = DB::table('prestamos')->sum('montoP');
         $sum_total = DB::table('prestamos')->sum('total');
+        $sum_totalPrestamo = DB::table('prestamos')->sum('montoTotal');
 
-        $pre = \WP\Prestamo::paginate(3);
-        return view('prestamos.lista',compact('pre','sum_prestamo','sum_total'));
+
+        $pre = \WP\Prestamo::paginate(7);
+        return view('prestamos.lista',compact('pre','sum_prestamo','sum_total','sum_totalPrestamo'));
     }
 
     /**
@@ -131,9 +133,11 @@ class PrestamosController extends Controller
     public function calcularPrestamo(Request $data){
 
         $return['total'] = 0;
+        $return['montoTotal'] = 0;
 
         $return['total'] = $data['nMonto'] + $data['nMonto'] * $data['nPorcentaje'] /100;
         $return['total'] = $return['total'] / $data['nPlazo'];
+        $return['montoTotal'] =  $data['nMonto'] + $data['nMonto'] * $data['nPorcentaje'] /100;
 
         //$return['semanal'] = $return['total'] / $data['nPlazo'];
 

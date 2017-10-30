@@ -49,6 +49,13 @@
             <br>
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
+               {!!Form::label('Monto Total del Prestamo:')!!}
+               {!!Form::number('montoTotal',null,['class'=>'form-control','id' => 'montoTotal','readonly'])!!}
+            </div>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Plazo Semanal:')!!}
                {!!Form::number('plazoS',null,['class'=>'form-control','placeholder'=>'Digite el porcentaje','id' => 'plazoSemanal'])!!}
             </div>
@@ -57,7 +64,7 @@
             <div class="row">
             <div class="col-md-6 col-md-offset-3">
                {!!Form::label('Monto a Pagar por Semana:')!!}
-               {!!Form::number('total',null,['class'=>'form-control','placeholder'=>'Digite el total','id' => 'totales','readonly'])!!}
+               {!!Form::number('total',null,['class'=>'form-control','id' => 'totales','readonly'])!!}
             </div>
             </div>
             <br>

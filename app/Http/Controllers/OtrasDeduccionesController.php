@@ -22,8 +22,8 @@ class OtrasDeduccionesController extends Controller
     public function index()
     {
         $sum_total = DB::table('otra_deduccions')->sum('montoO');
-
-        $od = \WP\OtraDeduccion::paginate(3);
+         //$od = \WP\OtraDeduccion::onlyTrashed()->paginate(3);
+        $od = \WP\OtraDeduccion::paginate(7);
         return view('otrasDeducciones.lista',compact('od','sum_total'));
     }
 
@@ -101,7 +101,8 @@ class OtrasDeduccionesController extends Controller
      */
     public function destroy($id)
     {
-        \WP\OtraDeduccion::destroy($id);
+        $user = \WP\OtraDeduccion::find($id);
+        $user->delete();
         Session::flash('message','Deducción Eliminada Correctamente');
         return Redirect::to('/otrasDeducciones');
     }

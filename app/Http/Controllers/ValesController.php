@@ -25,7 +25,7 @@ class ValesController extends Controller
         $sum_val = DB::table('vales')->sum('total');
         $monto_val = DB::table('vales')->sum('montoV');
 
-        $val = \WP\Vale::paginate(3);
+        $val = \WP\Vale::paginate(7);
         return view('vales.lista',compact('val','sum_val','monto_val'));
     }
 

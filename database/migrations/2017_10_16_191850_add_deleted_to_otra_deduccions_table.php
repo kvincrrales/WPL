@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAguinaldosTable extends Migration
+class AddDeletedToOtraDeduccionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateAguinaldosTable extends Migration
      */
     public function up()
     {
-        Schema::create('aguinaldos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('otra_deduccions', function (Blueprint $table) {
+             $table->softDeletes();
         });
     }
 
@@ -26,6 +25,8 @@ class CreateAguinaldosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aguinaldos');
+        Schema::table('otra_deduccions', function (Blueprint $table) {
+            //
+        });
     }
 }

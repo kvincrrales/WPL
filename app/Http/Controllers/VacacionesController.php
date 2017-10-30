@@ -22,7 +22,7 @@ class VacacionesController extends Controller
      */
     public function index()
     {
-        $vac = \WP\Vacacion::paginate(3);
+        $vac = \WP\Vacacion::paginate(7);
         return view('vacaciones.lista',compact('vac'));
     }
 

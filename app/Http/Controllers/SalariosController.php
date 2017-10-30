@@ -19,7 +19,7 @@ class SalariosController extends Controller
      */
     public function index(Request $request)
     {
-        $sal = \WP\Salario::paginate(3);
+        $sal = \WP\Salario::paginate(7);
         return view('salarios.lista',compact('sal'));
     }
 

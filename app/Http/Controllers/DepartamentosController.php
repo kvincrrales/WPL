@@ -18,7 +18,7 @@ class DepartamentosController extends Controller
      */
     public function index()
     {
-        $dept = \WP\Departamento::paginate(3);
+        $dept = \WP\Departamento::paginate(10);
         return view('departamentos.lista',compact('dept'));
     }
 

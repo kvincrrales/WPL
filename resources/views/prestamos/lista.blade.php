@@ -9,58 +9,62 @@
 </div>
 @endif
 <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Lista de Prestamos Semanales</h2>
-            </div>
-            <table class="table table-striped" id="tblGrid">
-            <thead id="tblHead">
-                <tr>
-                  <th>Nombre</th>
-                  <th>Fecha Prestamo</th>
-                  <th>Moneda</th>
-                  <th>Monto Prestamo</th>
-                  <th>Interes</th>
-                  <th>Plazo Semanal</th>
-                  <th>Total</th>
-                  <th>Fecha Solicitud</th>
-                  <th>Notas</th>
-                  <th>Accion</th>
-                  <th>Descargar</th>
-                </tr>
-            </thead>
-              @foreach($pre as $prestamo)
-              <tbody>
-                      <tr>
-                      <td>  {{$prestamo -> nombE}}</td>
-                      <td>  {{$prestamo -> fechaP}}</td>
-                      <td>  {{$prestamo -> moneda}}</td>
-                      <td>₡ {{$prestamo -> montoP}}</td>
-                      <td>  {{$prestamo -> interes}}</td>
-                      <td>  {{$prestamo -> plazoS}}</td>
-                      <td>  {{$prestamo -> total}}</td>
-                      <td>  {{$prestamo -> fSolicitud}}</td>
-                      <td>  {{$prestamo -> notas}}</td>
-                      <td><button type="button" class="btn btn-sucess">{!!link_to_route('prestamos.edit', $title = 'Editar', $parameters = $prestamo->id)!!}</button></td>
-                      <td><a href="{{ URL::to('downloadExcelPrestamos',$parameters = $prestamo->id) }}"><button class="btn btn-success">Descargar</button></a></td>
-                      </tr>
-              </tbody>
-            @endforeach
-            <tr>
-            <th scope="row">TOTAL</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong>₡  {{$sum_prestamo}}</strong></td>
-            <td></td>
-            <td></td>
-            <td><strong>₡  {{$sum_total}}</strong></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-            </table>
-</div>
+  <div class="col-lg-12">
+    <h2 class="page-header">Lista de Prestamos Semanales</h2>
+  </div>
+  <table class="table table-striped" id="tblGrid">
+    <thead id="tblHead">
+      <tr>
+        <th>Nombre</th>
+        <th>Fecha Prestamo</th>
+        <th>Moneda</th>
+        <th>Monto Prestamo</th>
+        <th>Interes</th>
+        <th>Monto Total</th>
+        <th>Plazo Semanal</th>
+        <th>Total</th>
+        <th>Fecha Solicitud</th>
+        <th>Notas</th>
+        <th>Accion</th>
+        <th>Descargar</th>
+      </tr>
+    </thead>
+    @foreach($pre as $prestamo)
+    <tbody>
+      <tr>
+        <td>  {{$prestamo -> nombE}}</td>
+        <td>  {{$prestamo -> fechaP}}</td>
+        <td>  {{$prestamo -> moneda}}</td>
+        <td>₡ {{$prestamo -> montoP}}</td>
+        <td>  {{$prestamo -> interes}}</td>
+        <td> {{$prestamo-> montoTotal}}</td>
+        <td>  {{$prestamo -> plazoS}}</td>
+        <td>  {{$prestamo -> total}}</td>
+        <td>  {{$prestamo -> fSolicitud}}</td>
+        <td>  {{$prestamo -> notas}}</td>
+        <td><button type="button" class="btn btn-sucess">{!!link_to_route('prestamos.edit', $title = 'Editar', $parameters = $prestamo->id)!!}</button></td>
+        <td><a href="{{ URL::to('downloadExcelPrestamos',$parameters = $prestamo->id) }}"><button class="btn btn-success">Descargar</button></a></td>
+      </tr>
+    </tbody>
+    @endforeach
+    <tr>
+      <th scope="row">TOTAL</th>
+      <td></td>
+      <td></td>
 
+      <td><strong>₡{{$sum_prestamo}}</strong></td>
+      <td></td>
+      <td><strong>₡{{$sum_totalPrestamo}}</strong></td>
+      <td></td>
+      <td><strong>₡{{$sum_total}}</strong></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+<div class="text-center">
   {!!$pre->render()!!}
+</div>
 @stop

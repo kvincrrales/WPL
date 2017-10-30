@@ -14,6 +14,7 @@
    <!-- Custom CSS -->
    {!!Html::style('css/round-about.css')!!}
    <!-- Custom CSS -->
+   {!!Html::style('css/jquery-ui.css')!!}
 
 </head>
 <body>

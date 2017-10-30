@@ -1,10 +1,11 @@
-$(function()
-{
-	 $( "#q" ).autocomplete({
-	  source: "search/autocomplete",
-	  minLength: 3,
-	  select: function(event, ui) {
-	  	$('#q').val(ui.item.value);
-	  }
-	});
+var urlx = '/autocompletePadron';
+
+$('#dir').autocomplete({
+	source : urlx,
+	minlenght: 1,
+	autoFocus: true,
+	select:function(e , ui){
+		$('#id').val(ui.item.id);
+		$('#nomb').val(ui.item.name);
+	}
 });
