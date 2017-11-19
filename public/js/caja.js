@@ -51,8 +51,28 @@ $(document).on('change','#inicio,#final', function(event) {
              	'</tr>';
 
              	$('tbody').append(tr);
-             });
 
+
+             });
+				/*
+			var th = 
+			'<tr>'+
+			'<td>Totales: </td>'+
+
+			'<td></td>'+
+
+			'<td></td>'+
+
+			'<td>'+"7,025,694"+'</td>'+
+
+			'<td>'+"8,547,694"+'</td>'+
+
+			'<td></td>'+
+			'</tr>';
+
+			$('tfoot').append(th);
+
+	*/
 		},
 		error: function (err) {
 

@@ -8,7 +8,7 @@ use WP\Http\Requests;
 use Session;
 use Redirect;
 use WP\Empleado;
-
+use PDF;
 use DB;
 use Excel;
 
@@ -130,5 +130,14 @@ class AhorrosController extends Controller
 
 
         })->download('xls');
+    }
+
+    public function downloadPdf($id)
+    {
+        //$date = date('Y-m-d');
+        //$emp_id = \WP\Vale::find($id)->toArray();
+        $emp_id = DB::select('select * from ahorros where id=' . $id);
+        $pdf = PDF::loadview('invoice.inahorros',['emp_id'=>$emp_id]);
+        return $pdf->download('accionPersonal.pdf');
     }
 }

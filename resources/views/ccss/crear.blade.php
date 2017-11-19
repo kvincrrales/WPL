@@ -28,6 +28,8 @@
   </thead>
   <tbody>
   </tbody>
+  <tfoot>
+  </tfoot>
 </table>
 </div>
 {!!Html::script('js/jquery.js')!!}

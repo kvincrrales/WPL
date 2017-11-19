@@ -65,11 +65,10 @@
 
         <td><input type="text" value="0" style="max-width: 40px !important" name="horasExtra[]" class="horasExtra"></td>
 
-        <td><input type="text" value="{{$user -> horasx}}" name="horasNormal2[]" class="inputPlanillas horasNormal2" readonly></td>
+        <td><input type="text" value="{{$user -> salarioS}}" name="horasNormal2[]" class="inputPlanillas horasNormal2" readonly></td>
 
         <td><input type="text" value="" name="horasExtra2[]" class="inputPlanillas horasExtra2" readonly></td>
-
-        <td><input type="text" name="vacaciones[]" value="{{$user -> totalVacas}}" class="inputPlanillas vacaciones" readonly></td>
+        <td><input type="text" value="{{$user -> totalVacas}}"  name="vacaciones[]" class="inputPlanillas vacaciones" id="vacaciones" readonly=""></td>
 
         <td><input type="text" name="caja[]" value="{{$user->caja}}" class="inputPlanillas caja" readonly></td>
 
@@ -98,7 +97,7 @@
       <td><strong class="hN2">₡<?php echo $sumH;?></strong></td>
       <td><strong class="hE2"></strong></td>
       <td><strong>₡{{$vacacionesT}}</strong></td>
-      <td><strong>₡<?php echo $sumCaja;?></strong></td>
+      <td>₡<strong class="cajaTotal"><?php echo $sumCaja;?></strong></td>
       <td><strong>₡{{$prestamos}}</strong></td>
       <td><strong>₡{{$vales}}</strong></td>
       <td><strong>₡{{$deducciones}}</strong></td>

@@ -20,7 +20,9 @@ class CcSsController extends Controller
 
 		$consulta = DB::table('planillas')
 		->whereBetween('planillas.emp_fSta', [$return['fechaI'], $return['fechaF'] ])
+		->leftJoin('incapacidads', 'incapacidads.emp_id', '=', 'planillas.emp_id')
 		->select(
+			'incapacidads.nota',
 			'planillas.emp_id',
 			'planillas.emp_ced',
 			'planillas.emp_nomb',
@@ -44,6 +46,8 @@ class CcSsController extends Controller
 			if(isset($u->total))
 				$sumSal += $u->total;
 		}
+		error_log($sumSal);
+		error_log($sumCaja);
 		//return view('ccss.crear',compact('consulta','sumCaja','sumSal'));
 		return $consulta;
 	}

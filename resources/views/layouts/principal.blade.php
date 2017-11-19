@@ -117,8 +117,8 @@
       <!-- Footer -->
       <footer>
          <div class="row">
-            <div class="col-lg-12">
-               <p>Copyright &copy; Repuestos WIMOT 2016</p>
+            <div class="text-center">
+               <p>Copyright &copy; Repuestos WIMOT 2017</p>
             </div>
             <!-- /.col-lg-12 -->
          </div>

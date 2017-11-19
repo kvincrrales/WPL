@@ -27,7 +27,8 @@
     <thead id="tblHead">
       <tr>
         <th>Nombre del Empleado</th>
-        <th>Fecha</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Final</th>
         <th>Tipo</th>
         <th>Total</th>
         <th>Notas</th>
@@ -39,7 +40,8 @@
     <tbody>
       <tr>
         <td>{{$incapacidad -> nomb}}</td>
-        <td>{{$incapacidad -> fecha}}</td>
+        <td>{{$incapacidad -> fechaInicio}}</td>
+        <td>{{$incapacidad -> fechaFinal}}</td>
         <td>{{$incapacidad -> tipo}}</td>
         <td>{{$incapacidad -> total}}</td>
         <td>{{$incapacidad -> nota}}</td>

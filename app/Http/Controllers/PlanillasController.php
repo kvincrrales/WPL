@@ -38,6 +38,7 @@ class PlanillasController extends Controller
         'empleados.ape1',
         'empleados.cBanc',
         'empleados.salario',
+        'salarios.salarioM',
         'salarios.salarioS',
         'salarios.salarioH',
         'salarios.salarioHE',   
@@ -46,6 +47,7 @@ class PlanillasController extends Controller
         'vales.total as totalVales',
         'prestamos.total as totalPrestamos',
         'otra_deduccions.montoO')
+     ->orderBy('ape1','asc')
      ->get();
 
      $vacacionesT = DB::table('vacacions')->sum('total');

@@ -51,7 +51,7 @@ class ValesController extends Controller
         \WP\Vale::create($request->all());
 
        Session::flash('message','Vale Registrado Correctamente');
-        return Redirect::to('/vales');
+        return Redirect::to('/vales/create');
     }
 
     /**

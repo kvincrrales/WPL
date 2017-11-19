@@ -102,6 +102,7 @@
             </div>
         </div>
         -->
+        <!--
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
                 <img class="img-circle img-responsive img-center" width="90" src="images/technology.png" alt="">
@@ -111,6 +112,7 @@
                     <a href="#" class="btn btn-primary center-block" role="button">Ingresar</a>
                 </p>
             </div>
+            -->
             <div class="col-sm-6 col-md-6 col-lg-4 text-center">
                 <img class="img-circle img-responsive img-center" width="90" src="images/point-of-service.png" alt="">
                 <h3>Cajas</h3>

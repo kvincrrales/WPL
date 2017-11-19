@@ -53,9 +53,11 @@
       <td></td>
       <td></td>
       <td></td>
+          <td></td>
     </tr>
   </table>
 </div>
+
 <div class="text-center">
   {!!$val->render()!!}
 </div>

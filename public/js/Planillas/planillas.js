@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
- $('tbody').delegate('.horasNormal,.horasExtra','keyup',function(){
+ $('tbody').delegate('.horasNormal,.horasExtra,.vacaciones','keyup',function(){
   var tr =$(this).parent().parent();
 
   var sal = tr.find('.salario').val();
@@ -15,15 +15,21 @@ $(document).ready(function () {
 
   var hora = sal / 48;
 
-  var horaE = hora*1.5; 
+  var horaE = hora*1.5;
 
   var netox = Math.round(((hora * hN) + (horaE * hE)) + parseInt(vac) - caj - pre - val - ded);
 
-  var totalx = Math.round(((hora * hN) + (horaE * hE)) + parseInt(vac) - caj - pre - val - ded - aho);
+  var totalx =  Math.round(((hora * hN) + (horaE * hE)) + parseInt(vac)  - caj - pre - val - ded - aho);
+ // totalx = totalx.toFixed(2);
 
   var horax = Math.round(hora * hN);
 
   var horaxExtra = Math.round(horaE * hE);
+
+  var caja =  Math.round((horax + horaxExtra) * 0.0984);
+
+
+  tr.find('.caja').val(caja);
 
   tr.find('.horasNormal2').val(horax);
 
@@ -36,6 +42,8 @@ $(document).ready(function () {
   horas();
 
   horasExtra();
+
+  cajasx();
 
   neto();
 
@@ -83,6 +91,17 @@ function total(){
   })
 
   $('.total').html(total);
+
+};
+
+function cajasx(){
+  var total= 0;
+  $('.caja').each(function(i,e){
+    var netos = $(this).val()-0;
+    total += netos;
+  })
+
+  $('.cajaTotal').html(total);
 
 };
 

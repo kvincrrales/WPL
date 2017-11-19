@@ -24,7 +24,7 @@ class CreateVacacionsTable extends Migration
             $table->date('fechaFin');
             $table->integer('diasD');
             $table->integer('caja');
-            $table->float('total');
+            $table->integer('total');
 
 
             $table->integer('emp_id')->unsigned();

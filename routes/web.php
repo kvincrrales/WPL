@@ -73,6 +73,8 @@ Route::get('downloadPdfVales/{id}', 'ValesController@downloadPdf');
 
 Route::get('downloadPdfVacaciones/{id}', 'VacacionesController@downloadPdf');
 
+Route::get('downloadPdfAhorros/{id}', 'AhorrosController@downloadPdf');
+
 Route::get('downloadPdfListaEmpleados', 'EmpleadosController@downloadPdf');
 
 Route::get('caja','FrontController@caja');

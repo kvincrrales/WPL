@@ -46,11 +46,16 @@ class VacacionesController extends Controller
      */
     public function store(Request $request)
     {
-         \WP\Vacacion::create($request->all());
+     \WP\Vacacion::create($request->all());
 
-       Session::flash('message','Vacaciones Ingresadas Correctamente');
-        return Redirect::to('/vacaciones');
-    }
+     $diasD = $request['diasD'];
+     $emp_id = $request['emp_id'];
+
+     DB::update('update empleados set totalVacaciones = totalVacaciones - '.$diasD.' where id = '.$emp_id.'');
+
+     Session::flash('message','Vacaciones Ingresadas Correctamente');
+     return Redirect::to('/vacaciones');
+ }
 
     /**
      * Display the specified resource.
@@ -89,6 +94,11 @@ class VacacionesController extends Controller
         $vac -> fill($request->all());
         $vac -> save();
 
+        //$diasD = $request['diasD'];
+        //$emp_id = $request['emp_id'];
+
+        //DB::update('update empleados set totalVacaciones = totalVacaciones - '.$diasD.' where id = '.$emp_id.'');
+
         Session::flash('message','Vacaciones Editadas Correctamente');
         return Redirect::to('/vacaciones');
     }
@@ -110,7 +120,7 @@ class VacacionesController extends Controller
     public function downloadExcel($id)
     {
         //$data = \WP\Vacacion::get()->toArray(); --> Toda la lista
-        
+
         $emp_id = \WP\Vacacion::find($id)->toArray();
         return Excel::create('accionPersonal', function($excel) use ($emp_id) {
 
@@ -127,46 +137,46 @@ class VacacionesController extends Controller
 
     public function calcularVacacion(Request $data){
 
-    $response = array();
+        $response = array();
 
-    $emp_id = DB::table('salarios')
-                ->select('salarioD','salarioH')
-                ->where('emp_id',$data['idE'])
-                ->get();
+        $emp_id = DB::table('salarios')
+        ->select('salarioD','salarioH')
+        ->where('emp_id',$data['idE'])
+        ->get();
 
-    $emp_id = $emp_id[0];
+        $emp_id = $emp_id[0];
 
-    $response['total'] = 0;
+        $response['total'] = 0;
 
 
 
-    if($data['tV']=="Disfrutadas"){
-        $response['caja'] = round($data['nDias'] *  $emp_id->salarioD * 0.0934);
-    
-        $response['total'] = round($data['nDias'] *  $emp_id->salarioD - $response['caja']);
-    } else {
-        $response['caja'] = 0;
+        if($data['tV']=="Disfrutadas"){
+            $response['caja'] = round($data['nDias'] *  $emp_id->salarioD * 0.0934);
 
-        $response['total'] = round($data['nDias'] *  $emp_id->salarioD);
+            $response['total'] = round($data['nDias'] *  $emp_id->salarioD - $response['caja']);
+        } else {
+            $response['caja'] = 0;
 
-    }
-    
+            $response['total'] = round($data['nDias'] *  $emp_id->salarioD);
+
+        }
+
         
-    return $response;
+        return $response;
 
     }
 
     public function vDisponibles()
     {
         $vacD = DB::table('empleados')
-            ->select(
-                'empleados.numId',
-                'empleados.nomb',
-                'empleados.ape1',
-                'empleados.ape2',
-                'empleados.fIngreso',
-                'empleados.vacaciones_disponibles')
-            ->get();
+        ->select(
+            'empleados.numId',
+            'empleados.nomb',
+            'empleados.ape1',
+            'empleados.ape2',
+            'empleados.fIngreso',
+            'empleados.vacaciones_disponibles')
+        ->get();
 
 
         //$sal = \WP\Salario::paginate(3);

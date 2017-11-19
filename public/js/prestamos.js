@@ -7,6 +7,8 @@ var token = $("#token").val();
 ////////////////////////////////////////////////////////////////////////////////////
 var url = '/calculoPrestamo';
 
+var urlx = '/autocomplete';
+
 /////////////////////////
 //listener de #salario //
 /////////////////////////
@@ -46,4 +48,14 @@ $(document).on('change', '#monto,#intereses,#plazoSemanal,#totales', function(ev
 
 	});
 
+});
+
+$('#emp').autocomplete({
+	source : urlx,
+	minlenght: 1,
+	autoFocus: true,
+	select:function(e , ui){
+		$('#id').val(ui.item.id);
+		$('#nomb').val(ui.item.name);
+	}
 });

@@ -16,7 +16,8 @@ class CreateIncapacidadsTable extends Migration
         Schema::create('incapacidads', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->date('fecha');
+            $table->date('fechaInicio');
+            $table->date('fechaFinal');
             $table->string('tipo');
             $table->integer('total');
             $table->integer('cDias');

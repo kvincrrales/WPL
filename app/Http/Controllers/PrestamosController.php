@@ -143,4 +143,18 @@ class PrestamosController extends Controller
 
         return $return;
     }
+
+    public function autocomplete(Request $request){
+
+    $term=$request->term;
+    $data = Empleado::where('nomb','LIKE','%'.$term.'%')
+    ->take(10)
+    ->get();
+
+    foreach($data as $key => $v){
+        $results[]=['id'=>$v->id,'value'=>$v->nomb.' '.$v->ape1.' '.$v->ape2.' '.$v->numId];
+    }
+    return response()->json($results);
+
+}
 }

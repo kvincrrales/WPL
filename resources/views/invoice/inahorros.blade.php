@@ -44,33 +44,25 @@
 <body>
   <div class="">
     <div class="col-lg-12">
-      @foreach($emp_id as $vacacion)
-      <h2 class="page-header">Acción de Personal</h2><a>Fecha de Solicitud: {{$vacacion -> fechaS}}</a>
+    @foreach($emp_id as $ahorro)
+      <h2 class="page-header">Acción de Personal</h2><a>Fecha de Solicitud:</a>
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Tipo de Vacaciones</th>
-            <th>Fecha de Solicitud</th>
-            <th>Fecha Inicio</th>
-            <th>Fecha Final</th>
-            <th>Días Disfrutados</th>
-            <th>C.C.S.S</th>
-            <th>Total</th>
+            <th>Monto Semanal</th>
+            <th>Monto Actual</th>
+            <th>Nota</th>
           </tr>
         </thead>
         <br>
         <tbody>
 
          <tr>
-          <td>{{$vacacion -> nomb}}</td>
-          <td>{{$vacacion -> tVacaciones}}</td>
-          <td>{{$vacacion -> fechaS}}</td>
-          <td>{{$vacacion -> fechaIni}}</td>
-          <td>{{$vacacion -> fechaFin}}</td>
-          <td>{{$vacacion -> diasD}}</td>
-          <td>{{$vacacion -> caja}}</td>
-          <td>{{$vacacion -> total}}</td>
+          <td>{{$ahorro -> nomb}}</td>
+          <td>{{$ahorro -> montoS}}</td>
+          <td>{{$ahorro -> montoA}}</td>
+          <td>{{$ahorro -> nota}}</td>
         </tr>
         @endforeach
       </tbody>
