@@ -57,3 +57,9 @@ $('#emp').autocomplete({
 		$('#nomb').val(ui.item.name);
 	}
 });
+
+function calcularFechas(fechaInicio, fechaFinal){
+var timeDiff = Math.abs(fechaFinal.getTime() - fechaInicio.getTime());
+var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+console.log(diffDays);
+}

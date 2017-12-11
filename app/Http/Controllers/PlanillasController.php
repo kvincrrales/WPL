@@ -44,6 +44,7 @@ class PlanillasController extends Controller
         'salarios.salarioHE',   
         'ahorros.montoS',
         'vacacions.total as totalVacas',
+        'vacacions.caja as cajaVacas',
         'vales.total as totalVales',
         'prestamos.total as totalPrestamos',
         'otra_deduccions.montoO')

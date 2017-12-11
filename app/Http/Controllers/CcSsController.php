@@ -46,8 +46,9 @@ class CcSsController extends Controller
 			if(isset($u->total))
 				$sumSal += $u->total;
 		}
-		error_log($sumSal);
-		error_log($sumCaja);
+
+		//error_log($sumSal);
+		//error_log($sumCaja);
 		//return view('ccss.crear',compact('consulta','sumCaja','sumSal'));
 		return $consulta;
 	}

@@ -10,7 +10,7 @@ var url = '/calculoCajaCCSS';
 /////////////////////////
 //listener de #salario //
 /////////////////////////
-$(document).on('change','#inicio,#final', function(event) {
+$(document).on('change','#final', function(event) {
 	
 	// json con los datos que quiero enviar
 	var data = {
@@ -29,7 +29,17 @@ $(document).on('change','#inicio,#final', function(event) {
 
 		success: function (data) {
 
+			var sumCaja = 0;
+			var sumSal = 0;
+
+			$.each(data, function(key,val){
+				sumSal += val.emp_sal;
+				sumCaja += val.total;         
+			});
+
 			//console.log(data);
+			//console.log(sumSal);
+			//console.log(sumCaja);
 
 			$.each(data, function(key,val){
 				//console.log(key);
@@ -47,32 +57,32 @@ $(document).on('change','#inicio,#final', function(event) {
 
              	'<td><input type="text" name="total[]" value="'+val.total+'" class="inputPlanillas total" readonly></td>'+
 
-             	'<td><input type="text" name="comentario[]" value="" class="inputPlanillas comentario" readonly></td>'+
+             	'<td class="hide"><input type="text" name="comentario[]" value="" class="inputPlanillas comentario" readonly></td>'+
              	'</tr>';
 
              	$('tbody').append(tr);
 
 
              });
-				/*
+				
 			var th = 
 			'<tr>'+
-			'<td>Totales: </td>'+
+			'<td><strong>Totales: </strong></td>'+
 
 			'<td></td>'+
 
 			'<td></td>'+
 
-			'<td>'+"7,025,694"+'</td>'+
+			'<td>₡<strong>'+sumSal+'</strong></td>'+
 
-			'<td>'+"8,547,694"+'</td>'+
+			'<td>₡<strong>'+sumCaja+'</strong></td>'+
 
-			'<td></td>'+
+			'<td class="hide"></td>'+
 			'</tr>';
 
 			$('tfoot').append(th);
 
-	*/
+			
 		},
 		error: function (err) {
 

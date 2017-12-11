@@ -11,7 +11,10 @@
  <div class="row">
   <div class="col-md-6">
    {!!Form::label('Nombre del Empleado:')!!}
+    <div class="input-group">
+     <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
    {!!Form::text('nomb',null,['class'=>'form-control','placeholder'=>'Digite el nombre del empleado','id'=>'emp'])!!}
+   </div>
  </div>
  <div class="hidden">
    {!!Form::text('emp_id',null,['class'=>'hidden','id' => 'id'])!!}

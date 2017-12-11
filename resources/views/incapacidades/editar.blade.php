@@ -9,9 +9,12 @@
    <!-- 'route'=>'empleados.emp', -->
    {!!Form::model($inc,['route'=>['incapacidades.update',$inc->id],'method'=>'PUT'])!!}
    <div class="row">
-      <div class="form-group col-sm-12">
+      <div class="form-group col-sm-6">
          {!!Form::label('Nombre del Empleado:')!!}
-         {!!Form::text('nomb',null,['class'=>'form-control','placeholder'=>'Digite el nombre del empleado','id'=>'emp'])!!}
+          <div class="input-group">
+     <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+   {!!Form::text('nomb',null,['class'=>'form-control','placeholder'=>'Digite el nombre del empleado','id'=>'emp'])!!}
+   </div>
       </div>
       <div class="hidden">
          {!!Form::text('emp_id',null,['class'=>'hidden','id' => 'id'])!!}

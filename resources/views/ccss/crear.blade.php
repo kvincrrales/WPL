@@ -23,7 +23,7 @@
       <th>Nombre</th>
       <th>Salario Actual</th>
       <th>Total Ingresos</th>
-      <th>Comentarios</th>
+      <th class="hide">Comentarios</th>
     </tr>
   </thead>
   <tbody>

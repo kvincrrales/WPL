@@ -130,6 +130,7 @@
    {!!Html::script('js/jquery.js')!!}
    {!!Html::script('js/bootstrap.min.js')!!}
    {!!Html::script('js/jquery.js')!!}
+   {!!Html::script('js/autonumeric.js')!!}
    <!-- jQuery Validation -->
    {!!Html::script('js/jquery-validate.js')!!}
    {!!Html::script('js/Planillas/validaciones.js')!!}
